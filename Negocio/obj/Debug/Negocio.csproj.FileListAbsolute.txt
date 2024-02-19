@@ -1,0 +1,11 @@
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Negocio.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Negocio.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Datos.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Entidad.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Datos.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Entidad.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.Up2Date

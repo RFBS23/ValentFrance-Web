@@ -1,0 +1,6 @@
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Entidad\bin\Debug\Entidad.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Entidad\bin\Debug\Entidad.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Entidad\obj\Debug\Entidad.csproj.AssemblyReference.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Entidad\obj\Debug\Entidad.csproj.CoreCompileInputs.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Entidad\obj\Debug\Entidad.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Entidad\obj\Debug\Entidad.pdb

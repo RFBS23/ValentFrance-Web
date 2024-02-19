@@ -1,0 +1,9 @@
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\bin\Debug\Datos.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\bin\Debug\Datos.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\bin\Debug\Entidad.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\bin\Debug\Entidad.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\obj\Debug\Datos.csproj.AssemblyReference.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\obj\Debug\Datos.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\obj\Debug\Datos.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Datos\obj\Debug\Datos.csproj.Up2Date

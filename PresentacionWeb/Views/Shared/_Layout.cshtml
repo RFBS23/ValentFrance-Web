@@ -1,0 +1,265 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    @Styles.Render("~/Content/css")
+    @*@Scripts.Render("~/bundles/modernizr")*@
+</head>
+<body>
+
+    <header id="header" class="header fixed-top">
+        <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+
+            <a href="index.php" class="logo d-flex align-items-center">
+                <img src="assets/img/logo-valent.png" alt="">
+                <span>VALENT FRANCE</span>
+            </a>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Inicio</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Acerca De</a></li>
+                    <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
+                    <li class="dropdown">
+                        <a href="#portfolio">
+                            <span>Lineas</span>
+                            <i class="bi bi-chevron-down"></i>
+                        </a>
+                        <ul>
+                            <li><a href="#">Moda Niños</a></li>
+                            <li><a href="#">Moda Niñas</a></li>
+                            <li><a href="#">Moda Dama</a></li>
+                            <li><a href="#">Moda Hombre</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#team">Equipo</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Contacto</a></li>
+                    <li><a class="getstarted scrollto" href="#about" style="border-radius: 15px;">Iniciar Sesion</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+
+        </div>
+    </header><!-- End Header -->
+
+    @RenderBody()
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="row gy-4">
+                    <div class="col-lg-5 col-md-12 footer-info">
+                        <a href="#" class="logo d-flex align-items-center">
+                            <img src="assets/img/logo-valent.png" alt="">
+                            <span>Valent France</span>
+                        </a>
+                        <p>Nuestra empresa textil se especializa en la creación y distribución de productos textiles de alta calidad, diseñados para satisfacer las demandas y preferencias de nuestros clientes más exigentes.</p>
+                        <div class="social-links mt-3">
+                            <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                            <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+                            <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-6 footer-links">
+                        <h4>Normas y Politicas</h4>
+                        <ul>
+                            <li><i class="bi bi-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#modalpoliticaprivacidad">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
+                        <h4>Contáctate con nosotros</h4>
+                        <p>
+                            Manzana B, Lote 15 <br>
+                            Calle 2 Los Productores <br>
+                            Santa Anita, Lima Perú<br><br>
+                            <strong>Celular:</strong> +51 5589 55488 55<br>
+                            <strong>Correo:</strong> info@example.com<br>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- modal -->
+                <div class="modal fade" id="modalpoliticaprivacidad" tabindex="-1" aria-labelledby="modalpoliticas" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="modalpoliticas">Politicas de Privacidad</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" style="user-select: none;">
+                                <h3 style="text-align: center;">POLÍTICAS Y PROCEDIMIENTOS PARA EL TRATAMIENTO DE DATOS PERSONALES</h3>
+                                <div>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">El presente documento contiene Políticas y Procedimientos de Privacidad de Datos Personales de la empresa Valent France, en adelante Valent France, la cual se encuentra en armonía con la normativa vigente sobre protección de Datos Personales (Ley N° 29733 y su Reglamento aprobado mediante Decreto Supremo N° 003-2013-JUS).&nbsp;Valent France, busca informar oportunamente sobre las finalidades de tratamiento de los datos personales, quiénes son los encargados de tratarla, el tipo de almacenamiento en nuestros bancos de datos, las medidas de protección, los medios para ejercer sus derechos como titular de los datos personales así como otros aspectos que detallan el funcionamiento de la página web de&nbsp;Valent France.</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">Las personas, en ejercicio de cualquier actividad, bien sea de índole comercial y/o laboral, permanente u ocasional; pueda suministrar cualquier tipo de información o dato personal a Valent France y en la cual este actúe como responsable del tratamiento, podrá conocerla, actualizarla, rectificarla y revocarla.</p>
+                                        </div>
+                                    </div>
+                                    <h4>1.DEFINICIONES</h4>
+                                    <div>
+                                        <div>
+                                            <p>De conformidad con la legislación vigente sobre el tratamiento de datos personales en sitios web, se establecen las siguientes definiciones:</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">– <u>Autorización</u>: Consentimiento previo, expreso e informado del titular para llevar a cabo el tratamiento de datos personales.</p>
+                                            <p style="text-align: justify;">– <u>Base de datos</u>: Conjunto organizado de datos personales que sea objeto de tratamiento.</p>
+                                            <p style="text-align: justify;">– <u>Dato personal</u>: Cualquier información vinculada o que pueda asociarse a una o varias personas naturales determinadas o determinables.</p>
+                                            <p style="text-align: justify;">– <u>Dato privado</u>: Es el dato que por su naturaleza íntima o reservada, solo es relevante para el titular.</p>
+                                            <p style="text-align: justify;">– <u>Responsable del tratamiento</u>: Persona natural o jurídica, pública o privada, que por sí misma o en asocio con otros, realice y decida sobre la base de datos y/o el tratamiento de los datos.</p>
+                                            <p style="text-align: justify;">
+                                                – <u>Titular</u>: Persona natural cuyos datos personales sean objeto de tratamiento.<br>
+                                                – <u>Tratamiento</u>: Cualquier operación o conjunto de operaciones sobre datos personales, tales como la recolección, almacenamiento, uso, circulación o supresión.
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <h4>2.PRINCIPIOS ESPECÍFICOS</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">– <u>Legalidad</u>: En el uso, captura, recolección y tratamiento de datos personales, se dará aplicación a las disposiciones vigentes y aplicables que rigen el tratamiento de datos personales y demás derechos fundamentales.</p>
+                                            <p style="text-align: justify;">– <u>Libertad</u>: La recolección, tratamiento y uso de datos personales solo puede llevarse a cabo con el consentimiento, previo, expreso e informado del titular. Los datos personales no podrán ser obtenidos o divulgados sin previa autorización, o en ausencia de mandato legal o judicial que releve el consentimiento.</p>
+                                            <p style="text-align: justify;">– <u>Finalidad</u>: La recolección, tratamiento y uso de datos personales a los que tenga acceso y sean recogidos por Valent France, estarán subordinados y atenderán una finalidad legítima, la cual debe serle informada al respectivo titular de los datos personales.</p>
+                                            <p style="text-align: justify;">– <u>Veracidad o calidad</u>: La recolección, tratamiento y uso de datos personales debe ser veraz, completa, exacta, actualizada, comprobable y comprensible. Se prohíbe el Tratamiento de datos parciales, incompletos, fraccionados o que induzcan a error.</p>
+                                            <p style="text-align: justify;">– <u>Circulación restringida</u>: Los datos personales, excepto la información pública, no podrán estar disponibles en Internet u otros medios de divulgación o comunicación masiva.</p>
+                                            <p style="text-align: justify;">– <u>Seguridad</u>: Los datos personales e información recolectados, tratados y sujetos a uso por Valent France, será objeto de protección en la medida en que los recursos técnicos y estándares mínimos así lo permitan; a través de la adopción de medidas tecnológicas y administrativas de protección y protocolos que sean necesarias para otorgar seguridad a los registros y repositorios electrónicos, evitando su adulteración, modificación, pérdida, consulta, y en general en contra de cualquier uso o acceso no autorizado.</p>
+                                        </div>
+                                    </div>
+                                    <h4>3.USO DE DATOS</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">Los datos personales que proporcionados a Valent France, serán utilizados para los siguientes fines: (i) Envío de información que haya sido solicitada por el titular, sobre los productos ofrecidos por la empresa; (ii) En caso lo autorice, remisión de promociones, beneficios, concursos, novedades y, en general, todo tipo de publicidad de Valent France (iii) Respuesta y trámite a consultas, solicitudes y quejas; (iv) Actualización de alguna información del titular.</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">Para poder remitir información de tipo publicitaria, la empresa deberá contar con la autorización expresa por medio de los <em>check boxes</em> implementados en nuestros consentimientos; sin esta autorización,&nbsp;Valent France se abstendrá al envío de todo tipo de contenido vía email o Whatsapp.</p>
+                                            <p>.</p>
+                                        </div>
+                                    </div>
+                                    <h4>4.DATOS SENSIBLES</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">Son aquellos datos que afectan la intimidad del titular o cuyo uso indebido puede generar su discriminación, tales como aquellos que revelen el origen racial o étnico, la orientación política, las convicciones religiosas o filosóficas, la pertenencia a sindicatos, organizaciones sociales, de derechos humanos o que promueva intereses de cualquier partido político; así como los datos relativos a la salud, a la vida sexual, entre otros; la captura de imagen fija o en movimiento, huellas digitales, fotografías, iris, reconocimiento de voz, facial o de palma de mano, etc.</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p>– <u>Autorización del titular</u>: Sin perjuicio de las excepciones previstas en la ley, en el tratamiento se requiere la autorización previa, expresa e informada del titular, la cual deberá ser obtenida por cualquier medio que pueda ser objeto de consulta y verificación posterior.</p>
+                                        </div>
+                                    </div>
+                                    <h4>5.DERECHOS DE LOS TITULARES DE LA INFORMACIÓN</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: left;">El titular de los datos personales tendrá los siguientes derechos:</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p>– Conocer, actualizar y rectificar sus datos personales en la base de datos de Valent France, de manera gratuita. Este derecho se podrá ejercer, entre otros frente a datos parciales, inexactos, incompletos, fraccionados, que induzcan a error, o aquellos cuyo tratamiento esté expresamente prohibido o no haya sido autorizado.</p>
+                                            <p>– Ser informado por Valent France, previa solicitud, respecto del uso que le ha dado a sus datos personales.</p>
+                                            <p>– Revocar la autorización y/o solicitar la supresión del dato cuando en el tratamiento no se respeten los principios, derechos y garantías constitucionales y legales.</p>
+                                        </div>
+                                    </div>
+                                    <h4>6.AUTORIZACIÓN</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">La recolección, tratamiento, circulación o supresión de datos personales por Valent France, requiere del consentimiento libre, previo, expreso e informado del titular de aquellos. Valent France, en su condición de responsable del tratamiento de datos personales, ha dispuesto de los mecanismos necesarios para obtener la autorización de los titulares garantizando en todo caso que sea posible verificar el otorgamiento de dicha autorización.</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">– <u>Forma y mecanismo</u>: La autorización está solicitada bajo un documento de formato electrónico que permite garantizar su posterior consulta, o mediante un mecanismo técnico o tecnológico idóneo mediante el cual se pueda concluir de forma razonable, que de no haberse surtido una conducta del titular sus datos no hubieren sido almacenados en la base de datos.</p>
+                                        </div>
+                                    </div>
+                                    <h4>7.REVOCATORIA DE LA AUTORIZACIÓN</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">Los titulares de los datos personales pueden revocar el consentimiento al tratamiento de sus datos personales en cualquier momento, siempre y cuando no lo impida una disposición legal o contractual. Para ello, Valent France deberá establecer mecanismos sencillos y gratuitos que permitan al titular revocar su consentimiento, al menos por el mismo medio por el que lo otorgó.</p>
+                                        </div>
+                                    </div>
+                                    <h4>8.CONSULTAS</h4>
+                                    <div>
+                                        <div>
+                                            <p>Los titulares podrán consultar la información personal que repose en cualquier base de datos. En consecuencia, Valent France garantizará el derecho de consulta, suministrando a los titulares, toda la información contenida en el registro individual o que esté vinculada con la identificación del titular. Con respecto a la atención de solicitudes de consulta de datos personales Valent France garantiza:</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">
+                                                – Habilitar medios de comunicación electrónica u otros que considere pertinentes.<br>
+                                                Establecer formularios, sistemas y otros métodos simplificados, los mismos que deben ser informados en el aviso de privacidad.
+                                            </p>
+                                            <p style="text-align: justify;">– Utilizar los servicios de atención al cliente o de reclamaciones que tiene en operación.</p>
+                                            <p style="text-align: justify;">– En cualquier caso, independientemente del mecanismo implementado para la atención de solicitudes de consulta, las mismas serán atendidas en un término máximo de diez (10) días hábiles contados a partir de la fecha de su solicitud. Cuando no fuere posible atender la consulta dentro de dicho término, se informará al interesado antes del vencimiento de los 10 días, expresando los motivos de la demora y señalando la fecha en que se atenderá su consulta, la cual en ningún caso podrá superar los cinco (5) días hábiles siguientes al vencimiento del primer plazo.</p>
+                                        </div>
+                                    </div>
+                                    <h4>9.DATOS DE CONTACTO</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">Valent France atiende las consultas o trámites relacionados con datos personales de los ciudadanos a través del área de Marketing, de manera telefonica o vía correo electrónico:</p>
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            <p>Teléfono: (+51) 987654321</p>
+                                            <p>Correo electrónico: <a style="color: black;" href="mailto:marketing@Valent Franceperu.com.pe">marketing@Valent France.com.pe</a></p>
+                                        </div>
+                                    </div>
+                                    <h4>10.VIGENCIA</h4>
+                                    <div>
+                                        <div>
+                                            <p style="text-align: justify;">El presente manual rige a partir del ocho (08) de enero de 2024, y deja sin efectos los reglamentos o manuales especiales que se hayan comunicado anteriormente</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- fin modal-->
+
+            </div>
+        </div>
+        <div class="container">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Valent France</span></strong>. Todos los derechos Reservados
+            </div>
+            <div class="credits">
+                Diseñado por <a href="https://rfbs23.github.io/portafolio/" target="_blank">RFBS</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/complementos")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

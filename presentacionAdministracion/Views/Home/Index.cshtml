@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+}
+
+<div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section dashboard">
+
+    <!-- Left side columns -->
+    <div class="row">
+
+        <!-- Sales Card -->
+        <div class="col-xxl-4 col-md-6">
+            <div class="card info-card sales-card">
+                <div class="card-body">
+                    <h5 class="card-title">Ventas <span>| Hoy</span></h5>
+
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-cart"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6>145</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End Sales Card -->
+        <!-- Revenue Card -->
+        <div class="col-xxl-4 col-md-6">
+            <div class="card info-card revenue-card">
+                <div class="card-body">
+                    <h5 class="card-title">Ganancias <span>| Este mes</span></h5>
+
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-currency-dollar"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6>$3,264</h6>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div><!-- End Revenue Card -->
+        <!-- Customers Card -->
+        <div class="col-xxl-4 col-xl-12">
+            <div class="card info-card customers-card">
+                <div class="card-body">
+                    <h5 class="card-title">Clientes <span>| Este año</span></h5>
+
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6>1244</h6>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div><!-- End Customers Card -->
+        <!-- ventas recientes -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+
+                <div class="card-body">
+                    <h5 class="card-title">Ventas Recientes <span>| Hoy</span></h5>
+
+                    <table class="table table-borderless datatable">
+                        <thead>
+                            <tr>
+                                <th scope="col">Comprobante</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Productos</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">estado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="text-primary" style="cursor: pointer;">#2457</th>
+                                <td>Brandon Jacob</td>
+                                <td class="text-primary">At praesentium minu</td>
+                                <td>$64</td>
+                                <td><span class="badge bg-success">Approved</span></td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="text-primary" style="cursor: pointer;">#2147</th>
+                                <td>Bridie Kessler</td>
+                                <td class="text-primary">Blanditiis dolor omnis similique</td>
+                                <td>$47</td>
+                                <td><span class="badge bg-warning">Pending</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div><!-- fin ventas recientes -->
+
+        <!-- Mas vendidos -->
+        <div class="col-12">
+            <div class="card top-selling overflow-auto">
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Mas Vendidos <span>| Hoy</span></h5>
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th scope="col">Vistas</th>
+                                <th scope="col">Productos</th>
+                                <th scope="col">Precio</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><a href="#"><img src="~/assets/img/product-1.jpg" alt=""></a></th>
+                                <td class="text-primary fw-bold" style="cursor: pointer;">Ut inventore ipsa voluptas nulla</td>
+                                <td>$64</td>
+                                <td class="fw-bold">124</td>
+                                <td>$5,828</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+        </div><!-- fin mas vendidos -->
+    </div><!-- End Left side columns -->
+
+</section>

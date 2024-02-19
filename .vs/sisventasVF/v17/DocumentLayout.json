@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentacionadministracion\\views\\home\\usuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\views\\home\\usuarios.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{ED4D5A5F-8F0F-4D25-B8DA-09891D88574E}|Entidad\\Entidad.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\entidad\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{ED4D5A5F-8F0F-4D25-B8DA-09891D88574E}|Entidad\\Entidad.csproj|solutionrelative:entidad\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 222,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Usuarios.cs",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\Entidad\\Usuarios.cs",
+              "RelativeDocumentMoniker": "Entidad\\Usuarios.cs",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\Entidad\\Usuarios.cs",
+              "RelativeToolTip": "Entidad\\Usuarios.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-18T20:13:44.712Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Usuarios.cshtml",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Home\\Usuarios.cshtml",
+              "RelativeDocumentMoniker": "presentacionAdministracion\\Views\\Home\\Usuarios.cshtml",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Home\\Usuarios.cshtml",
+              "RelativeToolTip": "presentacionAdministracion\\Views\\Home\\Usuarios.cshtml",
+              "ViewState": "AQIAAP8AAAAAAAAAAAAAANIAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-02-06T00:22:08.838Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
