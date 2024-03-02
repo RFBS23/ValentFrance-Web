@@ -14,6 +14,8 @@ namespace presentacionAdministracion
             bundles.Add(new ScriptBundle("~/bundles/complementos").Include(
                         "~/Scripts/DataTables/jquery.dataTables.js",
                         "~/Scripts/DataTables/dataTables.responsive.js",
+                        "~/Scripts/loadingoverlay/loadingoverlay.min.js",
+                        "~/Scripts/sweetalert.min.js",
                         "~/Scripts/main.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
@@ -31,6 +33,7 @@ namespace presentacionAdministracion
                       "~/Content/bootstrap-icons/bootstrap-icons.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/DataTables/css/jquery.dataTables.css",
+                      "~/Content/sweetalert.css",
                       "~/Content/DataTables/css/responsive.dataTables.css",
                       "~/Content/Site.css"));
         }

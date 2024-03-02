@@ -34,14 +34,13 @@
                     <table class="display table table-striped" id="tablausuarios" width="100%">
                         <thead>
                             <tr>
+                                <th>Foto</th>
                                 <th>Documento</th>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
-                                <th>Nombre usuarios</th>
+                                <th>Usuarios</th>
                                 <th>Correo</th>
                                 <th>Nivel de Acceso</th>
-                                <th>Contraseña</th>
-                                <th>Fecha Registro</th>
                                 <th>Estado</th>
                                 <th>Opciones</th>
                             </tr>
@@ -88,7 +87,7 @@
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="nombreusuario" placeholder="name@example.com" onkeypress="return SoloLetras(event);" required>
-                            <label for="nombreusuario">Nombre de Usuario</label>
+                            <label for="nombreusuario">Usuario</label>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -98,29 +97,29 @@
                         </div>
                     </div>
                     <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="clave" placeholder="name@example.com" required>
-                            <label for="clave">Contraseña</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
                         <div class="form-floating">
                             <select class="form-select" id="nivelacceso" aria-label="Floating label select example" required>
                                 <option selected disabled>Elige un Nivel de acceso</option>
                             </select>
-                            <label for="nivelacceso">Estado</label>
+                            <label for="nivelacceso">Nivel de Acceso</label>
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="form-floating">
                             <select class="form-select" id="listaestado" aria-label="Floating label select example" required>
-                                <option selected disabled>Elige un estado</option>
                                 <option value="1">Activo</option>
                                 <option value="0">Inactivo</option>
                             </select>
                             <label for="listaestado">Estado</label>
                         </div>
                     </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="mensajeError">
+                        <i class="bi bi-exclamation-octagon me-1"></i>
+                        A simple danger alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
                 </form>
             </div>
             <div class="modal-footer">
@@ -146,7 +145,17 @@
                 return true;
             }
             else {
-                alert("Ingresar solo numeros");
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar solo numeros',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                //alert("Ingresar solo numeros");
                 return false;
             }
         }
@@ -154,7 +163,7 @@
         function SoloLetras(e) {
             key = e.keyCode || e.which;
             tecla = String.fromCharCode(key).toString();
-            letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚabcdefghijklmnopqrstuvwxyzáéíóú";
+            letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚabcdefghijklmnopqrstuvwxyzáéíóú ";
 
             especiales = [8, 13];
             tecla_especial = false
@@ -166,7 +175,17 @@
             }
 
             if (letras.indexOf(tecla) == -1 && !tecla_especial) {
-                alert("Ingresar solo letras");
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar solo letras',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                // alert("Ingresar solo letras");
                 return false;
             }
         }
@@ -199,9 +218,9 @@
                 $('#apellidos').val('').prop('disabled', true);
                 $('#nombreusuario').val('');
                 $('#correo').val('');
-                $('#clave').val('');
                 $('#nivelacceso').val($('#nivelacceso option:first').val());
                 $('#listaestado').val($('#listaestado option:first').val());
+
             });
         });
 
@@ -224,24 +243,35 @@
         });
 
         var tabladata;
+        var filaseleccionada;
 
         tabladata = $("#tablausuarios").DataTable({
+            dom: 'Bfrtip',
             responsive: true,
             ordering: false,
             "ajax": {
-            url: '@Url.Action("listarUsuarios", "Home")',
-            type: "GET",
-            dataType: "json"
+                url: '@Url.Action("listarUsuarios", "Home")',
+                type: "GET",
+                dataType: "json"
             },
             "columns": [
+                {
+                    "data": null,
+                    "render": function (data) {
+                        // Verificar si hay una imagen y mostrarla, de lo contrario, mostrar "sinfoto.jpg"
+                        if (data.imagen) {
+                            return '<img src="' + data.imagen + '" alt="Foto" width="50" height="50">';
+                        } else {
+                            return '<img src="~/../../assets/img/sinfoto.png" alt="Sin Foto" width="50" height="50">';
+                        }
+                    }
+                },
                 { "data": "documento" },
-                { "data": "nombres" },
-                { "data": "apellidos" },
+                { "data": "nombres", "width": "230px" },
+                { "data": "apellidos", "width": "230px" },
                 { "data": "nombreusuario" },
                 { "data": "correo" },
                 { "data": "oNivelAcceso.nombrerol" },
-                { "data": "clave" },
-                { "data": "fecharegistro" },
                 {
                     "data": "estado", "render": function (valor) {
                         if (valor) {
@@ -252,10 +282,16 @@
                     }
                 },
                 {
-                    "defaultContent": '<button type="button" class="btn btn-outline-primary btn-editar"><i class="bi bi-pencil-square"></i> &nbsp; Editar</button>' + '<button type="button" class="btn btn-outline-danger ms-2"><i class="bi bi-trash-fill"></i> &nbsp; Eliminar</button>',
+                    "defaultContent": '<button type="button" class="btn btn-outline-primary btn-editar"><i class="bi bi-pencil-square"></i></button>' + '<button type="button" class="btn btn-outline-danger ms-2 btn-eliminar"><i class="bi bi-trash-fill"></i></button>',
                     "orderable": false,
                     "searchable": false,
-                    "width": "230px"
+                    "width": "100px"
+                }
+            ],
+            columnDefs: [
+                {
+                    responsivePriority: 1,
+                    targets: [8] // El índice de la columna "Opciones"
                 }
             ],
             language: {
@@ -264,16 +300,16 @@
         });
 
         function abrirmodal(json) {
+            $("#mensajeError").hide();
             if (json != null) {
                 $("#txtid").val(json.idusuario);
                 $("#documento").val(json.documento);
-                $('#nombres').val(json.nombres).prop('disabled', true);
-                $('#apellidos').val(json.apellidoPaterno + json.apellidoMaterno).prop('disabled', true);
-                $('#nombreusuario').val(json.nombreusuario);
-                $('#correo').val(json.correo);
-                $('#nivelacceso').val(json.oNivelAcceso.idrol);
-                $('#clave').val(json.clave);
-                $('#listaestado').val(json.estado == true ? 1 : 0);
+                $("#nombres").val(json.nombres).prop('disabled', true);
+                $("#apellidos").val(json.apellidos).prop('disabled', true);
+                $("#nombreusuario").val(json.nombreusuario);
+                $("#correo").val(json.correo);
+                $("#nivelacceso").val(json.oNivelAcceso.idrol);
+                $("#listaestado").val(json.estado == true ? 1 : 0);
             }
 
             var textoBoton = json ? " Guardar Cambios" : " Registrar Usuario";
@@ -286,10 +322,76 @@
         }
 
         $("#tablausuarios tbody").on("click", '.btn-editar', function () {
-            var filaseleccionada = $(this).closest("tr");
+            filaseleccionada = $(this).closest("tr");
             var data = tabladata.row(filaseleccionada).data();
+            //console.log(data)
             abrirmodal(data)
         })
 
+        $("#tablausuarios tbody").on("click", '.btn-eliminar', function () {
+            Swal.fire("Boton eliminar en desarrollo!");
+        })
+
+        function guardar() {
+            var Usuario = {
+                idusuario: $("#txtid").val(),
+                documento: $("#documento").val(),
+                nombres: $('#nombres').val(),
+                apellidos: $('#apellidos').val(),
+                nombreusuario: $('#nombreusuario').val(),
+                correo: $('#correo').val(),
+                oNivelAcceso: {
+                    idrol: $('#nivelacceso').val(),
+                    nombrerol: $('#nivelacceso option:selected').text()
+                },
+                estado: $('#listaestado').val() == 1 ? true : false,
+            }
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarUsuarios", "Home")',
+                type: "POST",
+                data: JSON.stringify({ objeto: Usuario }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    //usuario nuevo
+                    if (Usuario.idusuario == 0) {
+                        if (data.resultado != 0) {
+                            Usuario.idusuario = data.resultado;
+                            tabladata.row.add(Usuario).draw(false);
+                            $("#UsuariosModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    } else {
+                        if (data.resultado) {
+                            tabladata.row(filaseleccionada).data(Usuario).draw(false);
+                            filaseleccionada = null;
+                            $("#UsuariosModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error al Guardar los datos");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResezeFactor: 2,
+                        image: "",
+                        fontawesome: "fas fa-spinner",
+                        text: "Cargando ...",
+                        size: 14
+                    })
+                }
+            });
+
+        }
     </script>
 }

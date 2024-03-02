@@ -23,6 +23,7 @@ namespace presentacionAdministracion.Controllers
             return View();
         }
 
+        [HttpGet]
         public JsonResult listarUsuarios()
         {
             List<Usuarios> oLista = new List<Usuarios>();
@@ -30,13 +31,12 @@ namespace presentacionAdministracion.Controllers
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpGet]
         public JsonResult listarNivelAcceso()
         {
             List<NivelAcceso> oLista = new List<NivelAcceso>();
             oLista = new N_Nivelacceso().Listar();
-
             var opciones = oLista.Select(nivel => new { id = nivel.idrol, nombre = nivel.nombrerol });
-
             return Json(new { data = opciones }, JsonRequestBehavior.AllowGet);
         }
 
@@ -57,6 +57,24 @@ namespace presentacionAdministracion.Controllers
             {
                 return Content($"Error al obtener la información del DNI: {ex.Message}", "text/plain");
             }
+        }
+
+        [HttpPost]
+        public JsonResult GuardarUsuarios(Usuarios objeto)
+        {
+            object resultado;
+            string mensaje = string.Empty;
+
+            if (objeto.idusuario == 0)
+            {
+                resultado = new N_Usuarios().Registrar(objeto, out mensaje);
+            }
+            else
+            {
+                resultado = new N_Usuarios().Editar(objeto, out mensaje);
+            }
+
+            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
     }

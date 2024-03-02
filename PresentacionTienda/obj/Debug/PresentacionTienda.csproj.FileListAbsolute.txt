@@ -33,8 +33,10 @@ C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\roslyn\VBCSCompiler.exe
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Antlr3.Runtime.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Entidad.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Negocio.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Newtonsoft.Json.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.Helpers.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.Mvc.dll
@@ -44,6 +46,9 @@ C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.WebPages.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.WebPages.Razor.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\WebGrease.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Datos.dll
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Entidad.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Negocio.pdb
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Newtonsoft.Json.xml
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.Helpers.xml
@@ -54,6 +59,7 @@ C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.WebPages.Razor.xml
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\System.Web.Optimization.xml
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Antlr3.Runtime.pdb
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\Datos.pdb
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\es\System.Web.Helpers.resources.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\es\System.Web.Mvc.resources.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\es\System.Web.Razor.resources.dll
@@ -63,6 +69,6 @@ C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\bin\es\System.Web.Optimization.resources.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\obj\Debug\PresentacionTienda.csproj.AssemblyReference.cache
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\obj\Debug\PresentacionTienda.csproj.CoreCompileInputs.cache
-C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\obj\Debug\PresentacionTienda.csproj.CopyComplete
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\obj\Debug\Presenta.33D9019B.Up2Date
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\obj\Debug\PresentacionTienda.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionTienda\obj\Debug\PresentacionTienda.pdb

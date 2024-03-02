@@ -4,5 +4,479 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Producto</h2>
+<div class="pagetitle">
+    <h1>Productos</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+            <li class="breadcrumb-item active">Productos</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
 
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Opciones de productos
+                </div>
+                <div class="card-body">
+                    <div class="my-4"></div>
+                    <button type="button" class="btn btn-outline-primary" onclick="abrirmodal(null)">Nuevo Producto</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tabla de productos registrados</h5>
+
+                    <table class="display table table-striped" id="tablaproductos" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Codigo</th>
+                                <th>Nombre</th>
+                                <th>Descripcion</th>
+                                <th>Categoria</th>
+                                <th>Talla</th>
+                                <th>Marca</th>
+                                <th>Stock</th>
+                                <th>Colores</th>
+                                <th>Caja</th>
+                                <th>Precio</th>
+                                <th>Temporada</th>
+                                <th>Descuento</th>
+                                <th>Total</th>
+                                <th>Ubicacion</th>
+                                <th>Fecha Registro</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="ProductosModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="ProductosModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="badge border-primary border-1 text-primary"><h1 class="modal-title fs-5 fw-semibold" id="ProductosModalLabel">Agregar Nuevo Producto</h1></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input id="txtid" type="hidden" value="0" />               
+                <form class="row g-3" autocomplete="off" id="contenedor">
+                    <div class="col-md-4">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ver imagen
+                            </button>
+                            <ul class="dropdown-menu p-3">
+                                <div class="mb-3">
+                                    <img id="imgproducto" src="~/assets/img/logo.png" height="300" width="600" class="mx-auto img-fluid" />
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="py-2"></div>
+                        <div class="mb-3">
+                            <input type="file" class="form-control" id="fileproducto" aria-label="file example" accept="image/png, image/jpg, image/jpeg" onchange="mostrarimg(this)">
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="codigo" placeholder="name@example.com" required>
+                            <label for="codigo">Codigo</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nombre" placeholder="name@example.com" onkeypress="return SoloLetras(event);" required>
+                            <label for="nombre">Producto</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="descripcion" placeholder="name@example.com" required>
+                            <label for="descripcion">Descripcion</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="categorias" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige una categoria</option>
+                            </select>
+                            <label for="categorias">Categorias</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="tallas" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige una talla</option>
+                            </select>
+                            <label for="tallas">Tallas</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="marcas" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige una marca</option>
+                            </select>
+                            <label for="marcas">Marcas</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="stock" placeholder="name@example.com" onkeypress="return SoloNumeros(event);" required>
+                            <label for="stock">Cantidad</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="colores" placeholder="name@example.com" required>
+                            <label for="colores">Colores</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="numcaja" placeholder="name@example.com" required>
+                            <label for="numcaja">Numero de caja</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="precio" placeholder="name@example.com" onkeypress="return SoloNumeros(event);" required>
+                            <label for="precio">Precio</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="temporada" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige una temporada</option>
+                            </select>
+                            <label for="temporada">Temporada</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="descuento" placeholder="name@example.com" onkeypress="return SoloNumeros(event);" required>
+                            <label for="descuento">Descuento</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="total" placeholder="name@example.com" disabled>
+                            <label for="total">Total</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="ubicacion" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige una ubicacion</option>
+                                <option value="Tienda">Tienda</option>
+                                <option value="Almacen">Almacen</option>
+                            </select>
+                            <label for="ubicacion">Ubicacion</label>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <input type="date" class="form-control" id="fecharegistro" placeholder="name@example.com" disabled required>
+                            <label for="fecharegistro">Fecha Registro</label>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="mensajeError">
+                        <i class="bi bi-exclamation-octagon me-1"></i>
+                        A simple danger alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-primary bi bi-floppy-fill" onclick="guardar()">Registrar Producto</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        function SoloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toString();
+            letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚabcdefghijklmnopqrstuvwxyzáéíóú ";
+
+            especiales = [8, 13];
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+            if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar solo letras',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                return false;
+            }
+        }
+
+        function SoloNumeros(evt) {
+            if (window.event) {
+                keynum = evt.keyCode;
+            }
+            else {
+                keynum = evt.which;
+            }
+
+            if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13) {
+                return true;
+            }
+            else {
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar solo numeros',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                return false;
+            }
+        }
+
+        // Obtener la fecha actual en formato YYYY-MM-DD
+        var fechaActual = new Date().toISOString().split('T')[0];
+        document.getElementById('fecharegistro').value = fechaActual;
+
+        function mostrarimg(input) {
+            if (input.files) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgproducto').attr("src", e.target.result).height(300).width(600)
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        // Obtén el elemento select
+        var selectTemporada = document.getElementById('temporada');
+        var añoActual = new Date().getFullYear();
+        var añoAnterior = añoActual - 1; // Obtén el año anterior
+        var estaciones = ['Invierno', 'Primavera', 'Verano', 'Otoño'];
+        for (var i = 0; i < estaciones.length; i++) {
+            var optionActual = document.createElement('option');
+            optionActual.value = estaciones[i] + ' - ' + añoActual;
+            optionActual.text = estaciones[i] + ' - ' + añoActual;
+            selectTemporada.add(optionActual);
+
+            /* año anterior */
+            var optionAnterior = document.createElement('option');
+            optionAnterior.value = estaciones[i] + ' - ' + añoAnterior;
+            optionAnterior.text = estaciones[i] + ' - ' + añoAnterior;
+            selectTemporada.add(optionAnterior);
+        }
+
+        $(document).ready(function () {
+            function calcularTotal() {
+                var stock = parseFloat($("#stock").val()) || 0;
+                var precio = parseFloat($("#precio").val()) || 0;
+                var total = stock * precio;
+                $("#total").val(total.toFixed(2));
+            }
+            $("#stock, #precio").on("input", calcularTotal);
+        });
+
+        $(document).ready(function () {
+            $('#ProductosModal').on('hidden.bs.modal', function () {
+                $('#txtid').val(0);
+                $("#codigo").val('');
+                $("#nombre").val('');
+                $("#descripcion").val('');
+                $("#categorias").val($('#categorias option:first').val());
+                $("#tallas").val($('#tallas option:first').val());
+                $("#marcas").val($('#marcas option:first').val());
+                $("#stock").val('');
+                $("#numcaja").val('');
+                $("#colores").val('');
+                $("#precio").val('');
+                $("#temporada").val($('#temporada option:first').val());
+                $("#descuento").val('');
+                $("#total").val('').prop('disabled', true);
+                $("#ubicacion").val($('#ubicacion option:first').val());
+                var fechaActual = new Date().toISOString().split('T')[0];
+                $("#fecharegistro").val(fechaActual).prop('disabled', true);
+            });
+        });
+
+        $.ajax({
+            url: '@Url.Action("listarCategorias", "Mantenimiento")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var select = $('#categorias');
+                select.empty();
+                select.append('<option selected disabled>Elige una categoria</option>');
+
+                $.each(data.data, function (index, item) {
+                    select.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+                });
+            },
+            error: function (error) {
+                console.error('Error al cargar las categorias:', error);
+            }
+        });
+
+        $.ajax({
+            url: '@Url.Action("listarTalla", "Mantenimiento")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var select = $('#tallas');
+                select.empty();
+                select.append('<option selected disabled>Elige una talla</option>');
+
+                $.each(data.data, function (index, item) {
+                    select.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+                });
+            },
+            error: function (error) {
+                console.error('Error al cargar las tallas:', error);
+            }
+        });
+
+        $.ajax({
+            url: '@Url.Action("listarMarca", "Mantenimiento")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var select = $('#marcas');
+                select.empty();
+                select.append('<option selected disabled>Elige una marca</option>');
+
+                $.each(data.data, function (index, item) {
+                    select.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+                });
+            },
+            error: function (error) {
+                console.error('Error al cargar las marcas:', error);
+            }
+        });
+
+        var tabladata;
+        var filaseleccionada;
+
+        tabladata = $("#tablaproductos").DataTable({
+            dom: 'Bfrtip',
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("listarProductos", "Mantenimiento")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { data: "codigo" },
+                { data: "nombre" },
+                { data: "descripcion" },
+                { data: "oCategorias.nombrecategoria" },
+                { data: "oTallasropa.nombretalla" },
+                { data: "oMarca.nombremarca" },
+                { data: "stock" },
+                { data: "colores" },
+                { data: "numcaja" },
+                {
+                    data: "precioventa",
+                    render: function (data, type, row) {
+                        return parseFloat(data).toFixed(2);
+                    }
+                },
+                { data: "temporada" },
+                { data: "descuento" },
+                { data: "total" },
+                { data: "ubicacion" },
+                { data: "fecharegistro" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-outline-primary btn-editar"><i class="bi bi-pencil-square"></i></button>' + '<button type="button" class="btn btn-outline-danger ms-2 btn-eliminar"><i class="bi bi-trash-fill"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "100px"
+                }
+            ],
+            columnDefs: [
+                {
+                    responsivePriority: 1,
+                    targets: [15]
+                }
+            ],
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+            }
+        });
+
+        function abrirmodal(json) {
+            $("#mensajeError").hide();
+            if (json != null) {
+                $("#txtid").val(json.idusuario);
+                $("#codigo").val(json.codigo);
+                $("#nombre").val(json.nombre);
+                $("#descripcion").val(json.descripcion);
+                $("#categorias").val(json.oCategorias.idcategoria);
+                $("#tallas").val(json.oTallasropa.idtallaropa);
+                $("#marcas").val(json.oMarca.idmarca);
+                $("#stock").val(json.stock);
+                $("#numcaja").val(json.numcaja);
+                $("#colores").val(json.colores);
+                $("#precio").val(json.precioventa);
+                $("#temporada").val(json.temporada);
+                $("#descuento").val(json.descuento);
+                $("#total").val(json.total);
+                $("#ubicacion").val(json.ubicacion);
+                $("#fecharegistro").val(json.fecharegistro);
+            }
+            var textoBoton = json ? " Guardar Cambios" : " Registrar Producto";
+            $('#ProductosModal .btn-outline-primary').text(textoBoton);
+
+            var modalTitulo = json ? "Editar Producto" : "Agregar Nuevo Producto";
+            $("#ProductosModalLabel").text(modalTitulo);
+            $("#ProductosModal").modal("show");
+        }
+
+        $("#tablaproductos tbody").on("click", '.btn-editar', function () {
+            filaseleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaseleccionada).data();
+            abrirmodal(data)
+        })
+    </script>
+}

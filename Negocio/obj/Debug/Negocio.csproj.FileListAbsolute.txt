@@ -6,6 +6,6 @@ C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Dato
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\bin\Debug\Entidad.pdb
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.AssemblyReference.cache
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.Up2Date
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.pdb
-C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\Negocio\obj\Debug\Negocio.csproj.Up2Date

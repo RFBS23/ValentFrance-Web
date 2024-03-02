@@ -81,6 +81,6 @@ C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\bin\es
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\bin\es\System.Web.WebPages.Razor.resources.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\obj\Debug\PresentacionWeb.csproj.AssemblyReference.cache
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\obj\Debug\PresentacionWeb.csproj.CoreCompileInputs.cache
-C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\obj\Debug\PresentacionWeb.csproj.CopyComplete
+C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\obj\Debug\Presenta.D4DF8E9C.Up2Date
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\obj\Debug\PresentacionWeb.dll
 C:\Users\fabri\Documents\Programacion\ASP.Net\sisventasVF\PresentacionWeb\obj\Debug\PresentacionWeb.pdb
