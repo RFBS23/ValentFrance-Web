@@ -35,7 +35,6 @@ namespace presentacionAdministracion.Controllers
             return View();
         }
 
-
         #region categoria
         [HttpGet]
         public JsonResult listarCategoria()
@@ -182,7 +181,7 @@ namespace presentacionAdministracion.Controllers
         public JsonResult listarProductos()
         {
             List<Productos> oLista = new List<Productos>();
-            oLista = new N_Productos().Listar(); // Asegúrate de que tu método Listar está configurado para utilizar el procedimiento almacenado
+            oLista = new N_Productos().Listar();
             return Json(new { data = oLista }, JsonRequestBehavior.AllowGet);
         }
 
@@ -209,14 +208,14 @@ namespace presentacionAdministracion.Controllers
             var opciones = listaCompleta.Select(marca => new { id = marca.idmarca, nombre = marca.nombremarca });
             return Json(new { data = opciones }, JsonRequestBehavior.AllowGet);
         }
-
+        
         [HttpPost]
         public JsonResult GuardarProductos(string objeto, HttpPostedFileBase archivoimg)
         {
             string mensaje = string.Empty;
             bool operacionexitosa = true;
             bool guardarimg = true;
-
+            
             Productos oProducto = new Productos();
             oProducto = JsonConvert.DeserializeObject<Productos>(objeto);
             decimal precio;
@@ -226,7 +225,7 @@ namespace presentacionAdministracion.Controllers
             }
             else
             {
-                return Json(new { operacionExitosa = false, mensaje = "El formato del precio debe ser ##.##" }, JsonRequestBehavior.AllowGet);
+                return Json(new { operacionExitosa = false, mensaje = "El formato del precio debe ser 00.00" }, JsonRequestBehavior.AllowGet);
             }
             if (oProducto.idproducto == 0)
             {
@@ -277,19 +276,31 @@ namespace presentacionAdministracion.Controllers
         }
 
         [HttpPost]
-        public JsonResult imgProductos(int id)
+        public JsonResult imagenProducto(int id)
         {
             bool conversion;
-            Productos oProducto = new N_Productos().Listar().Where(p => p.idproducto == id).FirstOrDefault();
-            string textoBase64 = N_Recursos.ConvertirBase64(Path.Combine(oProducto.rutaimagen, oProducto.nombreimagen), out conversion);
+            Productos oproducto = new N_Productos().Listar().Where(p => p.idproducto == id).FirstOrDefault();
+
+            string textoBase64 = N_Recursos.ConvertirBase64(Path.Combine(oproducto.rutaimagen, oproducto.nombreimagen), out conversion);
             return Json(new
             {
                 conversion = conversion,
                 textobase64 = textoBase64,
-                extension = Path.GetExtension(oProducto.nombreimagen)
-            }, JsonRequestBehavior.AllowGet);
+                extension = Path.GetExtension(oproducto.nombreimagen)
+            },
+            JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult EliminarProductos(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+
+            respuesta = new N_Productos().Eliminar(id, out mensaje);
+            return Json(new { resultado = respuesta, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+        }
         #endregion
+
     }
 }

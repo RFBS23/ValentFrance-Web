@@ -14,7 +14,7 @@ namespace Entidad
         public int cantidad { get; set; }
         public decimal total {  get; set; }
         public string idtransaccion { get; set; }
-        public List<Detalle_Ventaweb> oDetalle_Ventawebs { get; set; }
+        public List<Detalle_Ventaweb> oDetalle_Ventaweb { get; set; }
 
     }
 }

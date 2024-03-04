@@ -6,7 +6,7 @@
     <h1>Dashboard</h1>
     <nav>
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Home</a></li>
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
             <li class="breadcrumb-item active">Dashboard</li>
         </ol>
     </nav>
@@ -18,75 +18,130 @@
     <div class="row">
 
         <!-- Sales Card -->
-        <div class="col-xxl-4 col-md-6">
+        <div class="col-md-3">
             <div class="card info-card sales-card">
                 <div class="card-body">
-                    <h5 class="card-title">Ventas <span>| Hoy</span></h5>
-
+                    <h5 class="card-title">Ventas</h5>
                     <div class="d-flex align-items-center">
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class="bi bi-cart"></i>
                         </div>
                         <div class="ps-3">
-                            <h6>145</h6>
+                            <h6 id="totalventas">0</h6>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div><!-- End Sales Card -->
         <!-- Revenue Card -->
-        <div class="col-xxl-4 col-md-6">
+        <div class="col-md-3">
             <div class="card info-card revenue-card">
                 <div class="card-body">
-                    <h5 class="card-title">Ganancias <span>| Este mes</span></h5>
-
+                    <h5 class="card-title">Usuarios</h5>
                     <div class="d-flex align-items-center">
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                            <i class="bi bi-currency-dollar"></i>
+                            <i class="bi bi-person"></i>
                         </div>
                         <div class="ps-3">
-                            <h6>$3,264</h6>
+                            <h6 id="totalusuarios">0</h6>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div><!-- End Revenue Card -->
         <!-- Customers Card -->
-        <div class="col-xxl-4 col-xl-12">
+        <div class="col-md-3">
             <div class="card info-card customers-card">
                 <div class="card-body">
-                    <h5 class="card-title">Clientes <span>| Este año</span></h5>
+                    <h5 class="card-title">Clientes</h5>
 
                     <div class="d-flex align-items-center">
                         <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                             <i class="bi bi-people"></i>
                         </div>
                         <div class="ps-3">
-                            <h6>1244</h6>
+                            <h6 id="totalclientes">0</h6>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </div><!-- End Customers Card -->
-        <!-- ventas recientes -->
+        <!-- Customers Card -->
+        <div class="col-md-3">
+            <div class="card info-card productos-card">
+                <div class="card-body">
+                    <h5 class="card-title">Productos</h5>
+
+                    <div class="d-flex align-items-center">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-box2-fill"></i>
+                        </div>
+                        <div class="ps-3">
+                            <h6 id="totalproductos">0</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- End Customers Card -->
+        <!-- ventas -->
         <div class="col-12">
             <div class="card recent-sales overflow-auto">
-
                 <div class="card-body">
-                    <h5 class="card-title">Ventas Recientes <span>| Hoy</span></h5>
+                    <h5 class="card-title">Buscar Ventas realizadas</h5>
+                    <form action="@Url.Action("ExportarVentaExcel", "Home")" method="post">
+                        <div class="row" style="align-items: center;">
+                            <div class="col-sm-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control border-success" id="txtfechainicio" name="fechainicio" placeholder="fecha de inicio">
+                                    <label for="floatingInput">Fecha de Inicio</label>
+                                </div>
+                            </div>
 
-                    <table class="table table-borderless datatable">
+                            <div class="col-sm-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control border-success" id="txtfechafin" name="fechafin" placeholder="fecha de inicio">
+                                    <label for="floatingInput">Fecha de Fin</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control border-success" id="txtidtransaccion" name="idtransaccion" placeholder="fecha de inicio">
+                                    <label for="floatingInput">Transacción</label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="d-grid mb-3">
+                                    <button class="btn btn-outline-primary" id="btnbuscar" type="button">Buscar &nbsp; <i class="bi bi-search"></i></button>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="d-grid mb-3">
+                                    <button class="btn btn-outline-success" id="btnexcel" type="submit">Exportar &nbsp; <i class="bi bi-file-earmark-spreadsheet-fill"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- fin ventas recientes -->
+        <!-- ventas -->
+        <div class="col-12">
+            <div class="card recent-sales overflow-auto">
+                <div class="card-body">
+                    <h5 class="card-title">Ventas Realizadas</h5>
+                    <table class="table table-borderless datatable" id="tablaventasrealizadas" width="100%">
                         <thead>
                             <tr>
                                 <th scope="col">Comprobante</th>
                                 <th scope="col">Cliente</th>
                                 <th scope="col">Productos</th>
                                 <th scope="col">Precio</th>
-                                <th scope="col">estado</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Fecha de venta</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -95,20 +150,22 @@
                                 <td>Brandon Jacob</td>
                                 <td class="text-primary">At praesentium minu</td>
                                 <td>$64</td>
-                                <td><span class="badge bg-success">Approved</span></td>
+                                <td>2</td>
+                                <td>128</td>
+                                <td>02/03/2024</td>
                             </tr>
                             <tr>
                                 <th scope="row" class="text-primary" style="cursor: pointer;">#2147</th>
                                 <td>Bridie Kessler</td>
                                 <td class="text-primary">Blanditiis dolor omnis similique</td>
                                 <td>$47</td>
-                                <td><span class="badge bg-warning">Pending</span></td>
+                                <td>2</td>
+                                <td>128</td>
+                                <td>02/03/2024</td>
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
         </div><!-- fin ventas recientes -->
 
@@ -116,7 +173,7 @@
         <div class="col-12">
             <div class="card top-selling overflow-auto">
                 <div class="card-body pb-0">
-                    <h5 class="card-title">Mas Vendidos <span>| Hoy</span></h5>
+                    <h5 class="card-title">Productos vendidos <span> | hoy</span></h5>
                     <table class="table table-borderless">
                         <thead>
                             <tr>
@@ -137,11 +194,42 @@
                             </tr>
                         </tbody>
                     </table>
-
                 </div>
-
             </div>
         </div><!-- fin mas vendidos -->
     </div><!-- End Left side columns -->
-
 </section>
+
+@section scripts {
+    <script>
+        var tabladata;
+
+        $(document).ready(function () {
+            $("#txtfechainicio").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+            $("#txtfechafin").datepicker({ dateFormat: 'dd/mm/yy' }).datepicker('setDate', new Date())
+
+            tabladata = $("#tablaventasrealizadas").DataTable({
+                responsive: true,
+                ordering: false,
+                "ajax": {
+                    url: Url,
+                    type: "GET",
+                    dataType: "json"
+                },
+                "columns": [
+                    { "data": "idtransaccion" },
+                    { "data": "clientes" },
+                    { "data": "productos" },
+                    { "data": "precio" },
+                    { "data": "cantidad" },
+                    { "data": "total" },
+                    { "data": "fecharegistro" },
+                ],
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json"
+                }
+            });
+        });
+
+    </script>
+}

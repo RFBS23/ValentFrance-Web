@@ -12,13 +12,23 @@
 
     @Styles.Render("~/Content/css")
 </head>
+<style>
+    .imagen-redondeada {
+        border-radius: 10px;
+    }
+    .dashboard .productos-card .card-icon {
+        color: #FFCF1D;
+        background: #FFFEDF;
+    }
+</style>
+
 <body style="user-select: none;">
     <!-- ======= Header ======= -->
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="@Url.Action("Index", "Home")" class="logo d-flex align-items-center">
-                <img src="~/assets/img/logo.png" alt="">
+                <img src="~/assets/img/icono.jpg" alt="" class="imagen-redondeada">
                 <span class="d-none d-lg-block">Valent France</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>

@@ -70,13 +70,14 @@ namespace Datos
                     cmd.Parameters.AddWithValue("clave", obj.clave);
                     cmd.Parameters.AddWithValue("idrol", obj.oNivelAcceso.idrol);
                     cmd.Parameters.AddWithValue("estado", obj.estado);
-                    cmd.Parameters.Add("idusuarioresultado", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cmd.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     oconexion.Open();
+
                     cmd.ExecuteNonQuery();
-                    idautogenerado = Convert.ToInt32(cmd.Parameters["idusuarioresultado"].Value);
+                    idautogenerado = Convert.ToInt32(cmd.Parameters["resultado"].Value);
                     Mensaje = cmd.Parameters["mensaje"].Value.ToString();
                 }
             }
@@ -90,7 +91,7 @@ namespace Datos
 
         public bool Editar(Usuarios obj, out string Mensaje)
         {
-            bool respuesta = false;
+            bool resultado = false;
             Mensaje = string.Empty;
 
             try
@@ -106,23 +107,23 @@ namespace Datos
                     cmd.Parameters.AddWithValue("correo", obj.correo);
                     cmd.Parameters.AddWithValue("idrol", obj.oNivelAcceso.idrol);
                     cmd.Parameters.AddWithValue("estado", obj.estado);
-                    cmd.Parameters.Add("respuesta", SqlDbType.Bit).Direction = ParameterDirection.Output;
+
+                    cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 500).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
-
                     oconexion.Open();
-                    cmd.ExecuteNonQuery();
 
-                    respuesta = Convert.ToBoolean(cmd.Parameters["respuesta"].Value);
+                    cmd.ExecuteNonQuery();
+                    resultado = Convert.ToBoolean(cmd.Parameters["resultado"].Value);
                     Mensaje = cmd.Parameters["mensaje"].Value.ToString();
                 }
             }
             catch (Exception ex)
             {
-                respuesta = false;
+                resultado = false;
                 Mensaje = ex.Message;
             }
-            return respuesta;
+            return resultado;
         }
 
         //cambiar contraseña

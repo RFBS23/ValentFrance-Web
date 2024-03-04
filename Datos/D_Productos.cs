@@ -20,10 +20,11 @@ namespace Datos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select idproducto, codigo, nombre, descripcion, c.idcategoria, c.nombrecategoria, tr.idtallaropa, tr.nombretalla, m.idmarca, m.nombremarca, stock, colores, numcaja, precioventa, temporada, descuento, total, ubicacion, CONVERT(VARCHAR(10), p.fecharegistro, 120)AS fecharegistro_producto from productosropa p");
+                    query.AppendLine("select idproducto, rutaimagen, nombreimagen, codigo, nombre, descripcion, c.idcategoria, c.nombrecategoria, tr.idtallaropa, tr.nombretalla, m.idmarca, m.nombremarca, stock, colores, numcaja, precioventa, temporada, descuento, total, ubicacion, CONVERT(VARCHAR(10), p.fecharegistro, 120)AS fecharegistro_producto from productosropa p");
                     query.AppendLine("inner join categorias c on c.idcategoria = p.idcategoria");
                     query.AppendLine("inner join tallasropa tr on tr.idtallaropa = p.idtallaropa");
                     query.AppendLine("inner join marca m on m.idmarca = p.idmarca");
+                    query.AppendLine("where ubicacion = 'Almacen'");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -36,6 +37,8 @@ namespace Datos
                             lista.Add(new Productos()
                             {
                                 idproducto = Convert.ToInt32(dr["idproducto"]),
+                                rutaimagen = dr["rutaimagen"].ToString(),
+                                nombreimagen = dr["nombreimagen"].ToString(),
                                 codigo = dr["codigo"].ToString(),
                                 nombre = dr["nombre"].ToString(),
                                 descripcion = dr["descripcion"].ToString(),

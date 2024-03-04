@@ -57,7 +57,7 @@
 
 <!-- Modal usuarios-->
 <div class="modal fade" id="UsuariosModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="UsuariosModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="badge border-primary border-1 text-primary"><h1 class="modal-title fs-5 fw-semibold" id="UsuariosModalLabel">Agregar Nuevo Usuario</h1></span>
@@ -66,6 +66,23 @@
             <div class="modal-body">
                 <input id="txtid" type="hidden" value="0" />
                 <form class="row g-3" autocomplete="off">
+                    <div class="col-md-4">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Ver imagen
+                            </button>
+                            <ul class="dropdown-menu p-3">
+                                <div class="mb-3">
+                                    <img id="imgproducto" src="~/assets/img/logovalent.png" height="300" width="300" class="mx-auto img-fluid imagen-redondeada" />
+                                </div>
+                            </ul>
+                        </div>
+                        <div class="py-2"></div>
+                        <div class="mb-3">
+                            <input type="file" class="form-control" id="fileproducto" aria-label="file example" accept="image/png, image/jpg, image/jpeg" onchange="mostrarimg(this)">
+                        </div>
+                    </div>
+
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="documento" placeholder="name@example.com" maxlength="8" onkeypress="return SoloNumeros(event);" required>
@@ -107,6 +124,7 @@
                     <div class="col-md-4">
                         <div class="form-floating">
                             <select class="form-select" id="listaestado" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige un estado</option>
                                 <option value="1">Activo</option>
                                 <option value="0">Inactivo</option>
                             </select>
@@ -187,6 +205,16 @@
                 })
                 // alert("Ingresar solo letras");
                 return false;
+            }
+        }
+
+        function mostrarimg(input) {
+            if (input.files) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgproducto').attr("src", e.target.result).height(300).width(600)
+                }
+                reader.readAsDataURL(input.files[0]);
             }
         }
 

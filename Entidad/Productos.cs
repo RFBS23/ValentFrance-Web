@@ -26,5 +26,8 @@ namespace Entidad
         public decimal total { get; set; }
         public string ubicacion { get; set; }
         public string fecharegistro { get; set; }
+        public string precioTexto { get; set; }
+        public string base64 { get; set; }
+        public string Extension { get; set; }
     }
 }

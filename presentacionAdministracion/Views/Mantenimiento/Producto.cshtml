@@ -47,7 +47,6 @@
                                 <th>Descuento</th>
                                 <th>Total</th>
                                 <th>Ubicacion</th>
-                                <th>Fecha Registro</th>
                                 <th>Opciones</th>
                             </tr>
                         </thead>
@@ -69,7 +68,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <input id="txtid" type="hidden" value="0" />               
+                <input id="txtid" type="hidden" value="0" />
                 <form class="row g-3" autocomplete="off" id="contenedor">
                     <div class="col-md-4">
                         <div class="dropdown">
@@ -78,7 +77,7 @@
                             </button>
                             <ul class="dropdown-menu p-3">
                                 <div class="mb-3">
-                                    <img id="imgproducto" src="~/assets/img/logo.png" height="300" width="600" class="mx-auto img-fluid" />
+                                    <img id="imgproducto" src="~/assets/img/logovalent.png" height="300" width="300" class="mx-auto img-fluid imagen-redondeada" />
                                 </div>
                             </ul>
                         </div>
@@ -103,8 +102,8 @@
                     </div>
 
                     <div class="col-md-4">
-                        <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="descripcion" placeholder="name@example.com" required>
+                        <div class="form-floating">
+                            <textarea class="form-control" placeholder="Leave a comment here" id="descripcion"></textarea>
                             <label for="descripcion">Descripcion</label>
                         </div>
                     </div>
@@ -159,7 +158,7 @@
 
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="precio" placeholder="name@example.com" onkeypress="return SoloNumeros(event);" required>
+                            <input type="text" class="form-control" id="precio" placeholder="name@example.com" onkeypress="return SoloPrecios(event);" required>
                             <label for="precio">Precio</label>
                         </div>
                     </div>
@@ -191,17 +190,9 @@
                         <div class="form-floating">
                             <select class="form-select" id="ubicacion" aria-label="Floating label select example" required>
                                 <option selected disabled>Elige una ubicacion</option>
-                                <option value="Tienda">Tienda</option>
                                 <option value="Almacen">Almacen</option>
                             </select>
                             <label for="ubicacion">Ubicacion</label>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <input type="date" class="form-control" id="fecharegistro" placeholder="name@example.com" disabled required>
-                            <label for="fecharegistro">Fecha Registro</label>
                         </div>
                     </div>
 
@@ -276,17 +267,31 @@
             }
         }
 
-        // Obtener la fecha actual en formato YYYY-MM-DD
-        var fechaActual = new Date().toISOString().split('T')[0];
-        document.getElementById('fecharegistro').value = fechaActual;
-
-        function mostrarimg(input) {
-            if (input.files) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#imgproducto').attr("src", e.target.result).height(300).width(600)
-                }
-                reader.readAsDataURL(input.files[0]);
+        function SoloPrecios(evt) {
+            if (window.event) {
+                keynum = evt.keyCode;
+            } else {
+                keynum = evt.which;
+            }
+            if (
+                (keynum > 47 && keynum < 58) || // Números del 0 al 9
+                keynum == 8 || // Tecla de retroceso (backspace)
+                keynum == 13 || // Tecla Enter
+                keynum == 46 // Punto decimal
+            ) {
+                return true;
+            } else {
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar solo numeros',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                });
+                return false;
             }
         }
 
@@ -320,7 +325,9 @@
 
         $(document).ready(function () {
             $('#ProductosModal').on('hidden.bs.modal', function () {
-                $('#txtid').val(0);
+                $("#txtid").val(0);
+                $("#imgproducto").attr("src", '@Url.Content("~/assets/img/logovalent.png")');
+                $("#fileproducto").val("");
                 $("#codigo").val('');
                 $("#nombre").val('');
                 $("#descripcion").val('');
@@ -335,9 +342,67 @@
                 $("#descuento").val('');
                 $("#total").val('').prop('disabled', true);
                 $("#ubicacion").val($('#ubicacion option:first').val());
-                var fechaActual = new Date().toISOString().split('T')[0];
-                $("#fecharegistro").val(fechaActual).prop('disabled', true);
             });
+        });
+
+        var tabladata;
+        var filaseleccionada;
+
+        function mostrarimg(input) {
+            if (input.files) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgproducto').attr("src", e.target.result).height(300).width(600)
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        tabladata = $("#tablaproductos").DataTable({
+            dom: 'Bfrtip',
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("listarProductos", "Mantenimiento")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { data: "codigo" },
+                { data: "nombre" },
+                { data: "descripcion" },
+                { data: "oCategorias.nombrecategoria" },
+                { data: "oTallasropa.nombretalla" },
+                { data: "oMarca.nombremarca" },
+                { data: "stock" },
+                { data: "colores" },
+                { data: "numcaja" },
+                {
+                    data: "precioventa",
+                    render: function (data, type, row) {
+                        return parseFloat(data).toFixed(2);
+                    }
+                },
+                { data: "temporada" },
+                { data: "descuento" },
+                { data: "total" },
+                { data: "ubicacion" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-outline-primary btn-editar"><i class="bi bi-pencil-square"></i></button>' + '<button type="button" class="btn btn-outline-danger ms-2 btn-eliminar"><i class="bi bi-trash-fill"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "100px"
+                }
+            ],
+            columnDefs: [
+                {
+                    responsivePriority: 1,
+                    targets: [14]
+                }
+            ],
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+            }
         });
 
         $.ajax({
@@ -394,61 +459,10 @@
             }
         });
 
-        var tabladata;
-        var filaseleccionada;
-
-        tabladata = $("#tablaproductos").DataTable({
-            dom: 'Bfrtip',
-            responsive: true,
-            ordering: false,
-            "ajax": {
-                url: '@Url.Action("listarProductos", "Mantenimiento")',
-                type: "GET",
-                dataType: "json"
-            },
-            "columns": [
-                { data: "codigo" },
-                { data: "nombre" },
-                { data: "descripcion" },
-                { data: "oCategorias.nombrecategoria" },
-                { data: "oTallasropa.nombretalla" },
-                { data: "oMarca.nombremarca" },
-                { data: "stock" },
-                { data: "colores" },
-                { data: "numcaja" },
-                {
-                    data: "precioventa",
-                    render: function (data, type, row) {
-                        return parseFloat(data).toFixed(2);
-                    }
-                },
-                { data: "temporada" },
-                { data: "descuento" },
-                { data: "total" },
-                { data: "ubicacion" },
-                { data: "fecharegistro" },
-                {
-                    "defaultContent": '<button type="button" class="btn btn-outline-primary btn-editar"><i class="bi bi-pencil-square"></i></button>' + '<button type="button" class="btn btn-outline-danger ms-2 btn-eliminar"><i class="bi bi-trash-fill"></i></button>',
-                    "orderable": false,
-                    "searchable": false,
-                    "width": "100px"
-                }
-            ],
-            columnDefs: [
-                {
-                    responsivePriority: 1,
-                    targets: [15]
-                }
-            ],
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
-            }
-        });
-
         function abrirmodal(json) {
             $("#mensajeError").hide();
             if (json != null) {
-                $("#txtid").val(json.idusuario);
+                $("#txtid").val(json.idproducto);
                 $("#codigo").val(json.codigo);
                 $("#nombre").val(json.nombre);
                 $("#descripcion").val(json.descripcion);
@@ -463,11 +477,32 @@
                 $("#descuento").val(json.descuento);
                 $("#total").val(json.total);
                 $("#ubicacion").val(json.ubicacion);
-                $("#fecharegistro").val(json.fecharegistro);
+
+                //traer img en el modal
+                jQuery.ajax({
+                    url: '@Url.Action("imagenProducto", "Mantenimiento")',
+                    type: "POST",
+                    data: JSON.stringify({ id: json.idproducto }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#imgproducto").LoadingOverlay("hide");
+                        if (data.conversion) {
+                            $("#imgproducto").attr({ "src": "data:image/" + data.extension + ";base64," + data.textobase64 });
+                        }
+                    },
+                    error: function (error) {
+                        $("#imgproducto").LoadingOverlay("hide");
+                        $("#mensajeError").show();
+                        $("#mensajeError").text("Error al Cargar la imagen");
+                    },
+                    beforeSend: function () {
+                        $("#imgproducto").LoadingOverlay("show")
+                    },
+                });
             }
             var textoBoton = json ? " Guardar Cambios" : " Registrar Producto";
             $('#ProductosModal .btn-outline-primary').text(textoBoton);
-
             var modalTitulo = json ? "Editar Producto" : "Agregar Nuevo Producto";
             $("#ProductosModalLabel").text(modalTitulo);
             $("#ProductosModal").modal("show");
@@ -478,5 +513,117 @@
             var data = tabladata.row(filaseleccionada).data();
             abrirmodal(data)
         })
+
+        function guardar() {
+            var imgseleccionada = $("#fileproducto")[0].files[0];
+            var Productos = {
+                idproducto: $("#txtid").val(),
+                codigo: $("#codigo").val(),
+                nombre: $("#nombre").val(),
+                descripcion: $("#descripcion").val(),
+                oCategorias: {
+                    idcategoria: $('#categorias').val(),
+                    nombrecategoria: $('#categorias option:selected').text()
+                },
+                oTallasropa: {
+                    idtallaropa: $('#tallas').val(),
+                    nombretalla: $('#tallas option:selected').text()
+                },
+                oMarca: {
+                    idmarca: $('#marcas').val(),
+                    nombremarca: $('#marcas option:selected').text()
+                },
+                stock: $("#stock").val(),
+                numcaja: $("#numcaja").val(),
+                colores: $("#colores").val(),
+                precioventa: $("#precio").val(),
+                precioTexto: $("#precio").val(),
+                temporada: $("#temporada").val(),
+                descuento: $("#descuento").val(),
+                total: $("#total").val(),
+                ubicacion: $("#ubicacion").val()
+            }
+
+            var request = new FormData();
+            request.append("objeto", JSON.stringify(Productos))
+            request.append("archivoimg", imgseleccionada)
+
+            jQuery.ajax({
+                url: '@Url.Action("GuardarProductos", "Mantenimiento")',
+                type: "POST",
+                data: request,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    if (Productos.idproducto == 0) {
+                        if (data.idgenerado != 0) {
+                            Productos.idproducto = data.idgenerado;
+                            tabladata.row.add(Productos).draw(false);
+                            $("#ProductosModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                    else {
+                        if (data.operacionExitosa) {
+                            tabladata.row(filaseleccionada).data(Productos).draw(false);
+                            filaseleccionada = null;
+                            $("#ProductosModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error al Guardar los datos");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResezeFactor: 2,
+                        image: "",
+                        fontawesome: "fas fa-spinner",
+                        text: "Cargando ...",
+                        size: 14
+                    })
+                }
+            });
+        }
+
+        $("#tablaproductos tbody").on("click", '.btn-eliminar', function () {
+            var productoseleccionado = $(this).closest("tr");
+            var data = tabladata.row(productoseleccionado).data();
+            Swal.fire({
+                title: "¿Está seguro de eliminar este producto?",
+                text: "Esta acción no se puede deshacer.",
+                showDenyButton: true,
+                confirmButtonText: "Sí, Eliminar",
+                denyButtonText: `Cancelar`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    jQuery.ajax({
+                        url: '@Url.Action("EliminarProductos", "Mantenimiento")',
+                        type: "POST",
+                        data: JSON.stringify({ id: data.idproducto }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            if (data.resultado) {
+                                tabladata.row(productoseleccionado).remove().draw();
+                                Swal.fire("Producto eliminado correctamente!", "", "success");
+                            } else {
+                                Swal.fire("Error", data.mensaje, "error");
+                            }
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire("Operación cancelada", "", "warning");
+                }
+            });
+        });
     </script>
 }

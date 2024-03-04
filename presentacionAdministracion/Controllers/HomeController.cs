@@ -73,9 +73,9 @@ namespace presentacionAdministracion.Controllers
             {
                 resultado = new N_Usuarios().Editar(objeto, out mensaje);
             }
-
             return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
+
 
     }
 }
