@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Net;
+using System.IO;
+using Newtonsoft.Json;
+using System.Configuration;
+using System.Globalization;
 
 namespace presentacionAdministracion.Controllers
 {
@@ -32,15 +36,6 @@ namespace presentacionAdministracion.Controllers
         }
 
         [HttpGet]
-        public JsonResult listarNivelAcceso()
-        {
-            List<NivelAcceso> oLista = new List<NivelAcceso>();
-            oLista = new N_Nivelacceso().Listar();
-            var opciones = oLista.Select(nivel => new { id = nivel.idrol, nombre = nivel.nombrerol });
-            return Json(new { data = opciones }, JsonRequestBehavior.AllowGet);
-        }
-
-        [HttpGet]
         public async Task<ActionResult> ObtenerInformacionDNI(string numeroDNI)
         {
             var apiUrl = $"https://api.apis.net.pe/v1/dni?numero={numeroDNI}";
@@ -60,22 +55,86 @@ namespace presentacionAdministracion.Controllers
         }
 
         [HttpPost]
-        public JsonResult GuardarUsuarios(Usuarios objeto)
+        public JsonResult GuardarUsuarios(string objeto, HttpPostedFileBase archivoimg)
         {
-            object resultado;
             string mensaje = string.Empty;
+            bool operacionexitosa = true;
+            bool guardarimg = true;
 
-            if (objeto.idusuario == 0)
+            Usuarios oUsuarios = new Usuarios();
+            oUsuarios = JsonConvert.DeserializeObject<Usuarios>(objeto);
+            if (oUsuarios.idusuarioweb == 0)
             {
-                resultado = new N_Usuarios().Registrar(objeto, out mensaje);
+                int idusergenerado = new N_Usuarios().Registrar(oUsuarios, out mensaje);
+                if (idusergenerado != 0)
+                {
+                    oUsuarios.idusuarioweb = idusergenerado;
+                }
+                else
+                {
+                    operacionexitosa = false;
+                }
             }
             else
             {
-                resultado = new N_Usuarios().Editar(objeto, out mensaje);
+                operacionexitosa = new N_Usuarios().Editar(oUsuarios, out mensaje);
             }
-            return Json(new { resultado = resultado, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
+            if (operacionexitosa)
+            {
+                if (archivoimg != null)
+                {
+                    string rutaguardar = ConfigurationManager.AppSettings["ServidorFotosUsuarios"];
+                    string extension = Path.GetExtension(archivoimg.FileName);
+                    string nombreimg = string.Concat(oUsuarios.idusuarioweb.ToString(), extension);
+                    try
+                    {
+                        archivoimg.SaveAs(Path.Combine(rutaguardar, nombreimg));
+                    }
+                    catch (Exception ex)
+                    {
+                        string msg = ex.Message;
+                        guardarimg = false;
+                    }
+                    if (guardarimg)
+                    {
+                        oUsuarios.rutaimagen = rutaguardar;
+                        oUsuarios.nombreimagen = nombreimg;
+                        bool rpta = new N_Usuarios().GuardarimagenUsuario(oUsuarios, out mensaje);
+                    }
+                    else
+                    {
+                        mensaje = "Se guardó el usuario, pero se encontraron problemas en la imagen 🌄";
+                    }
+                }
+            }
+            return Json(new { operacionExitosa = operacionexitosa, idgenerado = oUsuarios.idusuarioweb, mensaje = mensaje }, JsonRequestBehavior.AllowGet);
         }
 
+        [HttpPost]
+        public JsonResult imagenUsuario(int id)
+        {
+            bool conversion;
+            Usuarios ousuario = new N_Usuarios().Listar().Where(u => u.idusuarioweb == id).FirstOrDefault();
+            string textoBase64 = N_Recursos.ConvertirBase64(Path.Combine(ousuario.rutaimagen, ousuario.nombreimagen), out conversion);
+            return Json(new
+            {
+                conversion = conversion,
+                textobase64 = textoBase64,
+                extension = Path.GetExtension(ousuario.nombreimagen)
+            }, JsonRequestBehavior.AllowGet);
+        }
 
+        [HttpPost]
+        public JsonResult EliminarUsuarios(int id)
+        {
+            bool respuesta = false;
+            string mensaje = string.Empty;
+            respuesta = new N_Usuarios().Eliminar(id, out mensaje);
+            return Json(new
+            {
+                resultado = respuesta,
+                mensaje = mensaje,
+            }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

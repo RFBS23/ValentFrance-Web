@@ -34,13 +34,11 @@
                     <table class="display table table-striped" id="tablausuarios" width="100%">
                         <thead>
                             <tr>
-                                <th>Foto</th>
                                 <th>Documento</th>
                                 <th>Nombres</th>
                                 <th>Apellidos</th>
                                 <th>Usuarios</th>
                                 <th>Correo</th>
-                                <th>Nivel de Acceso</th>
                                 <th>Estado</th>
                                 <th>Opciones</th>
                             </tr>
@@ -65,7 +63,7 @@
             </div>
             <div class="modal-body">
                 <input id="txtid" type="hidden" value="0" />
-                <form class="row g-3" autocomplete="off">
+                <form class="row g-3" autocomplete="off" id="contenedor">
                     <div class="col-md-4">
                         <div class="dropdown">
                             <button class="btn btn-outline-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -73,13 +71,13 @@
                             </button>
                             <ul class="dropdown-menu p-3">
                                 <div class="mb-3">
-                                    <img id="imgproducto" src="~/assets/img/logovalent.png" height="300" width="300" class="mx-auto img-fluid imagen-redondeada" />
+                                    <img id="imgusuario" src="~/assets/img/logovalent.png" height="300" width="300" class="mx-auto img-fluid imagen-redondeada" />
                                 </div>
                             </ul>
                         </div>
                         <div class="py-2"></div>
                         <div class="mb-3">
-                            <input type="file" class="form-control" id="fileproducto" aria-label="file example" accept="image/png, image/jpg, image/jpeg" onchange="mostrarimg(this)">
+                            <input type="file" class="form-control" id="fileusuario" aria-label="file example" accept="image/png, image/jpg, image/jpeg" onchange="mostrarimg(this)">
                         </div>
                     </div>
 
@@ -111,14 +109,6 @@
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control" id="correo" placeholder="name@example.com" required>
                             <label for="correo">Correo</label>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-floating">
-                            <select class="form-select" id="nivelacceso" aria-label="Floating label select example" required>
-                                <option selected disabled>Elige un Nivel de acceso</option>
-                            </select>
-                            <label for="nivelacceso">Nivel de Acceso</label>
                         </div>
                     </div>
                     <div class="col-md-4">
@@ -208,16 +198,6 @@
             }
         }
 
-        function mostrarimg(input) {
-            if (input.files) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#imgproducto').attr("src", e.target.result).height(300).width(600)
-                }
-                reader.readAsDataURL(input.files[0]);
-            }
-        }
-
         // Utilizando api de dni
         $(document).ready(function () {
             $('#documento').on('blur', function () {
@@ -241,37 +221,29 @@
         $(document).ready(function () {
             $('#UsuariosModal').on('hidden.bs.modal', function () {
                 $('#txtid').val(0);
+                $("#imgusuario").attr("src", '@Url.Content("~/assets/img/logovalent.png")');
+                $("#fileusuario").val("");
                 $('#documento').val('');
                 $('#nombres').val('').prop('disabled', true);
                 $('#apellidos').val('').prop('disabled', true);
                 $('#nombreusuario').val('');
                 $('#correo').val('');
-                $('#nivelacceso').val($('#nivelacceso option:first').val());
                 $('#listaestado').val($('#listaestado option:first').val());
-
             });
-        });
-
-        $.ajax({
-            url: '@Url.Action("listarNivelAcceso", "Home")',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                var select = $('#nivelacceso');
-                select.empty();
-                select.append('<option selected disabled>Elige un Nivel de acceso</option>');
-
-                $.each(data.data, function (index, item) {
-                    select.append('<option value="' + item.id + '">' + item.nombre + '</option>');
-                });
-            },
-            error: function (error) {
-                console.error('Error al cargar los niveles de acceso:', error);
-            }
         });
 
         var tabladata;
         var filaseleccionada;
+
+        function mostrarimg(input) {
+            if (input.files) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $('#imgusuario').attr("src", e.target.result).height(300).width(600)
+                }
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
 
         tabladata = $("#tablausuarios").DataTable({
             dom: 'Bfrtip',
@@ -283,23 +255,11 @@
                 dataType: "json"
             },
             "columns": [
-                {
-                    "data": null,
-                    "render": function (data) {
-                        // Verificar si hay una imagen y mostrarla, de lo contrario, mostrar "sinfoto.jpg"
-                        if (data.imagen) {
-                            return '<img src="' + data.imagen + '" alt="Foto" width="50" height="50">';
-                        } else {
-                            return '<img src="~/../../assets/img/sinfoto.png" alt="Sin Foto" width="50" height="50">';
-                        }
-                    }
-                },
                 { "data": "documento" },
                 { "data": "nombres", "width": "230px" },
                 { "data": "apellidos", "width": "230px" },
                 { "data": "nombreusuario" },
                 { "data": "correo" },
-                { "data": "oNivelAcceso.nombrerol" },
                 {
                     "data": "estado", "render": function (valor) {
                         if (valor) {
@@ -319,7 +279,7 @@
             columnDefs: [
                 {
                     responsivePriority: 1,
-                    targets: [8] // El índice de la columna "Opciones"
+                    targets: [6] // El índice de la columna "Opciones"
                 }
             ],
             language: {
@@ -330,16 +290,36 @@
         function abrirmodal(json) {
             $("#mensajeError").hide();
             if (json != null) {
-                $("#txtid").val(json.idusuario);
+                $("#txtid").val(json.idusuarioweb);
                 $("#documento").val(json.documento);
                 $("#nombres").val(json.nombres).prop('disabled', true);
                 $("#apellidos").val(json.apellidos).prop('disabled', true);
                 $("#nombreusuario").val(json.nombreusuario);
                 $("#correo").val(json.correo);
-                $("#nivelacceso").val(json.oNivelAcceso.idrol);
                 $("#listaestado").val(json.estado == true ? 1 : 0);
-            }
 
+                jQuery.ajax({
+                    url: '@Url.Action("imagenUsuario", "Home")',
+                    type: "POST",
+                    data: JSON.stringify({ id: json.idusuarioweb }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $("#imgusuario").LoadingOverlay("hide");
+                        if (data.conversion) {
+                            $("#imgusuario").attr({ "src": "data:image/" + data.extension + ";base64," + data.textobase64 });
+                        }
+                    },
+                    error: function (error) {
+                        $("#imgusuario").LoadingOverlay("hide");
+                        $("#mensajeError").show();
+                        $("#mensajeError").text("Error al Cargar la imagen");
+                    },
+                    beforeSend: function () {
+                        $("#imgusuario").LoadingOverlay("show")
+                    },
+                });
+            }
             var textoBoton = json ? " Guardar Cambios" : " Registrar Usuario";
             $('#UsuariosModal .btn-outline-primary').text(textoBoton);
 
@@ -352,49 +332,45 @@
         $("#tablausuarios tbody").on("click", '.btn-editar', function () {
             filaseleccionada = $(this).closest("tr");
             var data = tabladata.row(filaseleccionada).data();
-            //console.log(data)
             abrirmodal(data)
         })
 
-        $("#tablausuarios tbody").on("click", '.btn-eliminar', function () {
-            Swal.fire("Boton eliminar en desarrollo!");
-        })
-
         function guardar() {
+            var imgseleccionada = $("#fileusuario")[0].files[0];
             var Usuario = {
-                idusuario: $("#txtid").val(),
+                idusuarioweb: $("#txtid").val(),
                 documento: $("#documento").val(),
                 nombres: $('#nombres').val(),
                 apellidos: $('#apellidos').val(),
                 nombreusuario: $('#nombreusuario').val(),
                 correo: $('#correo').val(),
-                oNivelAcceso: {
-                    idrol: $('#nivelacceso').val(),
-                    nombrerol: $('#nivelacceso option:selected').text()
-                },
                 estado: $('#listaestado').val() == 1 ? true : false,
             }
+
+            var request = new FormData();
+            request.append("objeto", JSON.stringify(Usuario))
+            request.append("archivoimg", imgseleccionada)
 
             jQuery.ajax({
                 url: '@Url.Action("GuardarUsuarios", "Home")',
                 type: "POST",
-                data: JSON.stringify({ objeto: Usuario }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
+                data: request,
+                processData: false,
+                contentType: false,
                 success: function (data) {
                     $(".modal-body").LoadingOverlay("hide");
-                    //usuario nuevo
-                    if (Usuario.idusuario == 0) {
-                        if (data.resultado != 0) {
-                            Usuario.idusuario = data.resultado;
+                    if (Usuario.idusuarioweb == 0) {
+                        if (data.idusergenerado != 0) {
+                            Usuario.idusuarioweb = data.idusergenerado;
                             tabladata.row.add(Usuario).draw(false);
                             $("#UsuariosModal").modal("hide");
                         } else {
                             $("#mensajeError").text(data.mensaje);
                             $("#mensajeError").show();
                         }
-                    } else {
-                        if (data.resultado) {
+                    }
+                    else {
+                        if (data.operacionExitosa) {
                             tabladata.row(filaseleccionada).data(Usuario).draw(false);
                             filaseleccionada = null;
                             $("#UsuariosModal").modal("hide");
@@ -419,7 +395,38 @@
                     })
                 }
             });
-
         }
+
+        $("#tablausuarios tbody").on("click", '.btn-eliminar', function () {
+            var usuarioseleccionado = $(this).closest("tr");
+            var data = tabladata.row(usuarioseleccionado).data();
+            Swal.fire({
+                title: "¿Está seguro de eliminar este Usuario?",
+                text: "Esta acción no se puede deshacer.",
+                showDenyButton: true,
+                confirmButtonText: "Sí, Eliminar",
+                denyButtonText: `Cancelar`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    jQuery.ajax({
+                        url: '@Url.Action("EliminarUsuarios", "Home")',
+                        type: "POST",
+                        data: JSON.stringify({ id: data.idusuarioweb }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            if (data.resultado) {
+                                tabladata.row(usuarioseleccionado).remove().draw();
+                                Swal.fire("Usuario eliminado correctamente!", "", "success");
+                            } else {
+                                Swal.fire("Error", data.mensaje, "error");
+                            }
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire("Operación cancelada", "", "warning");
+                }
+            });
+        })
     </script>
 }

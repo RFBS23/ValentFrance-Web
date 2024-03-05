@@ -19,12 +19,10 @@ namespace Datos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select u.idusuario, u.documento, u.nombres, u.apellidos, u.nombreusuario, u.correo, u.estado, u.reestablecer, r.idrol, r.nombrerol, CONVERT(VARCHAR(10), u.fecharegistro, 120)AS fecharegistro_producto from usuarios u");
-                    query.AppendLine("inner join rol r on r.idrol = u.idrol");
-
+                    query.AppendLine("select idusuarioweb, rutaimagen, nombreimagen, documento, nombres, apellidos, nombreusuario, correo, clave, reestablecer, estado, CONVERT(VARCHAR(10), fecharegistro, 120)AS fecharegistro_producto from usuariosweb");
+                    query.AppendLine("go");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
-                    cmd.CommandType = System.Data.CommandType.Text;
-
+                    cmd.CommandType = CommandType.Text;
                     oconexion.Open();
                     using (SqlDataReader dr = cmd.ExecuteReader())
                     {
@@ -32,20 +30,22 @@ namespace Datos
                         {
                             lista.Add(new Usuarios()
                             {
-                                idusuario = Convert.ToInt32(dr["idusuario"]),
+                                idusuarioweb = Convert.ToInt32(dr["idusuarioweb"]),
+                                rutaimagen = dr["rutaimagen"].ToString(),
+                                nombreimagen = dr["nombreimagen"].ToString(),
                                 documento = dr["documento"].ToString(),
                                 nombres = dr["nombres"].ToString(),
                                 apellidos = dr["apellidos"].ToString(),
                                 nombreusuario = dr["nombreusuario"].ToString(),
                                 correo = dr["correo"].ToString(),
                                 reestablecer = Convert.ToBoolean(dr["reestablecer"]),
-                                oNivelAcceso = new NivelAcceso() { idrol = Convert.ToInt32(dr["idrol"]), nombrerol = dr["nombrerol"].ToString() },
                                 estado = Convert.ToBoolean(dr["estado"]),
                                 fecharegistro = dr["fecharegistro_producto"].ToString()
                             });
                         }
                     }
-                } catch (Exception ex)
+                }
+                catch (Exception ex)
                 {
                     lista = new List<Usuarios>();
                 }
@@ -61,14 +61,13 @@ namespace Datos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("spu_registrar_usuario", oconexion);
+                    SqlCommand cmd = new SqlCommand("spu_registrar_usuarioweb", oconexion);
                     cmd.Parameters.AddWithValue("documento", obj.documento);
                     cmd.Parameters.AddWithValue("nombres", obj.nombres);
                     cmd.Parameters.AddWithValue("apellidos", obj.apellidos);
                     cmd.Parameters.AddWithValue("nombreusuario", obj.nombreusuario);
                     cmd.Parameters.AddWithValue("correo", obj.correo);
                     cmd.Parameters.AddWithValue("clave", obj.clave);
-                    cmd.Parameters.AddWithValue("idrol", obj.oNivelAcceso.idrol);
                     cmd.Parameters.AddWithValue("estado", obj.estado);
                     cmd.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
@@ -98,14 +97,13 @@ namespace Datos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("spu_editar_usuarioweb", oconexion);
-                    cmd.Parameters.AddWithValue("idusuario", obj.idusuario);
+                    SqlCommand cmd = new SqlCommand("spu_editarusuario_web", oconexion);
+                    cmd.Parameters.AddWithValue("idusuarioweb", obj.idusuarioweb);
                     cmd.Parameters.AddWithValue("documento", obj.documento);
                     cmd.Parameters.AddWithValue("nombres", obj.nombres);
                     cmd.Parameters.AddWithValue("apellidos", obj.apellidos);
                     cmd.Parameters.AddWithValue("nombreusuario", obj.nombreusuario);
                     cmd.Parameters.AddWithValue("correo", obj.correo);
-                    cmd.Parameters.AddWithValue("idrol", obj.oNivelAcceso.idrol);
                     cmd.Parameters.AddWithValue("estado", obj.estado);
 
                     cmd.Parameters.Add("resultado", SqlDbType.Bit).Direction = ParameterDirection.Output;
@@ -126,6 +124,39 @@ namespace Datos
             return resultado;
         }
 
+        public bool GuardarimagenUsuario(Usuarios obj, out string Mensaje)
+        {
+            bool resultado = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
+                {
+                    string query = "update usuariosweb set rutaimagen = @rutaimagen, nombreimagen = @nombreimagen where idusuarioweb = @idusuarioweb";
+                    SqlCommand cmd = new SqlCommand(query, oconexion);
+                    cmd.Parameters.AddWithValue("@rutaimagen", obj.rutaimagen);
+                    cmd.Parameters.AddWithValue("@nombreimagen", obj.nombreimagen);
+                    cmd.Parameters.AddWithValue("@idusuarioweb", obj.idusuarioweb);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+                    if (cmd.ExecuteNonQuery() > 0)
+                    {
+                        resultado = true;
+                    }
+                    else
+                    {
+                        Mensaje = "No se pudo actualiza la imagen 🖼️";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                resultado = false;
+                Mensaje = ex.Message;
+            }
+            return resultado;
+        }
+
         //cambiar contraseña
         public bool Cambiarclave(int idusuario, string nuevaclave, out string Mensaje)
         {
@@ -135,7 +166,7 @@ namespace Datos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("update usuarios set clave = @nuevaclave, restablecer = 0 where idusuario = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @nuevaclave, restablecer = 0 where idusuarioweb = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", idusuario);
                     cmd.Parameters.AddWithValue("@nuevaclave", nuevaclave);
                     cmd.CommandType = CommandType.Text;
@@ -159,7 +190,7 @@ namespace Datos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("update usuarios set clave = @clave, restablecer = 1 where idusuario = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @clave, restablecer = 1 where idusuarioweb = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", idusuario);
                     cmd.Parameters.AddWithValue("@clave", clave);
                     cmd.CommandType = CommandType.Text;
@@ -175,5 +206,26 @@ namespace Datos
             return resultado;
         }
 
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            bool resultado = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
+                {
+                    SqlCommand cmd = new SqlCommand("delete top (1) from usuariosweb where idusuarioweb = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+                    resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
+                }
+            } catch (Exception ex)
+            {
+                resultado = false;
+                Mensaje = ex.Message;
+            }
+            return resultado;
+        }
     }
 }

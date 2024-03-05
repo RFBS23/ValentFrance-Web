@@ -31,10 +31,6 @@ namespace Negocio
             {
                 Mensaje = "Debe ingresar un correo";
             }
-            if (obj.oNivelAcceso == null || string.IsNullOrEmpty(obj.oNivelAcceso.nombrerol) || string.IsNullOrWhiteSpace(obj.oNivelAcceso.nombrerol))
-            {
-                Mensaje = "Debe seleccionar un nivel de acceso";
-            }
             if (string.IsNullOrEmpty(Mensaje))
             {
                 string claveAcceso = N_Recursos.GenerarClave(); //clave generada
@@ -74,10 +70,6 @@ namespace Negocio
             {
                 Mensaje = "Debe ingresar un correo";
             }
-            if (obj.oNivelAcceso == null || string.IsNullOrEmpty(obj.oNivelAcceso.nombrerol) || string.IsNullOrWhiteSpace(obj.oNivelAcceso.nombrerol))
-            {
-                Mensaje = "Debe seleccionar un nivel de acceso";
-            }
 
             if (string.IsNullOrEmpty(Mensaje))
             {
@@ -87,6 +79,11 @@ namespace Negocio
             {
                 return false;
             }
+        }
+
+        public bool GuardarimagenUsuario(Usuarios obj, out string Mensaje)
+        {
+            return objdatos.GuardarimagenUsuario(obj, out Mensaje);
         }
 
         //cambiar y restablecer contraseña
@@ -125,5 +122,9 @@ namespace Negocio
             }
         }
 
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            return objdatos.Eliminar(id, out Mensaje);
+        }
     }
 }
