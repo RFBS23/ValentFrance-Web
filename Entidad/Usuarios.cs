@@ -19,7 +19,6 @@ namespace Entidad
         public string clave { get; set; }
         public bool reestablecer {  get; set; }
         public bool estado { get; set; }
-        public string fecharegistro { get; set; }
         public string base64 { get; set; }
         public string Extension { get; set; }
     }

@@ -47,6 +47,7 @@
     <Compile Include="D_Marcas.cs" />
     <Compile Include="D_Nivelacceso.cs" />
     <Compile Include="D_Productos.cs" />
+    <Compile Include="D_Reporte.cs" />
     <Compile Include="D_Tallas.cs" />
     <Compile Include="D_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

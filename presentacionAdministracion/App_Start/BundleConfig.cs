@@ -17,6 +17,7 @@ namespace presentacionAdministracion
                         "~/Scripts/loadingoverlay/loadingoverlay.min.js",
                         "~/Scripts/sweetalert.min.js",
                         "~/Scripts/jquery.validate.js",
+                        "~/Scripts/jquery-ui.js",
                         "~/Scripts/main.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
@@ -36,6 +37,7 @@ namespace presentacionAdministracion
                       "~/Content/DataTables/css/jquery.dataTables.css",
                       "~/Content/sweetalert.css",
                       "~/Content/DataTables/css/responsive.dataTables.css",
+                      "~/Content/jquery-ui.css",
                       "~/Content/Site.css"));
         }
     }

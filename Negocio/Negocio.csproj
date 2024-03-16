@@ -46,6 +46,7 @@
     <Compile Include="N_Nivelacceso.cs" />
     <Compile Include="N_Productos.cs" />
     <Compile Include="N_Recursos.cs" />
+    <Compile Include="N_Reportes.cs" />
     <Compile Include="N_Tallas.cs" />
     <Compile Include="N_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

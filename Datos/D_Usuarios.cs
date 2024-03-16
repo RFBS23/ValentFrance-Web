@@ -38,9 +38,9 @@ namespace Datos
                                 apellidos = dr["apellidos"].ToString(),
                                 nombreusuario = dr["nombreusuario"].ToString(),
                                 correo = dr["correo"].ToString(),
+                                clave = dr["clave"].ToString(),
                                 reestablecer = Convert.ToBoolean(dr["reestablecer"]),
                                 estado = Convert.ToBoolean(dr["estado"]),
-                                fecharegistro = dr["fecharegistro_producto"].ToString()
                             });
                         }
                     }
@@ -124,6 +124,28 @@ namespace Datos
             return resultado;
         }
 
+        public bool Eliminar(int id, out string Mensaje)
+        {
+            bool resultado = false;
+            Mensaje = string.Empty;
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
+                {
+                    SqlCommand cmd = new SqlCommand("delete top (1) from usuariosweb where idusuarioweb = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+                    resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
+                }
+            } catch (Exception ex)
+            {
+                resultado = false;
+                Mensaje = ex.Message;
+            }
+            return resultado;
+        }
+
         public bool GuardarimagenUsuario(Usuarios obj, out string Mensaje)
         {
             bool resultado = false;
@@ -157,8 +179,8 @@ namespace Datos
             return resultado;
         }
 
-        //cambiar contraseña
-        public bool Cambiarclave(int idusuario, string nuevaclave, out string Mensaje)
+
+        public bool Cambiarclave(int idusuarioweb, string nuevaclave, out string Mensaje)
         {
             bool resultado = false;
             Mensaje = string.Empty;
@@ -166,8 +188,8 @@ namespace Datos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @nuevaclave, restablecer = 0 where idusuarioweb = @id", oconexion);
-                    cmd.Parameters.AddWithValue("@id", idusuario);
+                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @nuevaclave, reestablecer = 0 where idusuarioweb = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", idusuarioweb);
                     cmd.Parameters.AddWithValue("@nuevaclave", nuevaclave);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
@@ -182,7 +204,7 @@ namespace Datos
             return resultado;
         }
 
-        public bool RestablecerClave(int idusuario, string clave, out string Mensaje)
+        public bool RestablecerClave(int idusuarioweb, string clave, out string Mensaje)
         {
             bool resultado = false;
             Mensaje = string.Empty;
@@ -190,8 +212,8 @@ namespace Datos
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @clave, restablecer = 1 where idusuarioweb = @id", oconexion);
-                    cmd.Parameters.AddWithValue("@id", idusuario);
+                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @clave, reestablecer = 1 where idusuarioweb = @id", oconexion);
+                    cmd.Parameters.AddWithValue("@id", idusuarioweb);
                     cmd.Parameters.AddWithValue("@clave", clave);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
@@ -199,28 +221,6 @@ namespace Datos
                 }
             }
             catch (Exception ex)
-            {
-                resultado = false;
-                Mensaje = ex.Message;
-            }
-            return resultado;
-        }
-
-        public bool Eliminar(int id, out string Mensaje)
-        {
-            bool resultado = false;
-            Mensaje = string.Empty;
-            try
-            {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
-                {
-                    SqlCommand cmd = new SqlCommand("delete top (1) from usuariosweb where idusuarioweb = @id", oconexion);
-                    cmd.Parameters.AddWithValue("@id", id);
-                    cmd.CommandType = CommandType.Text;
-                    oconexion.Open();
-                    resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
-                }
-            } catch (Exception ex)
             {
                 resultado = false;
                 Mensaje = ex.Message;

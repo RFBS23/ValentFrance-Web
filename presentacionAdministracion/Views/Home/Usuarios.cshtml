@@ -80,7 +80,6 @@
                             <input type="file" class="form-control" id="fileusuario" aria-label="file example" accept="image/png, image/jpg, image/jpeg" onchange="mostrarimg(this)">
                         </div>
                     </div>
-
                     <div class="col-md-4">
                         <div class="form-floating mb-3">
                             <input type="text" class="form-control" id="documento" placeholder="name@example.com" maxlength="8" onkeypress="return SoloNumeros(event);" required>
@@ -204,7 +203,7 @@
                 var numeroDNI = $(this).val();
                 $.ajax({
                     type: 'GET',
-                    url: '/Home/ObtenerInformacionDNI',
+                    url: '@Url.Action("ObtenerInformacionDNI", "Home")',
                     data: { numeroDNI: numeroDNI },
                     success: function (data) {
                         $('#nombres').val(data.nombres);
@@ -279,7 +278,7 @@
             columnDefs: [
                 {
                     responsivePriority: 1,
-                    targets: [6] // El índice de la columna "Opciones"
+                    targets: [6]
                 }
             ],
             language: {

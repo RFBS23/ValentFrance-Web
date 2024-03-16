@@ -23,7 +23,6 @@ namespace Negocio
         public static string ConvertitSha256(string texto)
         {
             StringBuilder sb = new StringBuilder();
-            //usamos la referencia de "system.Security.Cryptography"
             using (SHA256 hash = SHA256Managed.Create())
             {
                 Encoding enc = Encoding.UTF8;
@@ -34,7 +33,6 @@ namespace Negocio
             return sb.ToString();
         }
 
-        //enviar email
         public static bool EnviarEmail(string correo, string asunto, string mensaje)
         {
             bool resultado = false;
@@ -47,7 +45,6 @@ namespace Negocio
                 mail.Body = mensaje;
                 mail.IsBodyHtml = true;
 
-                //servidor
                 var smtp = new SmtpClient()
                 {
                     Credentials = new NetworkCredential("fabriziobarrios92@gmail.com", "zhrpbownlpdjyair"),
@@ -65,7 +62,6 @@ namespace Negocio
             return resultado;
         }
 
-        //imagenes
         public static string ConvertirBase64(string ruta, out bool conversion)
         {
             string textoBase64 = string.Empty;

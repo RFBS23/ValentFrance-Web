@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace presentacionAdministracion.Controllers
 {
+    [Authorize]
     public class MantenimientoController : Controller
     {
         // GET: Mantenimiento

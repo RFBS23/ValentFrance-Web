@@ -33,14 +33,14 @@ namespace Negocio
             }
             if (string.IsNullOrEmpty(Mensaje))
             {
-                string claveAcceso = N_Recursos.GenerarClave(); //clave generada
+                string claveAcceso = N_Recursos.GenerarClave(); // Clave generada
                 string asunto = "Cuenta creada exitosamente";
-                string mensajeEmail = "<h3>Su cuenta fue Creada Correctamente</h3><br><p>Su Contraseña 🔑 para Acceder al sistema es: ! contraseña ¡ </p>";
-                mensajeEmail = mensajeEmail.Replace("! contraseña ¡", claveAcceso);
+                string mensajeEmail = $"<h3>Su cuenta fue creada correctamente</h3><br><p>Su contraseña para acceder al sistema es: {claveAcceso}</p>";
+
                 bool respuesta = N_Recursos.EnviarEmail(obj.correo, asunto, mensajeEmail);
                 if (respuesta)
                 {
-                    obj.clave = N_Recursos.ConvertitSha256(claveAcceso);
+                    obj.clave = claveAcceso;
                     return objdatos.Registrar(obj, out Mensaje);
                 }
                 else
@@ -86,21 +86,25 @@ namespace Negocio
             return objdatos.GuardarimagenUsuario(obj, out Mensaje);
         }
 
-        //cambiar y restablecer contraseña
-        public bool CambiarClave(int idusuario, string nuevaclave, out string Mensaje)
+        public bool Eliminar(int id, out string Mensaje)
         {
-            return objdatos.Cambiarclave(idusuario, nuevaclave, out Mensaje);
+            return objdatos.Eliminar(id, out Mensaje);
         }
 
-        public bool RestablecerClave(int idusuario, string correo, out string Mensaje)
+        public bool CambiarClave(int idusuarioweb, string nuevaclave, out string Mensaje)
+        {
+            return objdatos.Cambiarclave(idusuarioweb, nuevaclave, out Mensaje);
+        }
+
+        public bool RestablecerClave(int idusuarioweb, string correo, out string Mensaje)
         {
             Mensaje = string.Empty;
-            string nuevaclave = N_Recursos.GenerarClave(); //clave generada
-            bool resultado = objdatos.RestablecerClave(idusuario, N_Recursos.ConvertitSha256(nuevaclave), out Mensaje);
+            string nuevaclave = N_Recursos.GenerarClave();
+            bool resultado = objdatos.RestablecerClave(idusuarioweb, nuevaclave, out Mensaje);
 
             if (resultado)
             {
-                string asunto = "FarmaDev - Restablecer contraseña";
+                string asunto = "VALENT FRANCE - Restablecer contraseña";
                 string mensajeEmail = "<h3>Su contraseña fue restablecida Correctamente</h3><br><p>Para Acceder al sistema Debe utilizar la siguiente contraseña 🔑: ! contraseña ¡ </p>";
                 mensajeEmail = mensajeEmail.Replace("! contraseña ¡", nuevaclave);
                 bool respuesta = N_Recursos.EnviarEmail(correo, asunto, mensajeEmail);
@@ -111,20 +115,16 @@ namespace Negocio
                 }
                 else
                 {
-                    Mensaje = "No se puedo enviar el correo";
+                    Mensaje = "No se ha enviado el correo";
                     return false;
                 }
             }
             else
             {
-                Mensaje = "No se puedo restablecer la contraseña :( ";
+                Mensaje = "No se ha podido restablecer la contraseña :( ";
                 return false;
             }
         }
 
-        public bool Eliminar(int id, out string Mensaje)
-        {
-            return objdatos.Eliminar(id, out Mensaje);
-        }
     }
 }

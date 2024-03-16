@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentacionadministracion\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionadministracion\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionadministracion\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentacionadministracion\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentacionadministracion\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -32,32 +36,45 @@
         },
         {
           "DockedWidth": 183,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "presentacionAdministracion\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "presentacionAdministracion\\Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAHMAAAAAAAAAAAAAAHMAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-05T21:37:40.598Z",
+              "DocumentIndex": 1,
+              "Title": "Web.config",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Web.config",
+              "RelativeDocumentMoniker": "presentacionAdministracion\\Web.config",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Web.config",
+              "RelativeToolTip": "presentacionAdministracion\\Web.config",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-03-16T18:17:59.991Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "presentacionAdministracion\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "presentacionAdministracion\\Controllers\\HomeController.cs",
-              "ViewState": "AQIAADcAAAAAAAAAAAAgwEAAAAAMAAAA",
+              "DocumentIndex": 2,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAJ4AAAAAAAAAAAAAAKcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-03-16T18:07:18.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "presentacionAdministracion\\Controllers\\LoginController.cs",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Controllers\\LoginController.cs",
+              "RelativeToolTip": "presentacionAdministracion\\Controllers\\LoginController.cs",
+              "ViewState": "AQIAAG0AAAAAAAAAAAAcwHMAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-04T17:34:32.667Z",
+              "WhenOpened": "2024-03-15T15:45:39.589Z",
               "EditorCaption": ""
             }
           ]
