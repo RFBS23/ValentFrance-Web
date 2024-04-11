@@ -1,0 +1,65 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Reestablecer - Valent France</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body style="user-select: none;">
+    <main>
+        <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+            <div class="container py-4">
+                <div class="p-5 bg-body-secondary rounded-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-dark rounded-3">
+                                <h2 class="mb-4">REESTABLECE TU CUENTA</h2>
+                                <img src="~/assets/img/icono.jpg" height="150" width="150" class="rounded  img-fluid justify-content-center" alt="logo">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-tertiary border rounded-3">
+                                <form class="row g-3 needs-validation" action="@Url.Action("Reestablecer", "Login")" method="post" autocomplete="off" novalidate>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" name="correo" placeholder="Correo Electrónico" required>
+                                        <label for="floatingInput">Correo Electrónico</label>
+                                        <div class="invalid-feedback">Ingrese su correo.</div>
+                                    </div>
+                                    @{
+                                        if (ViewBag.Error != null)
+                                        {
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <i class="bi bi-exclamation-octagon me-1"></i>
+                                                @ViewBag.Error
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        }
+                                    }
+                                    <div class="col-12">
+                                        <button class="btn btn-primary" type="submit">Reestablecer contraseña</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0"> <a href="@Url.Action("Index", "Login")" class="text-success" style="text-decoration: none;">Volver</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -55,5 +55,9 @@ namespace Negocio
             return objdatos.Eliminar(id, out Mensaje);
         }
 
+        public List<Marca> FiltrosMarcas()
+        {
+            return objdatos.FiltrosMarca();
+        }
     }
 }

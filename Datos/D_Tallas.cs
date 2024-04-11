@@ -19,7 +19,7 @@ namespace Datos
                 try
                 {
                     StringBuilder query = new StringBuilder();
-                    query.AppendLine("select idtallaropa, c.idcategoria, c.nombrecategoria, nombretalla from tallasropa tr");
+                    query.AppendLine("select idtallaropa, c.idcategoria, c.nombrecategoria, nombretalla, tr.estado from tallasropa tr");
                     query.AppendLine("inner join categorias c on c.idcategoria = tr.idcategoria");
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
@@ -132,6 +132,43 @@ namespace Datos
                 Mensaje = ex.Message;
             }
             return resultado;
+        }
+
+        public List<Tallasropa> FiltrosTallasCategorias(int idcategoria)
+        {
+            List<Tallasropa> lista = new List<Tallasropa>();
+            try
+            {
+                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
+                {
+                    StringBuilder sb = new StringBuilder();
+                    sb.AppendLine("select distinct t.idtallaropa, t.nombretalla from productosropa p");
+                    sb.AppendLine("inner join categorias c on c.idcategoria = p.idcategoria");
+                    sb.AppendLine("inner join tallasropa t on t.idtallaropa = p.idtallaropa and t.estado = 1");
+                    sb.AppendLine("where c.idcategoria = iif(@idcategoria = 0, c.idcategoria, @idcategoria)");
+                    SqlCommand cmd = new SqlCommand(sb.ToString(), oconexion);
+                    cmd.Parameters.AddWithValue("@idcategoria", idcategoria);
+                    cmd.CommandType = CommandType.Text;
+                    oconexion.Open();
+
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Tallasropa()
+                            {
+                                idtallaropa = Convert.ToInt32(dr["idtallaropa"]),
+                                nombretalla = dr["nombretalla"].ToString()
+                            });
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                lista = new List<Tallasropa>();
+            }
+            return lista;
         }
 
     }

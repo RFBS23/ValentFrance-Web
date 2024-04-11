@@ -107,48 +107,28 @@
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li class="dropdown-footer">
-                            <a href="#" style="text-decoration: none;">Ver Todas las notificaciones</a>
-                        </li>
                     </ul><!-- End Notification Dropdown Items -->
                 </li><!-- End Notification Nav -->
 
                 <li class="nav-item dropdown pe-3">
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                        <img src="~/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                        <span class="d-none d-md-block dropdown-toggle ps-2">Nombre de usuario</span>
+                        <input id="txtid" type="hidden" value="0" />
+                        <img src="~/assets/img/profile-img.jpg" alt="Profile" class="rounded-circle" id="imagenUsuario">
+                        <span class="d-none d-md-block dropdown-toggle ps-2">@Session["nombreUsuario"]</span>
                     </a>
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Nombre de usuario</h6>
-                            <span>Nivel de acceso</span>
+                            <h6>@Session["nombreUsuario"]</h6>
+                            <span>@Session["correoUsuario"]</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
                         <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                            <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Perfil", "Perfil")">
                                 <i class="bi bi-person"></i>
                                 <span>Mi Perfil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                <i class="bi bi-gear"></i>
-                                <span>Configuraciones de la cuenta</span>
-                            </a>
-                        </li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li>
-                            <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                <i class="bi bi-question-circle"></i>
-                                <span>Necesitas Ayuda?</span>
                             </a>
                         </li>
                         <li>
@@ -166,17 +146,14 @@
         </nav><!-- End Icons Navigation -->
     </header><!-- End Header -->
 
-    <!-- ======= Sidebar ======= -->
     <aside id="sidebar" class="sidebar">
-
         <ul class="sidebar-nav" id="sidebar-nav">
-
             <li class="nav-item">
                 <a class="nav-link " href="@Url.Action("Index", "Home")">
                     <i class="bi bi-grid"></i>
                     <span>Dashboard</span>
                 </a>
-            </li><!-- End Dashboard Nav -->
+            </li>
 
             <li class="nav-item">
                 <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -224,55 +201,13 @@
             <li class="nav-heading">Paginas</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="users-profile.html">
+                <a class="nav-link collapsed" href="@Url.Action("Perfil", "Perfil")">
                     <i class="bi bi-person"></i>
                     <span>Mi Perfil</span>
                 </a>
             </li><!-- End Profile Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>F.A.Q</span>
-                </a>
-            </li><!-- End F.A.Q Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-contact.html">
-                    <i class="bi bi-envelope"></i>
-                    <span>Contact</span>
-                </a>
-            </li><!-- End Contact Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-register.html">
-                    <i class="bi bi-card-list"></i>
-                    <span>Register</span>
-                </a>
-            </li><!-- End Register Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-login.html">
-                    <i class="bi bi-box-arrow-in-right"></i>
-                    <span>Login</span>
-                </a>
-            </li><!-- End Login Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-error-404.html">
-                    <i class="bi bi-dash-circle"></i>
-                    <span>Error 404</span>
-                </a>
-            </li><!-- End Error 404 Page Nav -->
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="pages-blank.html">
-                    <i class="bi bi-file-earmark"></i>
-                    <span>Blank</span>
-                </a>
-            </li><!-- End Blank Page Nav -->
         </ul>
-    </aside><!-- End Sidebar-->
+    </aside>
 
     <main id="main" class="main">
         @RenderBody()
@@ -331,4 +266,5 @@
         }
         return false;
     }
+    
 </script>

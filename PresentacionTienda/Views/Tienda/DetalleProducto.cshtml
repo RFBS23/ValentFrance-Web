@@ -1,0 +1,73 @@
+﻿@model Entidad.Productos
+
+@{
+    ViewBag.Title = "DetalleProducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pagetitle">
+    <h1>Detalles del producto</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Tienda")">Inicio</a></li>
+            <li class="breadcrumb-item active">Detalles del producto</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+<!-- Product section-->
+<section class="mb-0">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="row gx-4 gx-lg-5 align-items-center">
+            <div class="col-md-6">
+                <!-- Imagen principal -->
+                <img id="mainImage" class="card-img-top mb-5 mb-md-0 rounded-4" src="~/assets/img/baner-2.png" alt="..." />
+            </div>
+            <div class="col-md-6">
+                <!-- Cuadros para mostrar otras imágenes -->
+                <div class="row row-cols-3 mb-3">
+                    <div class="col">
+                        <div class="thumbnail">
+                            <img src="../assets/img/baner-2.png" class="img-thumbnail rounded-4" alt="..." onclick="changeImage('../assets/img/baner-2.png')" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="thumbnail">
+                            <img src="../assets/img/baner3.png" class="img-thumbnail rounded-4" alt="..." onclick="changeImage('../assets/img/baner3.png')" />
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="thumbnail">
+                            <img src="../assets/img/banner.png" class="img-thumbnail rounded-4" alt="..." onclick="changeImage('../assets/img/banner.png')" />
+                        </div>
+                    </div>
+                </div>
+                <!-- Descripción del producto -->
+                <div class="small mb-1">SKU: Codigo del producto</div>
+                <h1 class="display-5 fw-bolder">Shop item template</h1>
+                <div class="fs-5 mb-5">
+                    <span class="text-decoration-line-through">$45.00</span>
+                    <span>$40.00</span>
+                </div>
+                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                <!-- Cantidad y botón para agregar al carrito -->
+                <div class="d-flex">
+                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
+                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
+                        <i class="bi-cart-fill me-1"></i>
+                        Add to cart
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+
+        function changeImage(newSrc) {
+            document.getElementById("mainImage").src = newSrc;
+        }
+
+    </script>
+}

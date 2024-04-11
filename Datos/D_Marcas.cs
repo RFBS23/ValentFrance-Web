@@ -133,5 +133,39 @@ namespace Datos
             return resultado;
         }
 
+        public List<Marca> FiltrosMarca()
+        {
+            List<Marca> lista = new List<Marca>();
+            using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
+            {
+                try
+                {
+                    StringBuilder sb = new StringBuilder();
+                    string query = "select idmarca, nombremarca, estado from marca where estado = 1";
+                    SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
+                    cmd.CommandType = CommandType.Text;
+
+                    oconexion.Open();
+                    using (SqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            lista.Add(new Marca()
+                            {
+                                idmarca = Convert.ToInt32(dr["idmarca"]),
+                                nombremarca = dr["nombremarca"].ToString(),
+                                estado = Convert.ToBoolean(dr["estado"])
+                            });
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    lista = new List<Marca>();
+                }
+            }
+            return lista;
+        }
+
     }
 }

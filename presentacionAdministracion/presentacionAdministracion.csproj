@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MantenimientoController.cs" />
+    <Compile Include="Controllers\PerfilController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -603,6 +604,7 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\CambiarClave.cshtml" />
     <Content Include="Views\Login\Reestablecer.cshtml" />
+    <Content Include="Views\Perfil\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

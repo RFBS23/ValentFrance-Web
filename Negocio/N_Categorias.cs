@@ -56,5 +56,10 @@ namespace Negocio
             return objDatos.Eliminar(id, out Mensaje);
         }
 
+        public List<Categorias> FiltrosCategorias()
+        {
+            return objDatos.FiltrosCategorias();
+        }
+
     }
 }

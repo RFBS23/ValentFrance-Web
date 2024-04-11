@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionadministracion\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentaciontienda\\views\\tienda\\detalleproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\detalleproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentacionadministracion\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentaciontienda\\views\\tienda\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentacionadministracion\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D888FD84-BAA7-42FB-ACF1-39DB032645B2}|presentacionAdministracion\\presentacionAdministracion.csproj|solutionrelative:presentacionadministracion\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71B14CA8-0060-4D2A-8CFF-4192359883CB}|Negocio\\Negocio.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\negocio\\n_tallas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{71B14CA8-0060-4D2A-8CFF-4192359883CB}|Negocio\\Negocio.csproj|solutionrelative:negocio\\n_tallas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 169,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -31,51 +35,57 @@
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 183,
-          "SelectedChildIndex": 2,
-          "Children": [
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DetalleProducto.cshtml",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
+              "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
+              "RelativeToolTip": "PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADUAAABdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-11T20:47:38.432Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Web.config",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Web.config",
-              "RelativeDocumentMoniker": "presentacionAdministracion\\Web.config",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Web.config",
-              "RelativeToolTip": "presentacionAdministracion\\Web.config",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-03-16T18:17:59.991Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Index.cshtml",
+              "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Tienda\\Index.cshtml",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Index.cshtml",
+              "RelativeToolTip": "PresentacionTienda\\Views\\Tienda\\Index.cshtml",
+              "ViewState": "AQIAAPcAAAAAAAAAAAAAABUBAAA1AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-11T17:27:53.753Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "presentacionAdministracion\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAJ4AAAAAAAAAAAAAAKcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-16T18:07:18.504Z",
+              "Title": "TiendaController.cs",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Controllers\\TiendaController.cs",
+              "RelativeDocumentMoniker": "PresentacionTienda\\Controllers\\TiendaController.cs",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Controllers\\TiendaController.cs",
+              "RelativeToolTip": "PresentacionTienda\\Controllers\\TiendaController.cs",
+              "ViewState": "AQIAAFQAAAAAAAAAAAAswFcAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-08T03:51:31.73Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "presentacionAdministracion\\Controllers\\LoginController.cs",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentacionAdministracion\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "presentacionAdministracion\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAcwHMAAAAqAAAA",
+              "DocumentIndex": 3,
+              "Title": "N_Tallas.cs",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\Negocio\\N_Tallas.cs",
+              "RelativeDocumentMoniker": "Negocio\\N_Tallas.cs",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\Negocio\\N_Tallas.cs",
+              "RelativeToolTip": "Negocio\\N_Tallas.cs",
+              "ViewState": "AQIAADMAAAAAAAAAAAAAADwAAAA/AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-15T15:45:39.589Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-08T19:32:34.763Z"
             }
           ]
         }

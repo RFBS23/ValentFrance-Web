@@ -14,6 +14,7 @@ namespace Entidad
         public string apellidos { get; set; }
         public string correo { get; set; }
         public string clave { get; set; }
+        public string confirmarclave { get; set; }
         public string telefono { get; set; }
         public bool reestablecer {  get; set; }
         public bool estado { get; set; }

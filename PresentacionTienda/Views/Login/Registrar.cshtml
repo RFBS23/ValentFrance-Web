@@ -1,0 +1,115 @@
+﻿@model Entidad.Clientes
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Registro de Clientes - Valent France</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body style="user-select: none;">
+    <main>
+        <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+            <div class="container py-5">
+                <div class="p-5 bg-body-secondary rounded-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-dark rounded-3">
+                                <h2 class="mb-4">REGISTRATE</h2>
+                                <p>Ingrese sus datos personales para crear una cuenta</span>.</p>
+                                <img src="~/assets/img/icono.jpg" height="150" width="150" class="rounded  img-fluid justify-content-center" alt="logo">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-tertiary border rounded-3">
+                                <form class="row g-3 needs-validation" action="@Url.Action("Registrar", "Login")" method="post" autocomplete="off">
+                                    <div class="row g-2">
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.TextBoxFor(m => m.documento, new { @class = "form-control", @id = "txtdocumento", @placeholder = ".", @maxlength = "8", values = ViewData["Documento"] })
+                                                @Html.Label("txtdocumento", "Documento")
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.TextBoxFor(m => m.nombres, new { @class = "form-control", @id = "txtnombres", @placeholder = ".", values = ViewData["Nombres"] })
+                                                @Html.Label("txtnombres", "Nombres")
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.TextBoxFor(m => m.apellidos, new { @class = "form-control", @id = "txtapellidos", @placeholder = ".", values = ViewData["Apellidos"] })
+                                                @Html.Label("txtapellidos", "Apellidos")
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.TextBoxFor(m => m.telefono, new { @class = "form-control", @id = "txttelefono", @placeholder = ".", @maxlength = "9", values = ViewData["Telefono"] })
+                                                @Html.Label("txttelefono", "Telefono")
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row g-2">
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.TextBoxFor(m => m.correo, new { @class = "form-control", @id = "txtcorreo", @placeholder = ".", values = ViewData["Correo"] })
+                                                @Html.Label("txtcorreo", "Correo")
+                                            </div>
+                                        </div>
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.PasswordFor(m => m.clave, new { @class = "form-control", @id = "txtclave", @placeholder = "." })
+                                                @Html.Label("txtclave", "Contraseña")
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row g-2">
+                                        <div class="col-md">
+                                            <div class="form-floating">
+                                                @Html.PasswordFor(m => m.confirmarclave, new { @class = "form-control", @id = "txtconfirmarclave", @placeholder = "." })
+                                                @Html.Label("txtconfirmarclave", "Repite la contraseña")
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    @{
+                                        if (ViewBag.Error != null)
+                                        {
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <i class="bi bi-exclamation-octagon me-1"></i>
+                                                @ViewBag.Error
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        }
+                                    }
+
+                                    <div class="col-md">
+                                        <button class="btn btn-outline-primary" type="submit">Registrarme</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0"> <a href="@Url.Action("Index", "Login")" class="text-success" style="text-decoration: none;">¿Ya estas registrado? Inicia Sesion Aqui</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

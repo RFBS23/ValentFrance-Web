@@ -42,13 +42,16 @@ namespace presentacionAdministracion.Controllers
                 if (ousuario.reestablecer)
                 {
                     TempData["idusuarioweb"] = ousuario.idusuarioweb;
-                    TempData["nombreapellidos"] = ousuario.nombres + ' ' + ousuario.apellidos;
+                    ViewData["nombreapellidos"] = ousuario.nombres + ' ' + ousuario.apellidos;
                     return RedirectToAction("CambiarClave");
                 }
 
                 FormsAuthentication.SetAuthCookie(ousuario.correo, false);
-
-                ViewBag.Error = null;
+                Session["nombreUsuario"] = ousuario.nombreusuario;
+                Session["nombreapellidos"] = ousuario.nombres + ' ' + ousuario.apellidos;
+                Session["correoUsuario"] = ousuario.correo;
+                Session["documento"] = ousuario.documento;
+                ViewBag.Error = null;                
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -107,8 +110,7 @@ namespace presentacionAdministracion.Controllers
             {
                 ViewBag.Error = mensaje;
                 return View();
-            }
-            
+            }            
         }
 
         public ActionResult CerrarSesion()

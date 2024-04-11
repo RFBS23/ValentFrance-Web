@@ -1,0 +1,72 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Iniciar Sesión - Valent France</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body style="user-select: none;">
+    <main>
+        <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+            <div class="container py-5">
+                <div class="p-5 bg-body-secondary rounded-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-dark rounded-3">
+                                <h2 class="mb-4">INICIA SESIÓN</h2>
+                                <p>Si eres nuevo registrate dando click aqui <a href="@Url.Action("Registrar", "Login")" class="text-success" style="text-decoration: none;"><button type="button" class="btn btn-outline-primary">Registrate Aqui</button></a></p>
+                                <img src="~/assets/img/icono.jpg" height="150" width="150" class="rounded  img-fluid justify-content-center" alt="logo">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-tertiary border rounded-3">
+                                <form class="row g-2 needs-validation" action="@Url.Action("Index", "Login")" method="post" autocomplete="off" novalidate>
+                                    <div class="form-floating mb-3">
+                                        <input type="email" class="form-control" name="correo" placeholder="Correo Electrónico" required>
+                                        <label for="floatingInput">Correo Electrónico</label>
+                                        <div class="invalid-feedback">Ingrese su correo.</div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" name="clave" placeholder="Contraseña" required>
+                                        <label for="floatingPassword">Contraseña</label>
+                                        <div class="invalid-feedback">Ingrese su contraseña.</div>
+                                    </div>
+
+                                    @{
+                                        if (ViewBag.Error != null)
+                                        {
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <i class="bi bi-exclamation-octagon me-1"></i>
+                                                @ViewBag.Error
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        }
+                                    }
+
+                                    <div class="col-12">
+                                        <button class="btn btn-primary" type="submit">Iniciar Sesión</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0"> <a href="@Url.Action("Reestablecer", "Login")" class="text-success" style="text-decoration: none;">¿Has olvidado tu contraseña?</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.min.js"></script>
+</body>
+</html>

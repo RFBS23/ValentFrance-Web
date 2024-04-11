@@ -1,40 +1,135 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="es-es">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>@ViewBag.Title - Valent France</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <!-- Google Fonts -->
+    <link href="https://fonts.gstatic.com" rel="preconnect">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
     @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
-        <div class="container">
-            @Html.ActionLink("Nombre de la aplicación", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                <ul class="navbar-nav flex-grow-1">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Acerca de", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                </ul>
-            </div>
+<body style="user-select: none;" class="toggle-sidebar">
+    <header id="header" class="header fixed-top d-flex align-items-center">
+        <div class="d-flex align-items-center justify-content-between">
+            <a href="@Url.Action("Index", "Tienda")" class="logo d-flex align-items-center">
+                <img src="~/assets/img/icono.jpg" alt="" class="rounded-3">
+                <span class="d-none d-lg-block">Valent France</span>
+            </a>
         </div>
-    </nav>
-    <div class="container body-content">
+        <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                @if (Session["cliente"] == null)
+                {
+                        <li class="nav-item dropdown pe-3">
+                            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                                <img src="~/assets/img/sinfoto.png" alt="Profile" class="rounded-circle">
+                                <span class="d-none d-md-block dropdown-toggle ps-2">Iniciar Sesión</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Index", "Login")">
+                                        <i class="bi bi-box-arrow-in-left"></i>
+                                        <span>Iniciar Sesión</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                }
+                else
+                {
+                    <li class="nav-item dropdown">
+                        <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="badge bg-primary badge-number">0</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+                            <li class="dropdown-header">
+                                Tienes <span class="badge text-dark">0</span> notificaciones nuevas
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="notification-item">
+                                <div class="card mb-2">
+                                    <div class="row g-0">
+                                        <div class="col-md-4">
+                                            <img src="assets/img/card.jpg" class="img-fluid rounded-start" alt="...">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <div class="card-body">
+                                                <h6 class="card-header-tabs fw-semibold py-2">Nombre producto</h6>
+                                                <p class="card-subtitle py-1 fw-bold">$</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li class="dropdown-footer">
+                                <a class="text-decoration-none" href="@Url.Action("Carrito", "Tienda")">Ver Todo</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                            <img src="~/assets/img/sinfoto.png" alt="Profile" class="rounded-circle">
+                            <span class="d-none d-md-block dropdown-toggle ps-2">@User.Identity.Name</span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <li class="dropdown-header">
+                                <h6>@Session["nombreapellidos"]</h6>
+                                <span>@Session["correoCliente"]</span>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="@Url.Action("Compras", "Tienda")">
+                                    <i class="bi bi-clipboard-check"></i>
+                                    <span>Mis Compras</span>
+                                </a>
+                            </li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="@Url.Action("CerrarSesion", "Login")">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                    <span>Cerrar sesión</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main" class="main">
         @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
-    </div>
+    </main><!-- End main -->
+
+    <footer id="footer" class="footer" style="user-select: none;">
+        <div class="copyright">
+            &copy; Copyright <strong><span>@DateTime.Now.Year - Valent France</span></strong>. Todos los derechos reservados
+        </div>
+        <div class="credits">
+            Diseñado por <a href="https://rfbs23.github.io/portafolio/" target="_blank">FabriDev</a>
+        </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/complementos")
     @RenderSection("scripts", required: false)
 </body>
 </html>
