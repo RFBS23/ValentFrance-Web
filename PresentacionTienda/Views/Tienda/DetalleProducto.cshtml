@@ -20,14 +20,14 @@
         <div class="row gx-4 gx-lg-5 align-items-center">
             <div class="col-md-6">
                 <!-- Imagen principal -->
-                <img id="mainImage" class="card-img-top mb-5 mb-md-0 rounded-4" src="~/assets/img/baner-2.png" alt="..." />
+                <img id="mainImage" class="card-img-top mb-5 mb-md-0 rounded-4" src="data:image/@Html.DisplayTextFor(m => m.Extension);base64,@Html.DisplayTextFor(m => m.base64)" alt="..." height="450" />
             </div>
             <div class="col-md-6">
                 <!-- Cuadros para mostrar otras imágenes -->
                 <div class="row row-cols-3 mb-3">
                     <div class="col">
                         <div class="thumbnail">
-                            <img src="../assets/img/baner-2.png" class="img-thumbnail rounded-4" alt="..." onclick="changeImage('../assets/img/baner-2.png')" />
+                            <img src="data:image/@Html.DisplayTextFor(m => m.Extension);base64,@Html.DisplayTextFor(m => m.base64)" class="img-thumbnail rounded-4" alt="..." onclick="changeImage('data:image/@Html.DisplayTextFor(m => m.Extension);base64,@Html.DisplayTextFor(m => m.base64)')" />
                         </div>
                     </div>
                     <div class="col">
@@ -42,20 +42,18 @@
                     </div>
                 </div>
                 <!-- Descripción del producto -->
-                <div class="small mb-1">SKU: Codigo del producto</div>
-                <h1 class="display-5 fw-bolder">Shop item template</h1>
+                <div class="small mb-1">SKU: @Html.DisplayTextFor(m => m.codigo)</div>
+                <h1 class="display-5 fw-bolder">@Html.DisplayTextFor(m => m.nombre)</h1>
                 <div class="fs-5 mb-5">
-                    <span class="text-decoration-line-through">$45.00</span>
-                    <span>$40.00</span>
+                    <span>@Html.DisplayTextFor(m => m.precioventa) S/</span>
                 </div>
-                <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium at dolorem quidem modi. Nam sequi consequatur obcaecati excepturi alias magni, accusamus eius blanditiis delectus ipsam minima ea iste laborum vero?</p>
+                <p class="lead">@Html.DisplayTextFor(m => m.descripcion)</p>
                 <!-- Cantidad y botón para agregar al carrito -->
                 <div class="d-flex">
-                    <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                    <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                        <i class="bi-cart-fill me-1"></i>
-                        Add to cart
-                    </button>
+                    <!-- <input class="form-control text-center me-3" id="inputQuantity" type="number" value="1" style="max-width: 3rem" min="1" max="60" /> -->                  
+                    <a class="text-center btn btn-outline-success flex-shrink-0" href="@Url.Action("Masproductos", "Tienda")" style="text-decoration: none;">
+                        <i class="bi bi-arrow-counterclockwise"></i> Regresar
+                    </a>
                 </div>
             </div>
         </div>
@@ -64,10 +62,9 @@
 
 @section scripts {
     <script>
-
         function changeImage(newSrc) {
             document.getElementById("mainImage").src = newSrc;
         }
-
+        
     </script>
 }

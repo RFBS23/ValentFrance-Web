@@ -17,6 +17,11 @@ namespace PresentacionTienda.Controllers
             return View();
         }
 
+        public ActionResult Masproductos()
+        {
+            return View();
+        }
+
         public ActionResult DetalleProducto(int idproducto = 0)
         {
             Productos oProducto = new Productos();

@@ -3,128 +3,134 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<style>
-    .floating-button {
-        position: fixed;
-        bottom: 70px;
-        right: 20px;
-    }
 
-    /* Estilos del icono */
-    .floating-button a {
-        display: block;
-        width: 50px;
-        height: 50px;
-        background-color: #25d366; /* Color de fondo de WhatsApp */
-        color: #fff; /* Color del icono */
-        border-radius: 50%;
-        text-align: center;
-        line-height: 50px; /* Centra verticalmente el icono */
-        font-size: 24px; /* Tamaño del icono */
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-</style>
 
-<div class="card rounded-4">
-    <div class="card-body">
-        <h5 class="py-1"> </h5>
-        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner rounded-4">
-                <div class="carousel-item active">
-                    <img src="~/assets/img/banner.png" class="d-block w-100 rounded-4" alt="..." style="max-height: 500px;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fw-bold">Nombre Tendencia</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
+<section class="hero-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-12 custom-padding-right">
+                <div class="slider-head">
+                    <!-- Start Hero Slider -->
+                    <div class="hero-slider">
+                        <!-- Start Single Slider -->
+                        <div class="single-slider" style="background-image: url(../assets/img/hero/slider-bg1.jpg);">
+                            <div class="content">
+                                <h2>
+                                    <span>No restocking fee ($35 savings)</span>
+                                    M75 Sport Watch
+                                </h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <h3><span>Now Only</span> $320.99</h3>
+                                <div class="button">
+                                    <a href="product-grids.html" class="btn">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Slider -->
+                        <!-- Start Single Slider -->
+                        <div class="single-slider" style="background-image: url(../assets/img/hero/slider-bg2.jpg);">
+                            <div class="content">
+                                <h2>
+                                    <span>Big Sale Offer</span>
+                                    Get the Best Deal on CCTV Camera
+                                </h2>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua.
+                                </p>
+                                <h3><span>Combo Only:</span> $590.00</h3>
+                                <div class="button">
+                                    <a href="product-grids.html" class="btn">Shop Now</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Single Slider -->
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="~/assets/img/baner-2.png" class="d-block w-100 rounded-4" alt="..." style="max-height: 500px;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fw-bold">Tendencia 2</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="~/assets/img/baner3.png" class="d-block w-100 rounded-4" alt="..." style="max-height: 500px;">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5 class="fw-bold">Tendencia 3</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
+                    <!-- End Hero Slider -->
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+            <div class="col-lg-4 col-12">
+                <div class="row">
+                    <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
+                        <!-- Start Small Banner -->
+                        <div class="hero-small-banner" style="background-image: url('../assets/img/hero/slider-bnr.jpg');">
+                            <div class="content">
+                                <h2>
+                                    <span>New line required</span>
+                                    iPhone 12 Pro Max
+                                </h2>
+                                <h3>$259.99</h3>
+                            </div>
+                        </div>
+                        <!-- End Small Banner -->
+                    </div>
+                    <div class="col-lg-12 col-md-6 col-12">
+                        <div class="hero-small-banner style2">
+                            <div class="content">
+                                <h2>¡Oferta semanal!</h2>
+                                <p>Esta semana ahorra hasta un 50 % en todos los artículos de la tienda online.</p>
+                                <div class="button">
+                                    <a class="btn" href="@Url.Action("Masproductos", "tienda")">Haz click aqui <i class="lni lni-pointer-top"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+</section>
+
+<section class="trending-product section" style="margin-top: 12px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title">
+                    <h2>Producto de tendencia</h2>
+                    <p>
+                        Sumérgete en el mundo de la moda urbana con Hawk, una marca
+                        que combina estilo y calidad en cada prenda. Dirigida para aquellos
+                        que buscan destacar en la ciudad con un estilo único y moderno.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="container_productos">
+            <div class="col-lg-3 col-md-6 col-12">
+                <!-- Start Single Product -->
+                <div class="single-product">
+                    <div class="product-image">
+                        <img src="~/assets/img/products/product-1.jpg" alt="#">
+                        <div class="button">
+                            <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <span class="category">Watches</span>
+                        <h4 class="title">
+                            <a href="product-grids.html">Xiaomi Mi Band 5</a>
+                        </h4>
+                        <ul class="review">
+                            <li></li>
+                        </ul>
+                        <div class="price">
+                            <span>$199.00</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Single Product -->
+            </div>
+        </div>
+    </div>
+</section>
 
 <section class="py-1">
     <div class="container-fluid">
         <div class="row">
             <!-- Categorias y Marcas -->
-            <div class="col-lg-3" style="position: inherit;">
-                <div class="row mb-3">
-                    <div class="col-sm-12">
-                        <div class="card rounded-4">
-                            <div class="card-header rounded-4 text-white fw-semibold" style="background-color: #698BF6;">
-                                Categorias
-                            </div>
-                            <div id="con_categoria" class="card-body">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <div class="card rounded-4">
-                            <div class="card-header rounded-4 text-white fw-semibold" style="background-color: #698BF6;">
-                                Marcas
-                            </div>
-                            <div id="con_marcas" class="card-body">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <div class="card rounded-4">
-                            <div class="card-header rounded-4 text-white fw-semibold" style="background-color: #698BF6;">
-                                Tallas
-                            </div>
-                            <div id="con_tallas" class="card-body">
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row mb-3">
-                    <div class="col-12">
-                        <div class="d-grid gap-2">
-                            <button id="btn_aplicarfiltro" class="btn btn-outline-primary btn-block" type="button"><i class="bi bi-funnel"></i> Aplicar Filtros</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- Tarjetas de Producto -->
             <div class="col-md-9">
                 <div id="container_productos" class="row row-cols-1 row-cols-md-3 g-3">
 
@@ -133,15 +139,20 @@
         </div>
     </div>
 </section>
-<!-- Botón de WhatsApp -->
+
+<!-- Botón de WhatsApp
 <div class="floating-button">
     <a href="https://api.whatsapp.com/send?phone=933103242&text=Hola" target="_blank">
         <i class="bi bi-whatsapp"></i>
     </a>
-</div>
+</div>-->
 
 @section scripts {
     <script>
+        function changeImage(newSrc) {
+            document.getElementById("mainImage").src = newSrc;
+        }
+
         $(document).ready(function () {
             listarCategorias();
             listarMarcas();
@@ -156,13 +167,13 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
                     $("#con_categoria").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2").append(
+                    $("<div>").addClass("form-check mt-2 text-dark").append(
                         $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": "0", "id": "cx", "checked": "checked" }),
                         $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "cx" })
                     ).appendTo("#con_categoria")
 
                     $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2").append(
+                        $("<div>").addClass("form-check mt-2 text-dark fw-semibold").append(
                             $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": element.idcategoria, "id": "cat" + i }),
                             $("<label>").addClass("form-check-label").text(element.nombrecategoria).attr({ "for": "cat" + 1 })
                         ).appendTo("#con_categoria")
@@ -238,7 +249,7 @@
             jQuery.ajax({
                 url: "@Url.Action("listarProductos", "Tienda")",
                 type: "POST",
-                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa : _idtallaropa }),
+                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
@@ -248,12 +259,11 @@
                     if (response.data.length === 0) {
                         $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
                             $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
-                            $("<h5>").addClass("text-center").text("El producto que estas buscando no existe")
+                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
                         ).appendTo("#container_productos")
-
-                    }
-                    else {
-                        $.each(response.data, function (i, element) {
+                    } else {
+                        var shuffledProducts = response.data.sort(() => Math.random() - 0.5).slice(0, 6); // Obtener una muestra aleatoria de 6 productos
+                        $.each(shuffledProducts, function (i, element) {
                             var imagenSrc;
                             if (element.Extension && element.base64) {
                                 imagenSrc = "data:image/" + element.Extension + ";base64," + element.base64;
@@ -261,38 +271,36 @@
                                 imagenSrc = "assets/img/logovalent.png";
                             }
 
-                            $("<div>").addClass("col mb-5").append(
-                                $("<div>").addClass("card h-100 rounded-4").append(
-                                    $("<img>").addClass("card-img-top rounded-4").attr({ "src": imagenSrc, "height": "230" }),
-                                    $("<div>").addClass("card-body p-4").append(
-                                        $("<div>").addClass("text-center").append(
-                                            $("<h6>").text("Codigo: ").append(
-                                                $("<span>").addClass("badge text-decoration bg-primary").text(element.codigo)
-                                            ),
-                                            $("<h5>").addClass("fw-bolder").text("Nombre: " + element.nombre),
-                                            "Precio: " + element.precioventa.toFixed(2) + " S/"
-                                        ),
-                                        $("<div>").addClass("card-footer p-4 pt-0 border-top-0 bg-transparent").append(
-                                            $("<div>").addClass("d-grid gap-2").append(
-                                                @if (Session["cliente"] != null)
-                                                    {
-                                                        @:$"<button>").addClass("btn btn-lg btn-link fs-6 text-decoration-none border-end agregarcarrito").data("idproducto", element.idproducto).text("Agregar a carrito"),
-                                                    }
-                                                $("<div>").addClass("text-center mt-4 mb-0").append(
-                                                    $("<a>").addClass("btn btn-outline-dark mt-auto ").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).text("Ver Detalles")
-                                                )
+                            $("<div>").addClass("col-lg-4 col-md-6 col-12").append(
+                                $("<div>").addClass("single-product").append(
+                                    $("<div>").addClass("product-image").append(
+                                        $("<img>").addClass("card-img-top rounded-4").attr({ "src": imagenSrc, "height": "230" }),
+                                        (element.descuento > 0) ? $("<div>").addClass("sale-tag bg-success").text("-" + element.descuento + " %") : null,
+                                        $("<div>").addClass("button").append(
+                                            $("<a>").addClass("btn btn-outline-dark").attr("href", "@Url.Action("Masproductos", "Tienda")").append(
+                                                $("<i>").addClass("lni lni-search").css("margin-right", "5px"),
+                                                "Ver Mas"
                                             )
-                                         )
+                                        )
+                                    ),
+                                    $("<div>").addClass("product-info").append(
+                                        $("<div>").addClass("category").text(element.codigo),
+                                        $("<h4>").addClass("title").append(
+                                            $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
+                                        ),
+                                        $("<div>").addClass("price").append(
+                                            $("<span>").text(" S/ " + element.precioventa.toFixed(2))
+                                        )
                                     )
                                 )
-                            ).appendTo("#container_productos")
-                        })
+                            ).appendTo("#container_productos");
+                        });
                     }
                 },
-                beforeSend: function() {
+                beforeSend: function () {
                     $("#container_productos").LoadingOverlay("show");
                 }
-            })
+            });
         }
 
         $("#btn_aplicarfiltro").click(function () {

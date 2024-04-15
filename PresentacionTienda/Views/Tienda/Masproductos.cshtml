@@ -1,0 +1,407 @@
+﻿
+@{
+    ViewBag.Title = "Masproductos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Cuadricula de Productos</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                    <li><a href="@Url.Action("Index", "Tienda")"><i class="lni lni-home"></i> Inicio</a></li>
+                    <li><a href="@Url.Action("Masproductos", "Tienda")">Tienda</a></li>
+                    <li>Productos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="product-grids section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-12">
+                <!-- Start Product Sidebar -->
+                <div class="product-sidebar">
+
+                    <div class="single-widget">
+                        <h3>Todas las categorias</h3>
+                        <ul class="list" id="con_categoria">
+                        </ul>
+                    </div>
+
+                    <div class="single-widget condition">
+                        <h3>Marcas</h3>
+                        <div class="" id="con_marcas">
+                        </div>
+                    </div>
+
+                    <div class="single-widget condition">
+                        <h3>Tallas</h3>
+                        <div class="" id="con_tallas">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-12">
+                            <div class="d-grid gap-2">
+                                <button id="btn_aplicarfiltro" class="btn btn-outline-primary btn-block" type="button"><i class="bi bi-funnel"></i> Aplicar Filtros</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Product Sidebar -->
+            </div>
+            <div class="col-lg-9 col-12">
+                <div class="product-grids-head">
+                    <div class="product-grid-topbar">
+                        <div class="row align-items-center">
+                            <div class="col-lg-7 col-md-8 col-12">
+                                <div class="product-sorting">
+                                    <label for="sorting">Ver Como (Vertical - Horizontal)</label>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-4 col-12">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <button class="nav-link active" id="nav-grid-tab" data-bs-toggle="tab" data-bs-target="#nav-grid" type="button" role="tab" aria-controls="nav-grid" aria-selected="true"><i class="lni lni-grid-alt"></i></button>
+                                        <button class="nav-link" id="nav-list-tab" data-bs-toggle="tab" data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list" aria-selected="false"><i class="lni lni-list"></i></button>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
+                            <div class="row" id="container_productos">
+                                <div class="col-lg-4 col-md-6 col-12">
+                                    <!-- Start Single Product -->
+                                    <div class="single-product">
+                                        <div class="product-image">
+                                            <img src="~/assets/img/logovalent.png" alt="#">
+                                            <span class="sale-tag">-25%</span>
+                                            <div class="button">
+                                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <span class="category">Speaker</span>
+                                            <h4 class="title">
+                                                <a href="product-grids.html">Bluetooth Speaker</a>
+                                            </h4>
+                                            <div class="price">
+                                                <span>$275.00</span>
+                                                <span class="discount-price">$300.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Product -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Pagination -->
+                                    <div class="pagination left">
+                                        <ul class="pagination-list">
+                                            <!-- Aquí se generará la lista de páginas -->
+                                        </ul>
+                                    </div>
+                                    <!--/ End Pagination -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- card horizontal-->
+                        <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
+                            <div class="row" id="container_productos_horizontal">
+                                <div class="col-lg-12 col-md-12 col-12">
+                                    <!-- Start Single Product -->
+                                    <div class="single-product">
+                                        <div class="row align-items-center">
+                                            <div class="col-lg-4 col-md-4 col-12">
+                                                <div class="product-image">
+                                                    <img src="~/assets/img/logovalent.png" alt="#">
+                                                    <div class="button">
+                                                        <a href="product-details.html" class="btn">
+                                                            <i class="lni lni-cart"></i> Add to
+                                                            Cart
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8 col-12">
+                                                <div class="product-info">
+                                                    <span class="category">Watches</span>
+                                                    <h4 class="title">
+                                                        <a href="product-grids.html">Xiaomi Mi Band 5</a>
+                                                    </h4>
+                                                    <ul class="review">
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star-filled"></i></li>
+                                                        <li><i class="lni lni-star"></i></li>
+                                                        <li><span>4.0 Review(s)</span></li>
+                                                    </ul>
+                                                    <div class="price">
+                                                        <span>$199.00</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- End Single Product -->
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        function changeImage(newSrc) {
+            document.getElementById("mainImage").src = newSrc;
+        }
+
+        $(document).ready(function () {
+            listarCategorias();
+            listarMarcas();
+            mostrarFiltros(0, 0, 0);
+            Filtros_horizontales(0, 0, 0);
+        })
+
+        function listarCategorias() {
+            jQuery.ajax({
+                url: "@Url.Action("ListaCategorias", "Tienda")",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#con_categoria").LoadingOverlay("hide");
+                    $("<div>").addClass("form-check mt-2 text-dark").append(
+                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": "0", "id": "cx", "checked": "checked" }),
+                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "cx" })
+                    ).appendTo("#con_categoria")
+
+                    $.each(response.data, function (i, element) {
+                        $("<div>").addClass("form-check mt-2 text-dark fw-semibold").append(
+                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": element.idcategoria, "id": "cat" + i }),
+                            $("<label>").addClass("form-check-label").text(element.nombrecategoria).attr({ "for": "cat" + 1 })
+                        ).appendTo("#con_categoria")
+                    })
+                    mostrarTallas();
+                },
+                beforeSend: function () {
+                    $("#con_categoria").LoadingOverlay("show");
+                }
+            })
+        }
+
+        function listarMarcas() {
+            jQuery.ajax({
+                url: "@Url.Action("FiltroMarca", "Tienda")",
+                type: "GET",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#con_marcas").LoadingOverlay("hide");
+                    $("<div>").addClass("form-check mt-2").append(
+                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marcas", "value": "0", "id": "mx", "checked": "checked" }),
+                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "mx" })
+                    ).appendTo("#con_marcas")
+
+                    $.each(response.data, function (i, element) {
+                        $("<div>").addClass("form-check mt-2").append(
+                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marcas", "value": element.idmarca, "id": "ct" + i }),
+                            $("<label>").addClass("form-check-label").text(element.nombremarca).attr({ "for": "ct" + 1 })
+                        ).appendTo("#con_marcas")
+                    })
+                },
+                beforeSend: function () {
+                    $("#con_marcas").LoadingOverlay("show");
+                }
+            })
+        }
+
+        function mostrarTallas() {
+            var _idcategoria = $("input[name=categoria]:checked").val();
+            jQuery.ajax({
+                url: "@Url.Action("FiltroTallas", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idcategoria: _idcategoria }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#con_tallas").html("");
+                    $("#con_tallas").LoadingOverlay("hide");
+                    $("<div>").addClass("form-check mt-2").append(
+                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "tallasropa", "value": "0", "id": "tx", "checked": "checked" }),
+                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "tx" })
+                    ).appendTo("#con_tallas")
+
+                    $.each(response.data, function (i, element) {
+                        $("<div>").addClass("form-check mt-2").append(
+                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "tallasropa", "value": element.idtallaropa, "id": "t" + i }),
+                            $("<label>").addClass("form-check-label").text(element.nombretalla).attr({ "for": "t" + 1 })
+                        ).appendTo("#con_tallas")
+                    })
+                },
+                beforeSend: function () {
+                    $("#con_tallas").LoadingOverlay("show");
+                }
+            })
+        }
+
+        $(document).on("change", "input[name=categoria]", function () {
+            mostrarTallas();
+        })
+
+        function mostrarFiltros(_idcategoria, _idmarca, _idtallaropa) {
+            jQuery.ajax({
+                url: "@Url.Action("listarProductos", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(response) {
+                    $("#container_productos").html("");
+                    $("#container_productos").LoadingOverlay("hide");
+
+                    if (response.data.length === 0) {
+                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
+                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
+                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
+                        ).appendTo("#container_productos")
+                    } else {
+                        $.each(response.data, function (i, element) {
+                            var imagenSrc;
+                            if (element.Extension && element.base64) {
+                                imagenSrc = "data:image/" + element.Extension + ";base64," + element.base64;
+                            } else {
+                                imagenSrc = "../assets/img/logovalent.png";
+                            }
+                            $("<div>").addClass("col-lg-4 col-md-6 col-12").append(
+                                $("<div>").addClass("single-product").append(
+                                    $("<div>").addClass("product-image").append(
+                                        $("<img>").attr({ "src": imagenSrc, "height": "230" }),
+                                        (element.descuento > 0) ? $("<div>").addClass("sale-tag bg-success").text("-" + element.descuento + " %") : null
+                                    ),
+                                    $("<div>").addClass("product-info").append(
+                                        $("<div>").addClass("category").text(element.codigo),
+                                        $("<h4>").addClass("title").append(
+                                            $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
+                                        ),
+                                        $("<div>").addClass("price").append(
+                                            $("<span>").text(" S/ " + element.precioventa.toFixed(2))
+                                        ),
+                                        $("<ul>").addClass("review").append(
+                                            @if (Session["cliente"] != null)
+                                                {
+                                                    @:$("<button>").addClass("btn btn-lg btn-link fs-6 text-decoration-none border-end agregarcarrito").data("idproducto", element.idproducto).text("Agregar a carrito"),
+                                                }
+                                            $("<div>").addClass("mt-4").append(
+                                                $("<a>").addClass("btn btn-outline-primary mt-auto ").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).text("Ver Detalles")
+                                            )
+                                        )
+                                    )
+                                )
+                            ).appendTo("#container_productos")
+                        })
+                    }
+                },
+                beforeSend: function() {
+                    $("#container_productos").LoadingOverlay("show");
+                }
+            })
+        }
+
+        function Filtros_horizontales(_idcategoria, _idmarca, _idtallaropa) {
+            jQuery.ajax({
+                url: "@Url.Action("listarProductos", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function(response) {
+                    $("#container_productos_horizontal").html("");
+                    $("#container_productos_horizontal").LoadingOverlay("hide");
+
+                    if (response.data.length === 0) {
+                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
+                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
+                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
+                        ).appendTo("#container_productos_horizontal")
+                    } else {
+                        $.each(response.data, function (i, element) {
+                            var imagenSrc;
+                            if (element.Extension && element.base64) {
+                                imagenSrc = "data:image/" + element.Extension + ";base64," + element.base64;
+                            } else {
+                                imagenSrc = "../assets/img/logovalent.png";
+                            }
+
+                            $("<div>").addClass("col-lg-12 col-md-12 col-12").append(
+                                $("<div>").addClass("single-product").append(
+                                    $("<div>").addClass("row align-items-center").append(
+                                        $("<div>").addClass("col-lg-4 col-md-4 col-12").append(
+                                            $("<div>").addClass("product-image").append(
+                                                $("<img>").addClass("card-img-top rounded-4").attr({ "src": imagenSrc, "height": "300" }),
+                                                (element.descuento > 0) ? $("<div>").addClass("sale-tag bg-success").text("-" + element.descuento + " %") : null
+                                            )
+                                        ),
+                                        $("<div>").addClass("col-lg-8 col-md-8 col-12").append(
+                                            $("<div>").addClass("product-info").append(
+                                                $("<div>").addClass("category").text(element.codigo),
+                                                $("<h4>").addClass("title").append(
+                                                    $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
+                                                ),
+                                                $("<div>").addClass("price").append(
+                                                    $("<span>").text(" S/ " + element.precioventa.toFixed(2))
+                                                ),
+                                                $("<ul>").addClass("review").append(
+                                                    @if (Session["cliente"] != null)
+                                                        {
+                                                            @:$("<button>").addClass("btn btn-lg btn-link fs-6 text-decoration-none border-end agregarcarrito").data("idproducto", element.idproducto).text("Agregar a carrito"),
+                                                        }
+                                                    $("<div>").addClass("mt-4").append(
+                                                        $("<a>").addClass("btn btn-outline-primary mt-auto ").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).text("Ver Detalles")
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            ).appendTo("#container_productos_horizontal")
+                        })
+                    }
+                },
+                beforeSend: function() {
+                    $("#container_productos_horizontal").LoadingOverlay("show");
+                }
+            })
+        }
+
+        $("#btn_aplicarfiltro").click(function () {
+            var _idcategoria = $("input[name=categoria]:checked").val()
+            var _idmarca = $("input[name=marcas]:checked").val()
+            var _idtallaropa = $("input[name=tallasropa]:checked").val()
+            mostrarFiltros(_idcategoria, _idmarca, _idtallaropa);
+            Filtros_horizontales(_idcategoria, _idmarca, _idtallaropa)
+        })
+
+    </script>
+}

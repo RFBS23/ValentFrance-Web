@@ -120,12 +120,25 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\img\fetured-item-2.png" />
+    <Content Include="Content\fonts\LineIcons.svg" />
     <Content Include="assets\img\baner-2.png" />
     <Content Include="assets\img\baner3.png" />
     <Content Include="assets\img\banner.png" />
+    <Content Include="assets\img\banner\banner-1-bg.jpg" />
+    <Content Include="assets\img\banner\banner-2-bg.jpg" />
     <Content Include="assets\img\card.jpg" />
+    <Content Include="assets\img\footer\credit-cards-footer.png" />
+    <Content Include="assets\img\header\cart-items\item1.jpg" />
+    <Content Include="assets\img\header\cart-items\item2.jpg" />
+    <Content Include="assets\img\hero\slider-bg1.jpg" />
+    <Content Include="assets\img\hero\slider-bg2.jpg" />
+    <Content Include="assets\img\hero\slider-bnr.jpg" />
+    <Content Include="assets\img\hero\small-banner-bg.png" />
     <Content Include="assets\img\icono.jpg" />
     <Content Include="assets\img\logovalent.png" />
+    <Content Include="assets\img\logo\logo.svg" />
+    <Content Include="assets\img\logo\white-logo.svg" />
     <Content Include="assets\img\messages-1.jpg" />
     <Content Include="assets\img\messages-2.jpg" />
     <Content Include="assets\img\messages-3.jpg" />
@@ -140,6 +153,19 @@
     <Content Include="assets\img\product-3.jpg" />
     <Content Include="assets\img\product-4.jpg" />
     <Content Include="assets\img\product-5.jpg" />
+    <Content Include="assets\img\product-details\01.jpg" />
+    <Content Include="assets\img\product-details\02.jpg" />
+    <Content Include="assets\img\product-details\03.jpg" />
+    <Content Include="assets\img\product-details\04.jpg" />
+    <Content Include="assets\img\product-details\05.jpg" />
+    <Content Include="assets\img\products\product-1.jpg" />
+    <Content Include="assets\img\products\product-2.jpg" />
+    <Content Include="assets\img\products\product-3.jpg" />
+    <Content Include="assets\img\products\product-4.jpg" />
+    <Content Include="assets\img\products\product-5.jpg" />
+    <Content Include="assets\img\products\product-6.jpg" />
+    <Content Include="assets\img\products\product-7.jpg" />
+    <Content Include="assets\img\products\product-8.jpg" />
     <Content Include="assets\img\profile-img.jpg" />
     <Content Include="assets\img\sinfoto.png" />
     <Content Include="assets\img\slides-1.jpg" />
@@ -170,6 +196,7 @@
     <Content Include="Content\brands.min.css" />
     <Content Include="Content\fontawesome.css" />
     <Content Include="Content\fontawesome.min.css" />
+    <Content Include="Content\glightbox.min.css" />
     <Content Include="Content\images\ui-icons_444444_256x240.png" />
     <Content Include="Content\images\ui-icons_555555_256x240.png" />
     <Content Include="Content\images\ui-icons_777620_256x240.png" />
@@ -182,6 +209,8 @@
     <Content Include="Content\jquery-ui.structure.min.css" />
     <Content Include="Content\jquery-ui.theme.css" />
     <Content Include="Content\jquery-ui.theme.min.css" />
+    <Content Include="Content\LineIcons.3.0.css" />
+    <Content Include="Content\main.css" />
     <Content Include="Content\regular.css" />
     <Content Include="Content\regular.min.css" />
     <Content Include="Content\solid.css" />
@@ -190,6 +219,7 @@
     <Content Include="Content\svg-with-js.css" />
     <Content Include="Content\svg-with-js.min.css" />
     <Content Include="Content\sweetalert.css" />
+    <Content Include="Content\tiny-slider.css" />
     <Content Include="Content\v4-shims.css" />
     <Content Include="Content\v4-shims.min.css" />
     <Content Include="favicon.ico" />
@@ -227,6 +257,10 @@
     <Content Include="Content\bootstrap-icons\bootstrap-icons.scss" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff" />
     <Content Include="Content\bootstrap-icons\fonts\bootstrap-icons.woff2" />
+    <Content Include="Content\fonts\LineIcons.eot" />
+    <Content Include="Content\fonts\LineIcons.ttf" />
+    <Content Include="Content\fonts\LineIcons.woff" />
+    <Content Include="Content\fonts\LineIcons.woff2" />
     <None Include="Scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="Scripts\fontawesome\all.js" />
     <Content Include="Scripts\fontawesome\all.min.js" />
@@ -242,6 +276,7 @@
     <Content Include="Scripts\fontawesome\solid.min.js" />
     <Content Include="Scripts\fontawesome\v4-shims.js" />
     <Content Include="Scripts\fontawesome\v4-shims.min.js" />
+    <Content Include="Scripts\glightbox.min.js" />
     <Content Include="Scripts\jquery-3.7.1.js" />
     <Content Include="Scripts\jquery-3.7.1.min.js" />
     <Content Include="Scripts\jquery-3.7.1.slim.js" />
@@ -264,6 +299,8 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\sweetalert.min.js" />
+    <Content Include="Scripts\tienda.js" />
+    <Content Include="Scripts\tiny-slider.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -299,6 +336,7 @@
     <Content Include="webfonts\fa-brands-400.eot" />
     <Content Include="Views\Tienda\Index.cshtml" />
     <Content Include="Views\Tienda\DetalleProducto.cshtml" />
+    <Content Include="Views\Tienda\Masproductos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

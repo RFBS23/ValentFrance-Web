@@ -16,6 +16,8 @@ namespace PresentacionTienda
                         "~/Scripts/sweetalert.min.js",
                         "~/Scripts/jquery.validate.js",
                         "~/Scripts/jquery-ui.js",
+                        "~/Scripts/tiny-slider.js",
+                        "~/Scripts/glightbox.min.js",
                         "~/Scripts/jstienda.js"));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información sobre los formularios.  De esta manera estará
@@ -32,7 +34,10 @@ namespace PresentacionTienda
                       "~/Content/bootstrap.min.css",
                       "~/Content/sweetalert.css",
                       "~/Content/jquery-ui.css",
-                      "~/Content/style.css"));
+                      "~/Content/LineIcons.3.0.css",
+                      "~/Content/tiny-slider.css",
+                      "~/Content/glightbox.min.css",
+                      "~/Content/main.css"));
         }
     }
 }
