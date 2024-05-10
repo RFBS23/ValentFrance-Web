@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentaciontienda\\views\\tienda\\masproductos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\masproductos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentaciontienda\\views\\tienda\\carrito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\carrito.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentaciontienda\\views\\tienda\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentaciontienda\\views\\tienda\\detalleproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentaciontienda\\views\\tienda\\detalleproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\detalleproducto.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\sisventasvf\\presentaciontienda\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1178CB90-32A7-49EC-8AB8-48BBAA36CF13}|PresentacionTienda\\PresentacionTienda.csproj|solutionrelative:presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 169,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -48,61 +44,48 @@
               "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Shared\\_Layout.cshtml",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "PresentacionTienda\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "ViewState": "AQIAADUBAAAAAAAAAAAAAEsBAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-15T03:20:52.155Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Masproductos.cshtml",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Masproductos.cshtml",
-              "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Tienda\\Masproductos.cshtml",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Masproductos.cshtml",
-              "RelativeToolTip": "PresentacionTienda\\Views\\Tienda\\Masproductos.cshtml",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAEIAAABZAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-13T18:42:02.348Z",
+              "WhenOpened": "2024-05-10T08:35:42.411Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Index.cshtml",
-              "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Tienda\\Index.cshtml",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Index.cshtml",
-              "RelativeToolTip": "PresentacionTienda\\Views\\Tienda\\Index.cshtml",
-              "ViewState": "AQIAAPMAAAAAAAAAAAAAACABAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-11T17:27:53.753Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "DetalleProducto.cshtml",
               "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "RelativeToolTip": "PresentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
-              "ViewState": "AQIAACEAAAAAAAAAAAAAADUAAABwAAAA",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAxwE4AAABNAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-13T13:30:42.377Z",
+              "WhenOpened": "2024-05-10T08:06:05.655Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
+              "Title": "Carrito.cshtml",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Carrito.cshtml",
+              "RelativeDocumentMoniker": "PresentacionTienda\\Views\\Tienda\\Carrito.cshtml",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Views\\Tienda\\Carrito.cshtml",
+              "RelativeToolTip": "PresentacionTienda\\Views\\Tienda\\Carrito.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAEcAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-05-09T23:47:31.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "TiendaController.cs",
               "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Controllers\\TiendaController.cs",
               "RelativeDocumentMoniker": "PresentacionTienda\\Controllers\\TiendaController.cs",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\sisventasVF\\PresentacionTienda\\Controllers\\TiendaController.cs",
               "RelativeToolTip": "PresentacionTienda\\Controllers\\TiendaController.cs",
-              "ViewState": "AQIAACkAAAAAAAAAAAAUwDsAAAAJAAAA",
+              "ViewState": "AQIAAGkAAAAAAAAAAAAMwHcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-08T03:51:31.73Z",
+              "WhenOpened": "2024-05-03T20:14:32.278Z",
               "EditorCaption": ""
             }
           ]

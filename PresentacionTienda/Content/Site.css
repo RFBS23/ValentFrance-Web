@@ -91,6 +91,35 @@
     }
 }
 
+.scroll-container {
+    /* Agrega un borde al contenedor */
+    border: 1px solid #ccc;
+    /* Define un radio de borde para hacerlo redondeado */
+    border-radius: 10px;
+    /* Establece una altura máxima para el contenedor */
+    max-height: 300px; /* Ajusta según tus necesidades */
+    /* Habilita el desplazamiento vertical */
+    overflow-y: auto;
+}
+
+/* Estilo para el contenido del scroll */
+.scroll-content {
+    /* Agrega un relleno interno para separar el contenido del borde */
+    padding: 10px;
+}
+
+/* Opcional: Estilo para los bordes del scroll */
+.scroll-container::-webkit-scrollbar {
+    width: 10px; /* Ancho del scrollbar */
+    background-color: #f5f5f5; /* Color de fondo del scrollbar */
+}
+
+/* Opcional: Estilo para el thumb (la barra de desplazamiento) del scroll */
+.scroll-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Color del thumb */
+    border-radius: 10px; /* Radio de borde del thumb */
+}
+
 body {
     margin: 0;
     font-family: var(--bs-body-font-family);

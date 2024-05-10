@@ -84,7 +84,7 @@ namespace PresentacionTienda.Controllers
                     Session["correoCliente"] = oCliente.correo;
                     Session["documento"] = oCliente.documento;
                     ViewBag.Error = null;
-                    return RedirectToAction("Index", "Tienda");
+                    return RedirectToAction("Masproductos", "Tienda");
                 }
             }
         }

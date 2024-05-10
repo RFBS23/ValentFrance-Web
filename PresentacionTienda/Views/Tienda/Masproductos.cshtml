@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "Masproductos";
+    ViewBag.Title = "Catalogos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -15,7 +15,7 @@
             <div class="col-lg-6 col-md-6 col-12">
                 <ul class="breadcrumb-nav">
                     <li><a href="@Url.Action("Index", "Tienda")"><i class="lni lni-home"></i> Inicio</a></li>
-                    <li><a href="@Url.Action("Masproductos", "Tienda")">Tienda</a></li>
+                    <li><a href="@Url.Action("Masproductos", "Tienda")">Catalogos</a></li>
                     <li>Productos</li>
                 </ul>
             </div>
@@ -64,7 +64,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-7 col-md-8 col-12">
                                 <div class="product-sorting">
-                                    <label for="sorting">Ver Como (Vertical - Horizontal)</label>
+                                    <label for="sorting">Todos los Productos</label>
                                     
                                 </div>
                             </div>
@@ -72,7 +72,6 @@
                                 <nav>
                                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                         <button class="nav-link active" id="nav-grid-tab" data-bs-toggle="tab" data-bs-target="#nav-grid" type="button" role="tab" aria-controls="nav-grid" aria-selected="true"><i class="lni lni-grid-alt"></i></button>
-                                        <button class="nav-link" id="nav-list-tab" data-bs-toggle="tab" data-bs-target="#nav-list" type="button" role="tab" aria-controls="nav-list" aria-selected="false"><i class="lni lni-list"></i></button>
                                     </div>
                                 </nav>
                             </div>
@@ -86,16 +85,20 @@
                                     <div class="single-product">
                                         <div class="product-image">
                                             <img src="~/assets/img/logovalent.png" alt="#">
-                                            <span class="sale-tag">-25%</span>
+                                            <span class="sale-tag">- %</span>
                                             <div class="button">
-                                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+                                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> &nbsp;</a>
                                             </div>
                                         </div>
                                         <div class="product-info">
-                                            <span class="category">Speaker</span>
+                                            <span class="category">&nbsp;</span>
                                             <h4 class="title">
-                                                <a href="product-grids.html">Bluetooth Speaker</a>
+                                                <a href="product-grids.html">&nbsp;r</a>
                                             </h4>
+                                            <div class="price">
+                                                <span>&nbsp;</span>
+                                                <span class="discount-price">&nbsp;</span>
+                                            </div>
                                             <div class="price">
                                                 <span>$275.00</span>
                                                 <span class="discount-price">$300.00</span>
@@ -108,60 +111,9 @@
                             <div class="row">
                                 <div class="col-12">
                                     <!-- Pagination -->
-                                    <div class="pagination left">
-                                        <ul class="pagination-list">
-                                            <!-- Aquí se generará la lista de páginas -->
-                                        </ul>
-                                    </div>
+
                                     <!--/ End Pagination -->
                                 </div>
-                            </div>
-                        </div>
-                        <!-- card horizontal-->
-                        <div class="tab-pane fade" id="nav-list" role="tabpanel" aria-labelledby="nav-list-tab">
-                            <div class="row" id="container_productos_horizontal">
-                                <div class="col-lg-12 col-md-12 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="row align-items-center">
-                                            <div class="col-lg-4 col-md-4 col-12">
-                                                <div class="product-image">
-                                                    <img src="~/assets/img/logovalent.png" alt="#">
-                                                    <div class="button">
-                                                        <a href="product-details.html" class="btn">
-                                                            <i class="lni lni-cart"></i> Add to
-                                                            Cart
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-8 col-md-8 col-12">
-                                                <div class="product-info">
-                                                    <span class="category">Watches</span>
-                                                    <h4 class="title">
-                                                        <a href="product-grids.html">Xiaomi Mi Band 5</a>
-                                                    </h4>
-                                                    <ul class="review">
-                                                        <li><i class="lni lni-star-filled"></i></li>
-                                                        <li><i class="lni lni-star-filled"></i></li>
-                                                        <li><i class="lni lni-star-filled"></i></li>
-                                                        <li><i class="lni lni-star-filled"></i></li>
-                                                        <li><i class="lni lni-star"></i></li>
-                                                        <li><span>4.0 Review(s)</span></li>
-                                                    </ul>
-                                                    <div class="price">
-                                                        <span>$199.00</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                
                             </div>
                         </div>
                     </div>
@@ -181,7 +133,6 @@
             listarCategorias();
             listarMarcas();
             mostrarFiltros(0, 0, 0);
-            Filtros_horizontales(0, 0, 0);
         })
 
         function listarCategorias() {
@@ -277,9 +228,12 @@
                 data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    $("#container_productos").LoadingOverlay("show");
+                },
                 success: function(response) {
-                    $("#container_productos").html("");
-                    $("#container_productos").LoadingOverlay("hide");
+                    $("#container_productos").empty();
+                    //$("#container_productos").LoadingOverlay("hide");
 
                     if (response.data.length === 0) {
                         $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
@@ -294,11 +248,19 @@
                             } else {
                                 imagenSrc = "../assets/img/logovalent.png";
                             }
+
+                            var precioVenta = element.precioventa;
+                            var descuento = element.descuento;
+                            var precioDescontado = precioVenta - (precioVenta * (descuento / 100));
+
                             $("<div>").addClass("col-lg-4 col-md-6 col-12").append(
                                 $("<div>").addClass("single-product").append(
                                     $("<div>").addClass("product-image").append(
                                         $("<img>").attr({ "src": imagenSrc, "height": "230" }),
-                                        (element.descuento > 0) ? $("<div>").addClass("sale-tag bg-success").text("-" + element.descuento + " %") : null
+                                        (element.descuento > 0) ? $("<div>").addClass("sale-tag").text("-" + element.descuento + " %") : null,
+                                        $("<div>").addClass("button").append(
+                                            $("<a>").addClass("btn").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).html('<i class="lni lni-search"></i> Ver Detalles')
+                                        ),
                                     ),
                                     $("<div>").addClass("product-info").append(
                                         $("<div>").addClass("category").text(element.codigo),
@@ -306,15 +268,16 @@
                                             $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
                                         ),
                                         $("<div>").addClass("price").append(
-                                            $("<span>").text(" S/ " + element.precioventa.toFixed(2))
+                                            (descuento > 0) ?
+                                                $("<span>").text("S/ " + precioDescontado.toFixed(2)).append($("<del>").addClass("discount-price").text("S/ " + precioVenta.toFixed(2))) :
+                                                $("<span>").text("S/ " + precioVenta.toFixed(2))
                                         ),
                                         $("<ul>").addClass("review").append(
-                                            @if (Session["cliente"] != null)
-                                                {
-                                                    @:$("<button>").addClass("btn btn-lg btn-link fs-6 text-decoration-none border-end agregarcarrito").data("idproducto", element.idproducto).text("Agregar a carrito"),
-                                                }
                                             $("<div>").addClass("mt-4").append(
-                                                $("<a>").addClass("btn btn-outline-primary mt-auto ").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).text("Ver Detalles")
+                                                @if (Session["cliente"] != null)
+                                                {
+                                                    @:$("<button>").addClass("btn btn-outline-primary agregarcarrito").data("idproducto", element.idproducto).html('<i class="lni lni-cart"></i> Agregar Carrito'),
+                                                }
                                             )
                                         )
                                     )
@@ -323,74 +286,8 @@
                         })
                     }
                 },
-                beforeSend: function() {
-                    $("#container_productos").LoadingOverlay("show");
-                }
-            })
-        }
-
-        function Filtros_horizontales(_idcategoria, _idmarca, _idtallaropa) {
-            jQuery.ajax({
-                url: "@Url.Action("listarProductos", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function(response) {
-                    $("#container_productos_horizontal").html("");
-                    $("#container_productos_horizontal").LoadingOverlay("hide");
-
-                    if (response.data.length === 0) {
-                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
-                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
-                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
-                        ).appendTo("#container_productos_horizontal")
-                    } else {
-                        $.each(response.data, function (i, element) {
-                            var imagenSrc;
-                            if (element.Extension && element.base64) {
-                                imagenSrc = "data:image/" + element.Extension + ";base64," + element.base64;
-                            } else {
-                                imagenSrc = "../assets/img/logovalent.png";
-                            }
-
-                            $("<div>").addClass("col-lg-12 col-md-12 col-12").append(
-                                $("<div>").addClass("single-product").append(
-                                    $("<div>").addClass("row align-items-center").append(
-                                        $("<div>").addClass("col-lg-4 col-md-4 col-12").append(
-                                            $("<div>").addClass("product-image").append(
-                                                $("<img>").addClass("card-img-top rounded-4").attr({ "src": imagenSrc, "height": "300" }),
-                                                (element.descuento > 0) ? $("<div>").addClass("sale-tag bg-success").text("-" + element.descuento + " %") : null
-                                            )
-                                        ),
-                                        $("<div>").addClass("col-lg-8 col-md-8 col-12").append(
-                                            $("<div>").addClass("product-info").append(
-                                                $("<div>").addClass("category").text(element.codigo),
-                                                $("<h4>").addClass("title").append(
-                                                    $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
-                                                ),
-                                                $("<div>").addClass("price").append(
-                                                    $("<span>").text(" S/ " + element.precioventa.toFixed(2))
-                                                ),
-                                                $("<ul>").addClass("review").append(
-                                                    @if (Session["cliente"] != null)
-                                                        {
-                                                            @:$("<button>").addClass("btn btn-lg btn-link fs-6 text-decoration-none border-end agregarcarrito").data("idproducto", element.idproducto).text("Agregar a carrito"),
-                                                        }
-                                                    $("<div>").addClass("mt-4").append(
-                                                        $("<a>").addClass("btn btn-outline-primary mt-auto ").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).text("Ver Detalles")
-                                                    )
-                                                )
-                                            )
-                                        )
-                                    )
-                                )
-                            ).appendTo("#container_productos_horizontal")
-                        })
-                    }
-                },
-                beforeSend: function() {
-                    $("#container_productos_horizontal").LoadingOverlay("show");
+                complete: function() {
+                    $("#container_productos").LoadingOverlay("hide");
                 }
             })
         }
@@ -400,8 +297,39 @@
             var _idmarca = $("input[name=marcas]:checked").val()
             var _idtallaropa = $("input[name=tallasropa]:checked").val()
             mostrarFiltros(_idcategoria, _idmarca, _idtallaropa);
-            Filtros_horizontales(_idcategoria, _idmarca, _idtallaropa)
         })
 
+        $(document).on("click", "button.agregarcarrito", function () {
+            //console.log($(this).data("idproducto"))
+            jQuery.ajax({
+                url: "@Url.Action("AgregarCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto: $(this).data("idproducto") }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.respuesta) {
+                        mostrarcantidadCarrito();
+                        mostrarCarrito();
+                        Swal.fire({
+                            title: "Producto agregado al carrito",
+                            text: "¿Desea ir al carrito?",
+                            icon: "success",
+                            showCancelButton: true,
+                            confirmButtonClass: "btn-outline-primary",
+                            confirmButtonText: "Si",
+                            cancelButtonText: "No",
+                            closeOnConfirm: true
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                window.location.href = '@Url.Action("Carrito", "Tienda")';
+                            }
+                        });
+                    } else {
+                        Swal.fire("", data.mensaje, "warning");
+                    }
+                }
+            });
+        });
     </script>
 }

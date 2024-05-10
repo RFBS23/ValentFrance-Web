@@ -4,15 +4,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <section class="hero-area">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-12 custom-padding-right">
                 <div class="slider-head">
-                    <!-- Start Hero Slider -->
                     <div class="hero-slider">
-                        <!-- Start Single Slider -->
                         <div class="single-slider" style="background-image: url(../assets/img/hero/slider-bg1.jpg);">
                             <div class="content">
                                 <h2>
@@ -29,8 +26,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Slider -->
-                        <!-- Start Single Slider -->
                         <div class="single-slider" style="background-image: url(../assets/img/hero/slider-bg2.jpg);">
                             <div class="content">
                                 <h2>
@@ -47,15 +42,12 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Slider -->
                     </div>
-                    <!-- End Hero Slider -->
                 </div>
             </div>
             <div class="col-lg-4 col-12">
                 <div class="row">
                     <div class="col-lg-12 col-md-6 col-12 md-custom-padding">
-                        <!-- Start Small Banner -->
                         <div class="hero-small-banner" style="background-image: url('../assets/img/hero/slider-bnr.jpg');">
                             <div class="content">
                                 <h2>
@@ -65,15 +57,17 @@
                                 <h3>$259.99</h3>
                             </div>
                         </div>
-                        <!-- End Small Banner -->
                     </div>
                     <div class="col-lg-12 col-md-6 col-12">
                         <div class="hero-small-banner style2">
                             <div class="content">
                                 <h2>¡Oferta semanal!</h2>
-                                <p>Esta semana ahorra hasta un 50 % en todos los artículos de la tienda online.</p>
+                                <p>Esta semana ahorra hasta un 50 % en todos los artículos de la tienda online.
+                                    <br />
+                                    Ver Catalogo
+                                </p>
                                 <div class="button">
-                                    <a class="btn" href="@Url.Action("Masproductos", "tienda")">Haz click aqui <i class="lni lni-pointer-top"></i></a>
+                                    <a class="btn" href="@Url.Action("Masproductos", "tienda")">Haz click aqui  <i class="lni lni-pointer-top"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +94,6 @@
         </div>
         <div class="row" id="container_productos">
             <div class="col-lg-3 col-md-6 col-12">
-                <!-- Start Single Product -->
                 <div class="single-product">
                     <div class="product-image">
                         <img src="~/assets/img/products/product-1.jpg" alt="#">
@@ -121,7 +114,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- End Single Product -->
             </div>
         </div>
     </div>
@@ -130,7 +122,6 @@
 <section class="py-1">
     <div class="container-fluid">
         <div class="row">
-            <!-- Categorias y Marcas -->
             <div class="col-md-9">
                 <div id="container_productos" class="row row-cols-1 row-cols-md-3 g-3">
 
@@ -140,175 +131,3 @@
     </div>
 </section>
 
-<!-- Botón de WhatsApp
-<div class="floating-button">
-    <a href="https://api.whatsapp.com/send?phone=933103242&text=Hola" target="_blank">
-        <i class="bi bi-whatsapp"></i>
-    </a>
-</div>-->
-
-@section scripts {
-    <script>
-        function changeImage(newSrc) {
-            document.getElementById("mainImage").src = newSrc;
-        }
-
-        $(document).ready(function () {
-            listarCategorias();
-            listarMarcas();
-            mostrarFiltros(0, 0, 0);
-        })
-
-        function listarCategorias() {
-            jQuery.ajax({
-                url: "@Url.Action("ListaCategorias", "Tienda")",
-                type: "GET",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    $("#con_categoria").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2 text-dark").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": "0", "id": "cx", "checked": "checked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "cx" })
-                    ).appendTo("#con_categoria")
-
-                    $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2 text-dark fw-semibold").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": element.idcategoria, "id": "cat" + i }),
-                            $("<label>").addClass("form-check-label").text(element.nombrecategoria).attr({ "for": "cat" + 1 })
-                        ).appendTo("#con_categoria")
-                    })
-                    mostrarTallas();
-                },
-                beforeSend: function () {
-                    $("#con_categoria").LoadingOverlay("show");
-                }
-            })
-        }
-
-        function listarMarcas() {
-            jQuery.ajax({
-                url: "@Url.Action("FiltroMarca", "Tienda")",
-                type: "GET",
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    $("#con_marcas").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marcas", "value": "0", "id": "mx", "checked": "checked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "mx" })
-                    ).appendTo("#con_marcas")
-
-                    $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marcas", "value": element.idmarca, "id": "ct" + i }),
-                            $("<label>").addClass("form-check-label").text(element.nombremarca).attr({ "for": "ct" + 1 })
-                        ).appendTo("#con_marcas")
-                    })
-                },
-                beforeSend: function () {
-                    $("#con_marcas").LoadingOverlay("show");
-                }
-            })
-        }
-
-        function mostrarTallas() {
-            var _idcategoria = $("input[name=categoria]:checked").val();
-            jQuery.ajax({
-                url: "@Url.Action("FiltroTallas", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idcategoria: _idcategoria }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    $("#con_tallas").html("");
-                    $("#con_tallas").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "tallasropa", "value": "0", "id": "tx", "checked": "checked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "tx" })
-                    ).appendTo("#con_tallas")
-
-                    $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "tallasropa", "value": element.idtallaropa, "id": "t" + i }),
-                            $("<label>").addClass("form-check-label").text(element.nombretalla).attr({ "for": "t" + 1 })
-                        ).appendTo("#con_tallas")
-                    })
-                },
-                beforeSend: function () {
-                    $("#con_tallas").LoadingOverlay("show");
-                }
-            })
-        }
-
-        $(document).on("change", "input[name=categoria]", function () {
-            mostrarTallas();
-        })
-
-        function mostrarFiltros(_idcategoria, _idmarca, _idtallaropa) {
-            jQuery.ajax({
-                url: "@Url.Action("listarProductos", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (response) {
-                    $("#container_productos").html("");
-                    $("#container_productos").LoadingOverlay("hide");
-
-                    if (response.data.length === 0) {
-                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
-                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
-                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
-                        ).appendTo("#container_productos")
-                    } else {
-                        var shuffledProducts = response.data.sort(() => Math.random() - 0.5).slice(0, 6); // Obtener una muestra aleatoria de 6 productos
-                        $.each(shuffledProducts, function (i, element) {
-                            var imagenSrc;
-                            if (element.Extension && element.base64) {
-                                imagenSrc = "data:image/" + element.Extension + ";base64," + element.base64;
-                            } else {
-                                imagenSrc = "assets/img/logovalent.png";
-                            }
-
-                            $("<div>").addClass("col-lg-4 col-md-6 col-12").append(
-                                $("<div>").addClass("single-product").append(
-                                    $("<div>").addClass("product-image").append(
-                                        $("<img>").addClass("card-img-top rounded-4").attr({ "src": imagenSrc, "height": "230" }),
-                                        (element.descuento > 0) ? $("<div>").addClass("sale-tag bg-success").text("-" + element.descuento + " %") : null,
-                                        $("<div>").addClass("button").append(
-                                            $("<a>").addClass("btn btn-outline-dark").attr("href", "@Url.Action("Masproductos", "Tienda")").append(
-                                                $("<i>").addClass("lni lni-search").css("margin-right", "5px"),
-                                                "Ver Mas"
-                                            )
-                                        )
-                                    ),
-                                    $("<div>").addClass("product-info").append(
-                                        $("<div>").addClass("category").text(element.codigo),
-                                        $("<h4>").addClass("title").append(
-                                            $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
-                                        ),
-                                        $("<div>").addClass("price").append(
-                                            $("<span>").text(" S/ " + element.precioventa.toFixed(2))
-                                        )
-                                    )
-                                )
-                            ).appendTo("#container_productos");
-                        });
-                    }
-                },
-                beforeSend: function () {
-                    $("#container_productos").LoadingOverlay("show");
-                }
-            });
-        }
-
-        $("#btn_aplicarfiltro").click(function () {
-            var _idcategoria = $("input[name=categoria]:checked").val()
-            var _idmarca = $("input[name=marcas]:checked").val()
-            var _idtallaropa = $("input[name=tallasropa]:checked").val()
-            mostrarFiltros(_idcategoria, _idmarca, _idtallaropa)
-        })
-
-    </script>
-}

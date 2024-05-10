@@ -8,7 +8,7 @@ namespace Entidad
 {
     public class provincia
     {
-        public int idprovincia { get; set; }
+        public string idprovincia { get; set; }
         public string descripcion { get; set; }
     }
 }

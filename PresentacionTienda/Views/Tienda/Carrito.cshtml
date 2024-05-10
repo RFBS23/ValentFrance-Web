@@ -1,0 +1,263 @@
+﻿
+@{
+    ViewBag.Title = "Carrito";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Carrito</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                    <li><a href="@Url.Action("Index", "Tienda")"><i class="lni lni-home"></i> Inicio</a></li>
+                    <li><a href="@Url.Action("Masproductos", "Tienda")">Catalogo</a></li>
+                    <li>Carrito</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="shopping-cart section">
+    <div class="container">
+        <div class="cart-list-head">
+            <!-- Cart List Title -->
+            <div class="cart-list-title">
+                <div class="row">
+                    <div class="col-lg-4 col-md-3 col-12">
+                        <p>Producto</p>
+                    </div>
+                    <div class="col-lg-3 col-md-2 col-12">
+                        <p>Cantidad</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Precio</p>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-12">
+                        <p>Descuento</p>
+                    </div>
+                    <div class="col-lg-1 col-md-2 col-12">
+                        <p>Eliminar</p>
+                    </div>
+                </div>
+            </div>
+            <!-- End Cart List Title -->
+            <!-- Cart Single List list -->
+            <div class="cart-single-list" id="lista-carrito">
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <!-- Total Amount -->
+                <div class="total-amount">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-6 col-12">
+
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-12">
+                            <div class="right">
+                                <ul>
+                                    <li>Carrito Subtotal<span id="total"> S/ 0.00</span></li>
+                                    <li>Ahorras<span id="ahorro">S/ 0.00 %</span></li>
+                                    <li class="last">Total a pagar<span id="total-pagar">S/ 0.00</span></li>
+                                </ul>
+                                <div class="button">
+                                    <a href="@Url.Action("Checkout", "Tienda")" class="btn">Ir a pagar</a>
+                                    <a href="@Url.Action("Masproductos", "Tienda")" class="btn btn-alt">Seguir comprando</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/ End Total Amount -->
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(document).ready(function () {
+            jQuery.ajax({
+                url: "@Url.Action("ListarProductosCarrito", "Tienda")",
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (response) {
+                    $("#lista-carrito").html("");
+                    $("#lista-carrito").LoadingOverlay("hide");
+
+                    $.each(response.data, function (i, item) {
+                        var detalleProductoUrl = ObtenerUrlDetalleProducto(item.oProductos.idproducto);
+
+                        var productoDiv = $("<div>").addClass("row align-items-center card-producto").append(
+                            $("<div>").addClass("col-lg-1 col-md-1 col-12").append(
+                                $("<img>").attr({ "src": item.oProductos.base64 ? "data:image/" + item.oProductos.Extension + ";base64," + item.oProductos.base64 : "../assets/img/logovalent.png" })
+                            ),
+                            $("<div>").addClass("col-lg-3 col-md-3 col-12").append(
+                                $("<h5>").addClass("product-name").append(
+                                    $("<a>").attr({ "href": detalleProductoUrl }).text(item.oProductos.nombre)
+                                ),
+                                $("<p>").addClass("product-des").append(
+                                    $("<span>").append(
+                                        $("<em>").text("Tipo prenda: " + item.oProductos.descripcion)
+                                    ),
+                                    $("<span>").append(
+                                        $("<em>").text("Color: " + item.oProductos.colores)
+                                    )
+                                )
+                            ),
+                            $("<div>").addClass("col-lg-3 col-md-3 col-12").append(
+                                $("<div>").addClass("d-flex").append(
+                                    $("<button>").addClass("btn btn-outline-secondary btn-restar rounded-4").append(
+                                        $("<i>").addClass("lni lni-minus")
+                                    ),
+                                    $("<input>").addClass("form-control input-cantidad text-center rounded-3").attr({ "disabled": "disabled" }).css({ "width": "60px" }).data("oProductos", item.oProductos).val(item.cantidad),
+                                    $("<button>").addClass("btn btn-outline-secondary btn-sumar rounded-4").append(
+                                        $("<i>").addClass("lni lni-plus")
+                                    )
+                                )
+                            ),
+                            $("<div>").addClass("col-lg-2 col-md-2 col-12").append(
+                                $("<p>").text("S/ " + item.oProductos.precioventa.toFixed(2))
+                            ),
+                            $("<div>").addClass("col-lg-2 col-md-2 col-12").append(
+                                $("<p>").text(item.oProductos.descuento + " %")
+                            ),
+                            $("<div>").addClass("col-lg-1 col-md-2 col-12").append(
+                                $("<a>").addClass("remove-item btn-eliminar").append(
+                                    $("<i>").addClass("lni lni-close")
+                                ).data("idproducto", item.oProductos.idproducto)
+                            )
+                        );
+                        productoDiv.append("<div>").addClass("cart-single-list");
+                        productoDiv.appendTo("#lista-carrito");
+                    });
+                    sumarTotal();
+                },
+                error: function (error) {
+                    $("#lista-carrito").LoadingOverlay("hide");
+                },
+                beforeSend: function () {
+                    $("#lista-carrito").LoadingOverlay("show");
+                }
+            });
+
+        });
+
+        function ObtenerUrlDetalleProducto(idProducto) {
+            return "/Tienda/DetalleProducto?idproducto=" + idProducto;
+        }
+
+        function sumarTotal() {
+            var sumaTotal = parseFloat(0);
+            var ahorroTotal = parseFloat(0);
+            $("input.input-cantidad").each(function (i) {
+                var producto = $(this).data("oProductos");
+                var precio = parseFloat(producto.precioventa);
+                var cantidad = parseFloat($(this).val());
+                var descuento = parseFloat(producto.descuento);
+                var subtotal = precio * cantidad; // Calcula el subtotal con descuento
+                sumaTotal += subtotal;
+                var descuentoAplicado = (precio * cantidad * descuento) / 100; // Calcula el descuento aplicado para este producto
+                ahorroTotal += descuentoAplicado;
+            });
+            var totalPagar = sumaTotal - ahorroTotal;
+            $("#total").text("S/ " + sumaTotal.toFixed(2));
+            $("#ahorro").text("S/ " + ahorroTotal.toFixed(2));
+            $("#total-pagar").text("S/ " + totalPagar.toFixed(2));
+        }
+
+        $(document).on("click", ".btn-sumar", function () {
+            var div_contenedor = $(this).parent("div.d-flex");
+            var input_cantidad = $(div_contenedor).find("input.input-cantidad");
+            var btn = $(this)
+            var idproducto = $(input_cantidad).data("oProductos").idproducto;
+            jQuery.ajax({
+                url: "@Url.Action("OperacionCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto: idproducto, sumar : true }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(btn).LoadingOverlay("hide")
+                    if (data.respuesta) {
+                        var cantidad = parseInt($(input_cantidad).val()) + 1;
+                        $(input_cantidad).val(cantidad)
+                        sumarTotal();
+                    } else {
+                        Swal.fire("", data.mensaje, "warning");
+                    }
+                },
+                beforeSend: function () {
+                    $(btn).LoadingOverlay("show")
+                },
+                error: function (error) {
+                    $(btn).LoadingOverlay("hide")
+                }
+            })
+        })
+
+        $(document).on("click", ".btn-restar", function () {
+            var div_contenedor = $(this).parent("div.d-flex");
+            var input_cantidad = $(div_contenedor).find("input.input-cantidad");
+            var btn = $(this)
+            var idproducto = $(input_cantidad).data("oProductos").idproducto;
+            var cantidad = parseInt($(input_cantidad).val()) - 1;
+            if (cantidad >= 1) {
+                jQuery.ajax({
+                    url: "@Url.Action("OperacionCarrito", "Tienda")",
+                    type: "POST",
+                    data: JSON.stringify({ idproducto: idproducto, sumar : false }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    success: function (data) {
+                        $(btn).LoadingOverlay("hide")
+                        if (data.respuesta) {
+                            $(input_cantidad).val(cantidad)
+                            sumarTotal();
+                        } else {
+                            Swal.fire("", data.mensaje, "warning");
+                        }
+                    },
+                    beforeSend: function () {
+                        $(btn).LoadingOverlay("show")
+                    },
+                    error: function (error) {
+                        $(btn).LoadingOverlay("hide")
+                    }
+                })
+            }
+        })
+
+        $(document).on("click", ".btn-eliminar", function () {
+            var idproducto = $(this).data("idproducto");
+            var car_producto = $(this).parents("div.card-producto");
+            jQuery.ajax({
+                url: "@Url.Action("EliminarCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto: idproducto }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.respuesta) {
+                        car_producto.remove();
+                        mostrarcantidadCarrito();
+                        mostrarCarrito();
+                        sumarTotal();
+                    } else {
+                        Swal.fire("", data.mensaje, "warning");
+                    }
+                }
+            })
+        })
+
+    </script>
+
+}

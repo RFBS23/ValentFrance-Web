@@ -1,0 +1,413 @@
+﻿
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .checkout-payment-form {
+        display: none; /* Ocultar el formulario de pago por defecto */
+    }
+</style>
+
+<div class="breadcrumbs">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6 col-md-6 col-12">
+                <div class="breadcrumbs-content">
+                    <h1 class="page-title">Procesar Pagos</h1>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 col-12">
+                <ul class="breadcrumb-nav">
+                    <li><a href="@Url.Action("Index", "Tienda")"><i class="lni lni-home"></i> Inicio</a></li>
+                    <li><a href="@Url.Action("Carrito", "Tienda")">Carrito</a></li>
+                    <li>Procesar Pagos</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="checkout-wrapper section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="checkout-steps-form-style-1">
+                    <ul id="accordionExample">
+                        <li>
+                            <h6 class="title" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Tus Datos Personales </h6>
+                            <section class="checkout-steps-form-content collapse show" id="collapseThree" aria-labelledby="headingThree" data-bs-parent="#accordionExample" style="">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="single-form form-default">
+                                            <label>Nombres y Apellidos</label>
+                                            <div class="row">
+                                                <div class="col-md-6 form-input form">
+                                                    <input type="text" placeholder="Nombres">
+                                                </div>
+                                                <div class="col-md-6 form-input form">
+                                                    <input type="text" placeholder="Apellidos">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-default">
+                                            <label>Correo electronico</label>
+                                            <div class="form-input form">
+                                                <input type="email" placeholder="Correo">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-default">
+                                            <label>Teléfono</label>
+                                            <div class="form-input form">
+                                                <input type="tel" id="telefonoInput" placeholder="Teléfono" maxlength="9" onkeypress="return SoloNumeros(event);" required>
+                                                <div id="telefonoError" class="invalid-feedback">El teléfono debe comenzar con el número 9.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-default">
+                                            <label for="departamento">Departamento</label>
+                                            <div class="select-items">
+                                                <select class="form-control" id="cbdepartamento">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-default">
+                                            <label id="provincia">Provincia</label>
+                                            <div class="select-items">
+                                                <select class="form-control" id="cbprovincia">
+                                                    <option selected disabled>seleccione ...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="single-form form-default">
+                                            <label id="distrito">Distrito</label>
+                                            <div class="select-items">
+                                                <select class="form-control" id="cbdistrito">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="single-form form-default">
+                                            <label>Dirección de envio</label>
+                                            <div class="form-input form">
+                                                <input type="text" placeholder="Dirección de envio">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="single-checkbox checkbox-style-3">
+                                            <input type="checkbox" id="checkbox-3">
+                                            <label for="checkbox-3"><span></span></label>
+                                            <p>Mis direcciones de entrega y correo son las mismas.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="single-form button">
+                                            <button class="btn collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">siguiente</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </li>
+                        <li>
+                            <h6 class="title collapsed" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">Elija el tipo de envio</h6>
+                            <section class="checkout-steps-form-content collapse" id="collapseFour" aria-labelledby="headingFour" data-bs-parent="#accordionExample" style="">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="checkout-payment-option">
+                                            <h6 class="heading-6 font-weight-400 payment-title">
+                                                Seleccionar Entrega
+                                                Opción
+                                            </h6>
+                                            <div class="payment-option-wrapper">
+                                                <div class="single-payment-option">
+                                                    <input type="radio" name="shipping" checked="" id="recojotienda">
+                                                    <label for="recojotienda">
+                                                        <img src="~/assets/img/tienda.png" alt="Sipping">
+                                                        <p>Recoger en tienda</p>
+                                                        <span class="price">Gratis</span>
+                                                    </label>
+                                                </div>
+                                                <div class="single-payment-option">
+                                                    <input type="radio" name="shipping" id="delivery">
+                                                    <label for="delivery">
+                                                        <img src="~/assets/img/shipping-1.png" alt="Sipping">
+                                                        <p>Envío estándar</p>
+                                                        <span class="price">$10.50</span>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="steps-form-btn button">
+                                            <button class="btn" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">Regresar</button>
+                                            <button class="btn btn-alt" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="true" aria-controls="collapsefive">Guardar &amp; Continuar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </li>
+                        <li>
+                            <h6 class="title collapsed" data-bs-toggle="collapse" data-bs-target="#collapsefive" aria-expanded="false" aria-controls="collapsefive">Información de pago</h6>
+                            <section class="checkout-steps-form-content collapse" id="collapsefive" aria-labelledby="headingFive" data-bs-parent="#accordionExample" style="">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="payment-option-wrapper">
+                                            <div class="single-payment-option">
+                                                <input type="radio" name="shipping" id="yape">
+                                                <label for="yape">
+                                                    <img src="~/assets/img/yape.png" alt="Sipping">
+                                                    <p>YAPE</p>
+                                                </label>
+                                            </div>
+                                            <div class="single-payment-option">
+                                                <input type="radio" name="shipping" id="plin">
+                                                <label for="plin">
+                                                    <img src="~/assets/img/plin.jpg" alt="Sipping">
+                                                    <p>PLIN</p>
+                                                </label>
+                                            </div>
+                                            <div class="single-payment-option">
+                                                <input type="radio" name="shipping" id="izipay">
+                                                <label for="izipay">
+                                                    <img src="~/assets/img/izipay.png" alt="Sipping">
+                                                    <p>IZIPAY</p>
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="checkout-payment-form" id="yape-form">
+                                            <div class="single-form form-default">
+                                                <label>Cardholder Name</label>
+                                                <div class="form-input form">
+                                                    <input type="text" placeholder="Cardholder Name">
+                                                </div>
+                                            </div>
+                                            <div class="single-form form-default">
+                                                <label>Card Number</label>
+                                                <div class="form-input form">
+                                                    <input id="credit-input" type="text" placeholder="0000 0000 0000 0000">
+                                                </div>
+                                            </div>
+                                            <div class="single-form form-default button">
+                                                <button class="btn">pay now</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="checkout-payment-form" id="plin-form">
+                                            <div class="single-form form-default">
+                                                <label>Cardholder Name</label>
+                                                <div class="form-input form">
+                                                    <input type="text" placeholder="Cardholder Name">
+                                                </div>
+                                            </div>
+                                            <div class="single-form form-default button">
+                                                <button class="btn">pagar</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="checkout-payment-form" id="izipay-form">
+                                            <div class="single-form form-default">
+                                                <label>Cardholder Name</label>
+                                                <div class="form-input form">
+                                                    <input type="text" placeholder="Cardholder Name">
+                                                </div>
+                                            </div>
+                                            <div class="single-form form-default">
+                                                <label>Card</label>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="checkout-sidebar">
+                    <div class="checkout-sidebar-price-table">
+                        <h5 class="title">Tabla de Precios</h5>
+
+                        <div class="sub-total-price">
+                            <div class="total-price">
+                                <p class="value">Precio Subotal:</p>
+                                <p class="price">$144.00</p>
+                            </div>
+                            <div class="total-price shipping">
+                                <p class="value">Subotal Price:</p>
+                                <p class="price">$10.50</p>
+                            </div>
+                            <div class="total-price discount">
+                                <p class="value">Subotal Price:</p>
+                                <p class="price">$10.00</p>
+                            </div>
+                        </div>
+
+                        <div class="total-payable">
+                            <div class="payable-price">
+                                <p class="value">Subotal Price:</p>
+                                <p class="price">$164.50</p>
+                            </div>
+                        </div>
+                        <div class="price-table-btn button" onclick="RealizarPago()">
+                            <a href="javascript:void(0)" class="btn btn-alt"> <i class="lni lni-paypal-original"></i> Pagar con Paypal</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+        function SoloNumeros(evt) {
+            if (window.event) {
+                keynum = evt.keyCode;
+            }
+            else {
+                keynum = evt.which;
+            }
+            if ((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13) {
+                return true;
+            }
+            else {
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar Solo Numeros',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                //alert("Ingresar solo numeros");
+                return false;
+            }
+        }
+
+        document.querySelectorAll('input[name="shipping"]').forEach((radio) => {
+            radio.addEventListener('change', () => {
+                document.querySelectorAll('.checkout-payment-form').forEach((form) => {
+                    form.style.display = 'none'; // Ocultar todos los formularios
+                });
+
+                const selectedFormId = radio.id + '-form';
+                const selectedForm = document.getElementById(selectedFormId);
+                if (selectedForm) {
+                    selectedForm.style.display = 'block'; // Mostrar el formulario correspondiente al método de pago seleccionado
+                }
+            });
+        });
+
+        // Obtener el elemento de entrada del teléfono
+        var telefonoInput = document.getElementById('telefonoInput');
+        // Obtener el elemento de error
+        var telefonoError = document.getElementById('telefonoError');
+
+        // Escuchar el evento de entrada en el campo de teléfono
+        telefonoInput.addEventListener('input', function () {
+            // Obtener el valor actual del campo de teléfono
+            var telefono = telefonoInput.value;
+            // Verificar si el teléfono comienza con el número 9
+            if (!telefono.startsWith('9')) {
+                // Si no comienza con 9, mostrar el mensaje de error
+                telefonoInput.classList.add('is-invalid');
+                telefonoError.style.display = 'block';
+            } else {
+                // Si comienza con 9, quitar el mensaje de error
+                telefonoInput.classList.remove('is-invalid');
+                telefonoError.style.display = 'none';
+            }
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            ListarDepartamento();
+        })
+
+        function ListarDepartamento() {
+            $("<option>").attr({ "values": "0", "disabled": "disabled", "selected": "true" }).text("seleccione...").appendTo("#cbdepartamento");
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerDepartamento", "Tienda")',
+                type: "POST",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+                        $.each(data.lista, function (i, item) {
+                            $("<option>").attr({ "value": item.iddepartamento }).text(item.descripcion).appendTo("#cbdepartamento");
+                        });
+                        ListarProvincia();
+                    }
+                }
+            });
+        }
+
+        $("#cbdepartamento").on("change", function () {
+            ListarProvincia();
+        });
+
+        function ListarProvincia() {
+            $("#cbprovincia").html("")
+            $("<option>").attr({ "values": "0", "disabled": "disabled", "selected": "true" }).text("seleccione...").appendTo("#cbprovincia");
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerProvincia", "Tienda")',
+                type: "POST",
+                data: JSON.stringify({ iddepartamento: $("#cbdepartamento option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+                        $.each(data.lista, function (i, item) {
+                            $("<option>").attr({ "value": item.idprovincia }).text(item.descripcion).appendTo("#cbprovincia");
+                        });
+                        ListarDistrito();
+                    }
+                }
+            });
+        }
+
+        $("#cbprovincia").on("change", function () {
+            ListarDistrito();
+        });
+
+        function ListarDistrito() {
+            $("#cbdistrito").html("")
+            $("<option>").attr({ "values": "00", "disabled": "disabled", "selected": "true" }).text("seleccione...").appendTo("#cbdistrito");
+            jQuery.ajax({
+                url: '@Url.Action("ObtenerDistrito", "Tienda")',
+                type: "POST",
+                data: JSON.stringify({ iddepartamento: $("#cbdepartamento option:selected").val(), idprovincia: $("#cbprovincia option:selected").val() }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.lista != null) {
+                        $.each(data.lista, function (i, item) {
+                            $("<option>").attr({ "value": item.idprovincia }).text(item.nombredistrito).appendTo("#cbdistrito");
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+}

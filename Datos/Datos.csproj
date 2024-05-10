@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
+    <Compile Include="D_Carritos.cs" />
     <Compile Include="D_Categorias.cs" />
     <Compile Include="D_Cliente.cs" />
     <Compile Include="D_Marcas.cs" />
@@ -50,6 +51,7 @@
     <Compile Include="D_Productos.cs" />
     <Compile Include="D_Reporte.cs" />
     <Compile Include="D_Tallas.cs" />
+    <Compile Include="D_Ubicacion.cs" />
     <Compile Include="D_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -8,7 +8,7 @@ namespace Entidad
 {
     public class departamento
     {
-        public int iddepartamento { get; set;}
+        public string iddepartamento { get; set;}
         public string descripcion { get; set;}
     }
 }
