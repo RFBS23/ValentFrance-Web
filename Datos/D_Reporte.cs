@@ -7,7 +7,6 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Collections;
 
 namespace Datos
 {
@@ -31,7 +30,6 @@ namespace Datos
                             {
                                 totalcliente = Convert.ToInt32(dr["totalcliente"]),
                                 totalproducto = Convert.ToInt32(dr["totalproducto"]),
-                                totalusuario = Convert.ToInt32(dr["totalusuario"]),
                                 totalventa = Convert.ToInt32(dr["totalventa"])
                             };
                         }
@@ -84,6 +82,5 @@ namespace Datos
             }
             return lista;
         }
-
     }
 }

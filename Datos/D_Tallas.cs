@@ -11,9 +11,9 @@ namespace Datos
 {
     public class D_Tallas
     {
-        public List<Tallasropa> Listar()
+        public List<Tallas> Listar()
         {
-            List<Tallasropa> lista = new List<Tallasropa>();
+            List<Tallas> lista = new List<Tallas>();
             using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
             {
                 try
@@ -28,24 +28,24 @@ namespace Datos
                     {
                         while (dr.Read())
                         {
-                            lista.Add(new Tallasropa()
+                            lista.Add(new Tallas()
                             {
                                 idtallaropa = Convert.ToInt32(dr["idtallaropa"]),
                                 nombretalla = dr["nombretalla"].ToString(),
-                                oCategorias = new Categorias() { idcategoria = Convert.ToInt32(dr["idcategoria"]), nombrecategoria = dr["nombrecategoria"].ToString() }
+                                oCategoria = new Categoria() { idcategoria = Convert.ToInt32(dr["idcategoria"]), nombrecategoria = dr["nombrecategoria"].ToString() }
                             });
                         }
                     }
                 }
                 catch (Exception ex)
                 {
-                    lista = new List<Tallasropa>();
+                    lista = new List<Tallas>();
                 }
             }
             return lista;
         }
 
-        public int Registrar(Tallasropa obj, out string Mensaje)
+        public int Registrar(Tallas obj, out string Mensaje)
         {
             int idautogenerado = 0;
             Mensaje = string.Empty;
@@ -56,7 +56,7 @@ namespace Datos
                 {
                     SqlCommand cmd = new SqlCommand("spu_registrar_tallasropa", oconexion);
                     cmd.Parameters.AddWithValue("nombretalla", obj.nombretalla);
-                    cmd.Parameters.AddWithValue("idcategoria", obj.oCategorias.idcategoria);
+                    cmd.Parameters.AddWithValue("idcategoria", obj.oCategoria.idcategoria);
                     cmd.Parameters.Add("resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
                     cmd.Parameters.Add("mensaje", SqlDbType.VarChar, 100).Direction = ParameterDirection.Output;
                     cmd.CommandType = CommandType.StoredProcedure;
@@ -75,7 +75,7 @@ namespace Datos
             return idautogenerado;
         }
 
-        public bool Editar(Tallasropa obj, out string Mensaje)
+        public bool Editar(Tallas obj, out string Mensaje)
         {
             bool resultado = false;
             Mensaje = string.Empty;
@@ -84,7 +84,7 @@ namespace Datos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
                     SqlCommand cmd = new SqlCommand("spu_editar_tallasropa", oconexion);
-                    cmd.Parameters.AddWithValue("idcategoria", obj.oCategorias.idcategoria);
+                    cmd.Parameters.AddWithValue("idcategoria", obj.oCategoria.idcategoria);
                     cmd.Parameters.AddWithValue("idtallaropa", obj.idtallaropa);
                     cmd.Parameters.AddWithValue("nombretalla", obj.nombretalla);
                     cmd.Parameters.Add("Resultado", SqlDbType.Int).Direction = ParameterDirection.Output;
@@ -134,9 +134,9 @@ namespace Datos
             return resultado;
         }
 
-        public List<Tallasropa> FiltrosTallasCategorias(int idcategoria)
+        public List<Tallas> FiltrosTallasCategorias(int idcategoria)
         {
-            List<Tallasropa> lista = new List<Tallasropa>();
+            List<Tallas> lista = new List<Tallas>();
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
@@ -155,7 +155,7 @@ namespace Datos
                     {
                         while (dr.Read())
                         {
-                            lista.Add(new Tallasropa()
+                            lista.Add(new Tallas()
                             {
                                 idtallaropa = Convert.ToInt32(dr["idtallaropa"]),
                                 nombretalla = dr["nombretalla"].ToString()
@@ -166,10 +166,9 @@ namespace Datos
             }
             catch
             {
-                lista = new List<Tallasropa>();
+                lista = new List<Tallas>();
             }
             return lista;
         }
-
     }
 }

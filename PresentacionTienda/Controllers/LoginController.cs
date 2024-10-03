@@ -7,7 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 
-namespace PresentacionTienda.Controllers
+namespace presentacionTienda.Controllers
 {
     public class LoginController : Controller
     {
@@ -41,13 +41,13 @@ namespace PresentacionTienda.Controllers
             ViewData["Telefono"] = string.IsNullOrEmpty(objeto.telefono) ? "" : objeto.telefono;
             ViewData["Correo"] = string.IsNullOrEmpty(objeto.correo) ? "" : objeto.correo;
 
-            if(objeto.clave != objeto.confirmarclave)
+            if (objeto.clave != objeto.confirmarclave)
             {
                 ViewBag.Error = "Las contraseñas no coinciden";
                 return View();
             }
-            resultado = new N_Clientes().Registrar(objeto, out mensaje);
-            if(resultado > 0)
+            resultado = new N_cliente().Registrar(objeto, out mensaje);
+            if (resultado > 0)
             {
                 ViewBag.Error = null;
                 return RedirectToAction("Index", "Login");
@@ -63,12 +63,13 @@ namespace PresentacionTienda.Controllers
         public ActionResult Index(string correo, string clave)
         {
             Clientes oCliente = null;
-            oCliente = new N_Clientes().Listar().Where(item => item.correo == correo && item.clave == clave).FirstOrDefault();
-            if(oCliente == null)
+            oCliente = new N_cliente().Listar().Where(item => item.correo == correo && item.clave == clave).FirstOrDefault();
+            if (oCliente == null)
             {
                 ViewBag.Error = "Las credenciales son incorrectas";
                 return View();
-            }else
+            }
+            else
             {
                 if (oCliente.reestablecer)
                 {
@@ -84,7 +85,7 @@ namespace PresentacionTienda.Controllers
                     Session["correoCliente"] = oCliente.correo;
                     Session["documento"] = oCliente.documento;
                     ViewBag.Error = null;
-                    return RedirectToAction("Masproductos", "Tienda");
+                    return RedirectToAction("Index", "Tienda");
                 }
             }
         }
@@ -92,14 +93,14 @@ namespace PresentacionTienda.Controllers
         [HttpPost]
         public ActionResult Reestablecer(string correo)
         {
-            Clientes cliente = new N_Clientes().Listar().Where(item => item.correo == correo).FirstOrDefault();
+            Clientes cliente = new N_cliente().Listar().Where(item => item.correo == correo).FirstOrDefault();
             if (cliente == null)
             {
                 ViewBag.Error = "No se encontro al cliente con el correo ingresado";
                 return View();
             }
             string mensaje = string.Empty;
-            bool respuesta = new N_Clientes().RestablecerClave(cliente.idcliente, correo, out mensaje);
+            bool respuesta = new N_cliente().RestablecerClave(cliente.idcliente, correo, out mensaje);
             if (respuesta)
             {
                 ViewBag.Error = null;
@@ -115,7 +116,7 @@ namespace PresentacionTienda.Controllers
         [HttpPost]
         public ActionResult CambiarClave(string idcliente, string claveactual, string nuevaclave, string confirmarclave)
         {
-            Clientes oclientes = new N_Clientes().Listar().Where(u => u.idcliente == int.Parse(idcliente)).FirstOrDefault();
+            Clientes oclientes = new N_cliente().Listar().Where(u => u.idcliente == int.Parse(idcliente)).FirstOrDefault();
             if (oclientes.clave != claveactual)
             {
                 TempData["idcliente"] = idcliente;
@@ -133,7 +134,7 @@ namespace PresentacionTienda.Controllers
             ViewData["vclave"] = "";
             nuevaclave = nuevaclave;
             string mensaje = string.Empty;
-            bool respuesta = new N_Clientes().CambiarClave(int.Parse(idcliente), nuevaclave, out mensaje);
+            bool respuesta = new N_cliente().CambiarClave(int.Parse(idcliente), nuevaclave, out mensaje);
             if (respuesta)
             {
                 return RedirectToAction("Index");

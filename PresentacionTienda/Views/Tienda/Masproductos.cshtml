@@ -1,120 +1,152 @@
 ﻿
 @{
-    ViewBag.Title = "Catalogos";
+    ViewBag.Title = "Masproductos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="breadcrumbs">
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-md-6 col-12">
-                <div class="breadcrumbs-content">
-                    <h1 class="page-title">Cuadricula de Productos</h1>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Productos</h4>
+                    <div class="breadcrumb__links">
+                        <a href="@Url.Action("Index", "Tienda")">Inicio</a>
+                        <span>Productos</span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12">
-                <ul class="breadcrumb-nav">
-                    <li><a href="@Url.Action("Index", "Tienda")"><i class="lni lni-home"></i> Inicio</a></li>
-                    <li><a href="@Url.Action("Masproductos", "Tienda")">Catalogos</a></li>
-                    <li>Productos</li>
-                </ul>
             </div>
         </div>
     </div>
-</div>
-
-<section class="product-grids section">
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Shop Section Begin -->
+<section class="shop spad">
     <div class="container">
         <div class="row">
-            <div class="col-lg-3 col-12">
-                <!-- Start Product Sidebar -->
-                <div class="product-sidebar">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Categorías</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll" id="con_categoria">
+                                                <!-- Aquí se llenarán las categorías dinámicamente con JavaScript -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="single-widget">
-                        <h3>Todas las categorias</h3>
-                        <ul class="list" id="con_categoria">
-                        </ul>
-                    </div>
+                            <!-- Marcas -->
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseTwo">Marcas</a>
+                                </div>
+                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__brand">
+                                            <ul  id="con_marcas">
+                                                <!-- Aquí se llenarán las marcas dinámicamente con JavaScript -->
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-                    <div class="single-widget condition">
-                        <h3>Marcas</h3>
-                        <div class="" id="con_marcas">
+                            <!-- Filtro de Precio -->
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">Filtro de Precio</a>
+                                </div>
+                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__price">
+                                            <ul>
+                                                <li><a href="#">$0.00 - $50.00</a></li>
+                                                <li><a href="#">$50.00 - $100.00</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tallas -->
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseFour">Tallas</a>
+                                </div>
+                                <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__size"  id="con_tallas">
+                                            <!-- Aquí se llenarán las tallas dinámicamente con JavaScript -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Botón Aplicar Filtros -->
+                            <div class="card">
+                                <div class="card-body">
+                                    <a href="#" class="primary-btn" style="border-radius: 5px;">Aplicar Filtros <span class="fa fa-filter"></span></a>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
-
-                    <div class="single-widget condition">
-                        <h3>Tallas</h3>
-                        <div class="" id="con_tallas">
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-12">
-                            <div class="d-grid gap-2">
-                                <button id="btn_aplicarfiltro" class="btn btn-outline-primary btn-block" type="button"><i class="bi bi-funnel"></i> Aplicar Filtros</button>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Mostrando 1–12 de 126 resultados</p>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- End Product Sidebar -->
-            </div>
-            <div class="col-lg-9 col-12">
-                <div class="product-grids-head">
-                    <div class="product-grid-topbar">
-                        <div class="row align-items-center">
-                            <div class="col-lg-7 col-md-8 col-12">
-                                <div class="product-sorting">
-                                    <label for="sorting">Todos los Productos</label>
-                                    
-                                </div>
+                <div class="row">
+                    <!--
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="">
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="~/img/icon/ojo-abierto.png" alt=""></a></li>
+                                    <li>
+                                        <a href="#"><span><i class="fa fa-eye"></i>ver</span></a>
+                                    </li>
+                                </ul>
                             </div>
-                            <div class="col-lg-5 col-md-4 col-12">
-                                <nav>
-                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                        <button class="nav-link active" id="nav-grid-tab" data-bs-toggle="tab" data-bs-target="#nav-grid" type="button" role="tab" aria-controls="nav-grid" aria-selected="true"><i class="lni lni-grid-alt"></i></button>
-                                    </div>
-                                </nav>
+                            <div class="product__item__text">
+                                <h6>Piqué Biker Jacket</h6>
+                                <a href="#" class="add-cart"><i class="fa fa-shopping-cart"></i> Agregar al carrito</a>
+                                <h5>$67.24</h5>
+                                <div class="product__color__select">
+                                    <label for="pc-4">
+                                        <input type="radio" id="pc-4">
+                                    </label>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="tab-content" id="nav-tabContent">
-                        <div class="tab-pane fade show active" id="nav-grid" role="tabpanel" aria-labelledby="nav-grid-tab">
-                            <div class="row" id="container_productos">
-                                <div class="col-lg-4 col-md-6 col-12">
-                                    <!-- Start Single Product -->
-                                    <div class="single-product">
-                                        <div class="product-image">
-                                            <img src="~/assets/img/logovalent.png" alt="#">
-                                            <span class="sale-tag">- %</span>
-                                            <div class="button">
-                                                <a href="product-details.html" class="btn"><i class="lni lni-cart"></i> &nbsp;</a>
-                                            </div>
-                                        </div>
-                                        <div class="product-info">
-                                            <span class="category">&nbsp;</span>
-                                            <h4 class="title">
-                                                <a href="product-grids.html">&nbsp;r</a>
-                                            </h4>
-                                            <div class="price">
-                                                <span>&nbsp;</span>
-                                                <span class="discount-price">&nbsp;</span>
-                                            </div>
-                                            <div class="price">
-                                                <span>$275.00</span>
-                                                <span class="discount-price">$300.00</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- End Single Product -->
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <!-- Pagination -->
+                    -->
 
-                                    <!--/ End Pagination -->
-                                </div>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__pagination">
+                            <a class="active" href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <span>...</span>
+                            <a href="#">21</a>
                         </div>
                     </div>
                 </div>
@@ -122,17 +154,16 @@
         </div>
     </div>
 </section>
+<!-- Shop Section End -->
 
 @section scripts {
+
+    <!-- Js Plugins-->
+    <script src="~/Assets/js/bootstrap.min.js"></script>
     <script>
-        function changeImage(newSrc) {
-            document.getElementById("mainImage").src = newSrc;
-        }
 
         $(document).ready(function () {
             listarCategorias();
-            listarMarcas();
-            mostrarFiltros(0, 0, 0);
         })
 
         function listarCategorias() {
@@ -143,23 +174,18 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
                     $("#con_categoria").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2 text-dark").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": "0", "id": "cx", "checked": "checked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "cx" })
-                    ).appendTo("#con_categoria")
-
+                    $("#con_categoria").empty();
+                    let ul = $("<ul>").addClass("nice-scroll");
+                    ul.append($("<li>").append($("<a>").attr({ "href": "#", "value": "0" }).text("Todos")));
                     $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2 text-dark fw-semibold").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "categoria", "value": element.idcategoria, "id": "cat" + i }),
-                            $("<label>").addClass("form-check-label").text(element.nombrecategoria).attr({ "for": "cat" + 1 })
-                        ).appendTo("#con_categoria")
-                    })
-                    mostrarTallas();
+                        ul.append($("<li>").append($("<a>").attr({ "href": "#", "value": element.idcategoria }).text(`${element.nombrecategoria} (${element.productCount})`)));
+                    });
+                    $("#con_categoria").append(ul);
                 },
                 beforeSend: function () {
                     $("#con_categoria").LoadingOverlay("show");
                 }
-            })
+            });
         }
 
         function listarMarcas() {
@@ -170,22 +196,18 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
                     $("#con_marcas").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marcas", "value": "0", "id": "mx", "checked": "checked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "mx" })
-                    ).appendTo("#con_marcas")
-
+                    $("#con_marcas").empty();
+                    let ul = $("<ul>");
+                    ul.append($("<li>").append($("<a>").attr({"href": "#", "value": "0"}).text("Todos")));
                     $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "marcas", "value": element.idmarca, "id": "ct" + i }),
-                            $("<label>").addClass("form-check-label").text(element.nombremarca).attr({ "for": "ct" + 1 })
-                        ).appendTo("#con_marcas")
-                    })
+                        ul.append($("<li>").append($("<a>").attr({"href": "#", "value": element.idmarca}).text(element.nombremarca)));
+                    });
+                    $("#con_marcas").append(ul);
                 },
                 beforeSend: function () {
                     $("#con_marcas").LoadingOverlay("show");
                 }
-            })
+            });
         }
 
         function mostrarTallas() {
@@ -199,97 +221,26 @@
                 success: function (response) {
                     $("#con_tallas").html("");
                     $("#con_tallas").LoadingOverlay("hide");
-                    $("<div>").addClass("form-check mt-2").append(
-                        $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "tallasropa", "value": "0", "id": "tx", "checked": "checked" }),
-                        $("<label>").addClass("form-check-label").text("Todos").attr({ "for": "tx" })
-                    ).appendTo("#con_tallas")
-
+                    let div = $("<div>").addClass("shop__sidebar__size");
+                    div.append($("<label>").append("Todos").attr("for", "tx"));
                     $.each(response.data, function (i, element) {
-                        $("<div>").addClass("form-check mt-2").append(
-                            $("<input>").addClass("form-check-input").attr({ "type": "radio", "name": "tallasropa", "value": element.idtallaropa, "id": "t" + i }),
-                            $("<label>").addClass("form-check-label").text(element.nombretalla).attr({ "for": "t" + 1 })
-                        ).appendTo("#con_tallas")
-                    })
+                        div.append(
+                            $("<label>").attr("for", "t" + i).text(element.nombretalla).append(
+                                $("<input>").attr({
+                                    "type": "radio",
+                                    "name": "tallasropa",
+                                    "value": element.idtallaropa,
+                                    "id": "t" + i
+                                })
+                            )
+                        );
+                    });
+                    $("#con_tallas").append(div);
                 },
                 beforeSend: function () {
                     $("#con_tallas").LoadingOverlay("show");
                 }
-            })
-        }
-
-        $(document).on("change", "input[name=categoria]", function () {
-            mostrarTallas();
-        })
-
-        function mostrarFiltros(_idcategoria, _idmarca, _idtallaropa) {
-            jQuery.ajax({
-                url: "@Url.Action("listarProductos", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idcategoria: _idcategoria, idmarca: _idmarca, idtallaropa: _idtallaropa }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                beforeSend: function () {
-                    $("#container_productos").LoadingOverlay("show");
-                },
-                success: function(response) {
-                    $("#container_productos").empty();
-                    //$("#container_productos").LoadingOverlay("hide");
-
-                    if (response.data.length === 0) {
-                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
-                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
-                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
-                        ).appendTo("#container_productos")
-                    } else {
-                        $.each(response.data, function (i, element) {
-                            var imagenSrc;
-                            if (element.Extension && element.base64) {
-                                imagenSrc = "data:image/" + element.Extension + ";base64," + element.base64;
-                            } else {
-                                imagenSrc = "../assets/img/logovalent.png";
-                            }
-
-                            var precioVenta = element.precioventa;
-                            var descuento = element.descuento;
-                            var precioDescontado = precioVenta - (precioVenta * (descuento / 100));
-
-                            $("<div>").addClass("col-lg-4 col-md-6 col-12").append(
-                                $("<div>").addClass("single-product").append(
-                                    $("<div>").addClass("product-image").append(
-                                        $("<img>").attr({ "src": imagenSrc, "height": "230" }),
-                                        (element.descuento > 0) ? $("<div>").addClass("sale-tag").text("-" + element.descuento + " %") : null,
-                                        $("<div>").addClass("button").append(
-                                            $("<a>").addClass("btn").attr({ "href": "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto }).html('<i class="lni lni-search"></i> Ver Detalles')
-                                        ),
-                                    ),
-                                    $("<div>").addClass("product-info").append(
-                                        $("<div>").addClass("category").text(element.codigo),
-                                        $("<h4>").addClass("title").append(
-                                            $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).text(element.nombre)
-                                        ),
-                                        $("<div>").addClass("price").append(
-                                            (descuento > 0) ?
-                                                $("<span>").text("S/ " + precioDescontado.toFixed(2)).append($("<del>").addClass("discount-price").text("S/ " + precioVenta.toFixed(2))) :
-                                                $("<span>").text("S/ " + precioVenta.toFixed(2))
-                                        ),
-                                        $("<ul>").addClass("review").append(
-                                            $("<div>").addClass("mt-4").append(
-                                                @if (Session["cliente"] != null)
-                                                {
-                                                    @:$("<button>").addClass("btn btn-outline-primary agregarcarrito").data("idproducto", element.idproducto).html('<i class="lni lni-cart"></i> Agregar Carrito'),
-                                                }
-                                            )
-                                        )
-                                    )
-                                )
-                            ).appendTo("#container_productos")
-                        })
-                    }
-                },
-                complete: function() {
-                    $("#container_productos").LoadingOverlay("hide");
-                }
-            })
+            });
         }
 
         $("#btn_aplicarfiltro").click(function () {
@@ -299,37 +250,5 @@
             mostrarFiltros(_idcategoria, _idmarca, _idtallaropa);
         })
 
-        $(document).on("click", "button.agregarcarrito", function () {
-            //console.log($(this).data("idproducto"))
-            jQuery.ajax({
-                url: "@Url.Action("AgregarCarrito", "Tienda")",
-                type: "POST",
-                data: JSON.stringify({ idproducto: $(this).data("idproducto") }),
-                dataType: "json",
-                contentType: "application/json; charset=utf-8",
-                success: function (data) {
-                    if (data.respuesta) {
-                        mostrarcantidadCarrito();
-                        mostrarCarrito();
-                        Swal.fire({
-                            title: "Producto agregado al carrito",
-                            text: "¿Desea ir al carrito?",
-                            icon: "success",
-                            showCancelButton: true,
-                            confirmButtonClass: "btn-outline-primary",
-                            confirmButtonText: "Si",
-                            cancelButtonText: "No",
-                            closeOnConfirm: true
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-                                window.location.href = '@Url.Action("Carrito", "Tienda")';
-                            }
-                        });
-                    } else {
-                        Swal.fire("", data.mensaje, "warning");
-                    }
-                }
-            });
-        });
     </script>
 }

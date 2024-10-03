@@ -11,12 +11,12 @@ namespace Negocio
     public class N_Tallas
     {
         private D_Tallas objDatos = new D_Tallas();
-        public List<Tallasropa> Listar()
+        public List<Tallas> Listar()
         {
             return objDatos.Listar();
         }
 
-        public int Registrar(Tallasropa obj, out string Mensaje)
+        public int Registrar(Tallas obj, out string Mensaje)
         {
             Mensaje = string.Empty;
             if (string.IsNullOrEmpty(obj.nombretalla) || string.IsNullOrWhiteSpace(obj.nombretalla))
@@ -33,7 +33,7 @@ namespace Negocio
             }
         }
 
-        public bool Editar(Tallasropa obj, out string Mensaje)
+        public bool Editar(Tallas obj, out string Mensaje)
         {
             Mensaje = string.Empty;
             if (string.IsNullOrEmpty(obj.nombretalla) || string.IsNullOrWhiteSpace(obj.nombretalla))
@@ -56,7 +56,7 @@ namespace Negocio
             return objDatos.Eliminar(id, out Mensaje);
         }
 
-        public List<Tallasropa> FiltrosTallasCategorias(int idcategoria)
+        public List<Tallas> FiltrosTallasCategorias(int idcategoria)
         {
             return objDatos.FiltrosTallasCategorias(idcategoria);
         }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E5C56100-96C2-443D-B3EB-FF93039496F7}</ProjectGuid>
+    <ProjectGuid>{89F99A20-AD4B-4167-9023-1E1162281936}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Datos</RootNamespace>
@@ -43,24 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Conexion.cs" />
-    <Compile Include="D_Carritos.cs" />
-    <Compile Include="D_Categorias.cs" />
-    <Compile Include="D_Cliente.cs" />
-    <Compile Include="D_Marcas.cs" />
-    <Compile Include="D_Nivelacceso.cs" />
+    <Compile Include="D_Categoria.cs" />
+    <Compile Include="D_cliente.cs" />
+    <Compile Include="D_Marca.cs" />
     <Compile Include="D_Productos.cs" />
     <Compile Include="D_Reporte.cs" />
     <Compile Include="D_Tallas.cs" />
-    <Compile Include="D_Ubicacion.cs" />
     <Compile Include="D_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
-      <Project>{ed4d5a5f-8f0f-4d25-b8da-09891d88574e}</Project>
+      <Project>{6a73758d-4a26-4be7-8f86-ff2306ab47d1}</Project>
       <Name>Entidad</Name>
     </ProjectReference>
   </ItemGroup>

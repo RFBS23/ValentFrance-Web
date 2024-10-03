@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es-es">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Cambiar Contraseña - Valent France</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body style="user-select: none;">
+    <main>
+        <div class="container-fluid d-flex justify-content-center align-items-center min-vh-100">
+            <div class="container py-3">
+                <div class="p-5 bg-body-secondary rounded-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-dark rounded-3">
+                                <h4 class="mb-4">Hola 	&#x1F44B;</h4>
+                                <p>Necesitamos que cambies tu contraseña por temas de seguridad</p>
+                                <img src="~/assets/img/icono.jpg" height="150" width="150" class="rounded  img-fluid justify-content-center" alt="logo">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="p-5 bg-body-tertiary border rounded-3">
+                                <form class="row g-3 needs-validation" action="@Url.Action("CambiarClave", "Login")" autocomplete="off" method="post" novalidate>
+                                    <input class="form-control" type="hidden" value="@TempData["idusuarioweb"]" name="idusuarioweb" />
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control" name="claveactual" placeholder="gg" value="@ViewData["vclave"]" required>
+                                        <label for="floatingInput">Contraseña antigua</label>
+                                        <div class="invalid-feedback">Ingrese la contraseña antigua.</div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" name="nuevaclave" placeholder="df" required>
+                                        <label for="floatingPassword">Contraseña nueva</label>
+                                        <div class="invalid-feedback">Ingrese una contraseña nueva.</div>
+                                    </div>
+                                    <div class="form-floating">
+                                        <input type="password" class="form-control" name="confirmarclave" placeholder="df" required>
+                                        <label for="floatingPassword2">Repite la contraseña</label>
+                                        <div class="invalid-feedback">Repita la contraseña nueva.</div>
+                                    </div>
+                                    @{
+                                        if (ViewBag.Error != null)
+                                        {
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <i class="bi bi-exclamation-octagon me-1"></i>
+                                                @ViewBag.Error
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        }
+                                    }
+                                    <div class="col-12">
+                                        <button class="btn btn-primary w-100" type="submit">Cambiar Contraseña</button>
+                                    </div>
+                                    <div class="col-12">
+                                        <p class="small mb-0"> <a href="@Url.Action("Index", "Login")" class="text-success" style="text-decoration: none;">Regresar</a></p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/bootstrap.bundle.js"></script>
+</body>
+</html>

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ED4D5A5F-8F0F-4D25-B8DA-09891D88574E}</ProjectGuid>
+    <ProjectGuid>{6A73758D-4A26-4BE7-8F86-FF2306AB47D1}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Entidad</RootNamespace>
@@ -42,23 +42,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Carrito.cs" />
-    <Compile Include="Categorias.cs" />
+    <Compile Include="Categoria.cs" />
     <Compile Include="Clientes.cs" />
     <Compile Include="Compras.cs" />
     <Compile Include="Dashboard.cs" />
-    <Compile Include="departamento.cs" />
-    <Compile Include="Detalle_Ventaweb.cs" />
-    <Compile Include="distrito.cs" />
+    <Compile Include="Departamentos.cs" />
+    <Compile Include="DetalleVentasWeb.cs" />
+    <Compile Include="Distrito.cs" />
     <Compile Include="Marca.cs" />
-    <Compile Include="NivelAcceso.cs" />
     <Compile Include="Productos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedor.cs" />
-    <Compile Include="provincia.cs" />
+    <Compile Include="Proveedores.cs" />
+    <Compile Include="Provincia.cs" />
     <Compile Include="Reportes.cs" />
-    <Compile Include="Tallasropa.cs" />
+    <Compile Include="Tallas.cs" />
     <Compile Include="Usuarios.cs" />
-    <Compile Include="Ventasweb.cs" />
+    <Compile Include="VentasWeb.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

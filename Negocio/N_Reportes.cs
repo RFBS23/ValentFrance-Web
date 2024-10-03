@@ -21,6 +21,5 @@ namespace Negocio
         {
             return objCapaDato.Ventas(fechainicio, fechafin, idtransaccion);
         }
-
     }
 }

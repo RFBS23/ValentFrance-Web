@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{71B14CA8-0060-4D2A-8CFF-4192359883CB}</ProjectGuid>
+    <ProjectGuid>{E1F8344E-14C7-4D64-B5A1-32172F7A0C07}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Negocio</RootNamespace>
@@ -41,26 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="N_Carrito.cs" />
-    <Compile Include="N_Categorias.cs" />
-    <Compile Include="N_Clientes.cs" />
-    <Compile Include="N_Marcas.cs" />
-    <Compile Include="N_Nivelacceso.cs" />
+    <Compile Include="N_Categoria.cs" />
+    <Compile Include="N_cliente.cs" />
+    <Compile Include="N_Marca.cs" />
     <Compile Include="N_Productos.cs" />
     <Compile Include="N_Recursos.cs" />
     <Compile Include="N_Reportes.cs" />
     <Compile Include="N_Tallas.cs" />
-    <Compile Include="N_Ubicacion.cs" />
     <Compile Include="N_Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Datos\Datos.csproj">
-      <Project>{e5c56100-96c2-443d-b3eb-ff93039496f7}</Project>
+      <Project>{89f99a20-ad4b-4167-9023-1e1162281936}</Project>
       <Name>Datos</Name>
     </ProjectReference>
     <ProjectReference Include="..\Entidad\Entidad.csproj">
-      <Project>{ed4d5a5f-8f0f-4d25-b8da-09891d88574e}</Project>
+      <Project>{6a73758d-4a26-4be7-8f86-ff2306ab47d1}</Project>
       <Name>Entidad</Name>
     </ProjectReference>
   </ItemGroup>

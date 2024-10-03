@@ -87,9 +87,25 @@ namespace Negocio
             return objdatos.GuardarImg(obj, out Mensaje);
         }
 
+        public bool GuardarImg2(Productos obj, out string Mensaje)
+        {
+            return objdatos.GuardarImg2(obj, out Mensaje);
+        }
+
+        public bool GuardarImg3(Productos obj, out string Mensaje)
+        {
+            return objdatos.GuardarImg3(obj, out Mensaje); // Aquí estaba el error
+        }
+
+        public bool GuardarImg4(Productos obj, out string Mensaje)
+        {
+            return objdatos.GuardarImg4(obj, out Mensaje); // Aquí también
+        }
+
         public bool Eliminar(int id, out string Mensaje)
         {
             return objdatos.Eliminar(id, out Mensaje);
         }
+
     }
 }

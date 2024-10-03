@@ -47,7 +47,7 @@ namespace Negocio
 
                 var smtp = new SmtpClient()
                 {
-                    Credentials = new NetworkCredential("fabriziobarrios92@gmail.com", "zhrpbownlpdjyair"),
+                    Credentials = new NetworkCredential("fabriziobarrios92@gmail.com", "oqtlsekykymabwom"),
                     Host = "smtp.gmail.com",
                     Port = 587,
                     EnableSsl = true,
@@ -78,5 +78,52 @@ namespace Negocio
             return textoBase64;
         }
 
+        public static string ConvertirBase2(string ruta, out bool conversion)
+        {
+            string textoBase64 = string.Empty;
+            conversion = true;
+            try
+            {
+                byte[] bytes = File.ReadAllBytes(ruta);
+                textoBase64 = Convert.ToBase64String(bytes);
+            }
+            catch
+            {
+                conversion = false;
+            }
+            return textoBase64;
+        }
+
+        public static string ConvertirBase3(string ruta, out bool conversion)
+        {
+            string textoBase64 = string.Empty;
+            conversion = true;
+            try
+            {
+                byte[] bytes = File.ReadAllBytes(ruta);
+                textoBase64 = Convert.ToBase64String(bytes);
+            }
+            catch
+            {
+                conversion = false;
+            }
+            return textoBase64;
+        }
+
+        public static string ConvertirBase4(string ruta, out bool conversion)
+        {
+            string textoBase64 = string.Empty;
+            conversion = true;
+            try
+            {
+                byte[] bytes = File.ReadAllBytes(ruta);
+                textoBase64 = Convert.ToBase64String(bytes);
+            }
+            catch
+            {
+                conversion = false;
+            }
+            return textoBase64;
+        }
     }
 }

@@ -1,348 +1,112 @@
 ﻿<!DOCTYPE html>
-<html lang="es-es" class="no-js">
+<html lang="es-es">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Valent France</title>
-    <meta content="" name="keywords">
+    <!--flaticon-->
+
+    <!--swiper css-->
+
+
     @Styles.Render("~/Content/css")
+    @*Scripts.Render("~/bundles/modernizr")*@
 </head>
-
-<style>
-    .floating-button {
-        position: fixed;
-        bottom: 90px;
-        right: 20px;
-    }
-    /* Estilos del icono */
-    .floating-button a {
-        display: block;
-        width: 50px;
-        height: 50px;
-        background-color: #25d366; /* Color de fondo de WhatsApp */
-        color: #fff; /* Color del icono */
-        border-radius: 50%;
-        text-align: center;
-        line-height: 50px; /* Centra verticalmente el icono */
-        font-size: 24px; /* Tamaño del icono */
-        text-decoration: none;
-        transition: background-color 0.3s;
-    }
-</style>
-
-<body style="user-select: none;">
-    <!-- Preloader-->
-    <div class="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-icon">
-                <span></span>
-                <span></span>
+<body>
+    <header class="header">
+        <div class="header__top">
+            <div class="header__container container">
+                <div class="header__contact">
+                    <span>(+51) 987 654 321</span>
+                </div>
+                <p class="header__alert-news">
+                    Super values deals - save more wirth coupons
+                </p>
+                <div class="header__contact">
+                    <span> tu locacion </span>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- fin Preloader -->
-    <header class="header navbar-area">
-        <div class="header-middle">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-3 col-md-3 col-7 mb-0">
-                        <!-- Start Header Logo -->
-                        <a class="navbar-brand" href="@Url.Action("Index", "Tienda")">
-                            <img src="~/assets/img/icono.jpg" alt="Logo valent france" height="70">
-                        </a>
-                        <!-- End Header Logo -->
-                    </div>
+
+        <nav class="nav container">
+            <a href="" class="nav__logo">
+                <img src="~/Assets/img/letrasvalent.png" alt="" class="nav__logo-img" />
+            </a>
+            <nav class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item">
+                        <a href="" class="nav_link active-link">Inicio</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="" class="nav_link">Productos</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="" class="nav_link">Blog</a>
+                    </li>
+
+                    <li class="nav__item">
+                        <a href="" class="nav_link">contacto</a>
+                    </li>
+
+                </ul>
+
+                <div class="header__user-actions">
                     @if (Session["cliente"] == null)
                     {
-                        <div class="col-lg-5 col-md-7 d-xs-none">
-
-                        </div>
-                        <div class="col-lg-4 col-md-2 col-5">
-                            <div class="middle-right-area">
-                                <div class="nav-hotline">
-                                    <i class="lni lni-phone"></i>
-                                    <h3>
-                                        Linea Directa:
-                                        <span>(+51) 923 456 790</span>
-                                    </h3>
-                                </div>
-                                <div class="navbar-cart">
-                                    <div class="cart-items">
-                                        <a href="javascript:void(0)" class="main-btn">
-                                            <i class="lni lni-user"></i>
-                                        </a>
-                                        <!-- Shopping Item -->
-                                        <div class="shopping-item">
-                                            <div class="bottom">
-                                                <div class="button">
-                                                    <a href="@Url.Action("Index", "Login")" class="btn animate">Iniciar Sesión</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/ End Shopping Item -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ul>
+                            <li class="nav__item">
+                                <a href="@Url.Action("Index", "Login")" class="header__top-action">Iniciar Sesion</a>
+                            </li>
+                        </ul>
                     }
                     else
                     {
-                        <div class="col-lg-5 col-md-7 d-xs-none">
-
-                        </div>
-                        <div class="col-lg-4 col-md-2 col-5">
-                            <div class="middle-right-area">
-                                <div class="nav-hotline">
-                                    <i class="lni lni-phone"></i>
-                                    <h3>
-                                        Linea Directa:
-                                        <span>(+51) 923 456 790</span>
-                                    </h3>
-                                </div>
-                                <div class="navbar-cart">
-                                    <div class="wishlist">
-                                        <a href="@Url.Action("CerrarSesion", "Login", new { returnUrl = Url.Action("Index", "Tienda") })">
-                                            <i class="lni lni-exit"></i>
-                                        </a>
-                                    </div>
-
-                                    <div class="cart-items">
-                                        <a href="javascript:void(0)" class="main-btn">
-                                            <i class="lni lni-cart"></i>
-                                            <span class="total-items" id="cantidadCarrito">0</span>
-                                        </a>
-                                        <!-- Shopping Item -->
-                                        <div class="shopping-item">
-                                            <div class="dropdown-cart-header">
-                                                <span id="cantidadCarrito2">0</span> Productos agregados al carrito
-                                            </div>
-                                            <ul class="shopping-list" id="carrito">
-                                            </ul>
-                                            <div class="bottom">
-                                                <div class="button">
-                                                    <a href="@Url.Action("Carrito", "Tienda")" class="btn animate">Ver Carrito</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!--/ End Shopping Item -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ul>
+                            <li class="nav__item">
+                                <a href="@Url.Action("Index", "Login")" class="header__top-action">Mis compras</a>
+                            </li>
+                        </ul>
+                        <a href="@Url.Action("Carrito", "Tienda")" class="header__action-btn">
+                            <img src="~/Assets/img/header/carritos.png" alt="" />
+                            <span class="count">3</span>
+                        </a>
                     }
                 </div>
-            </div>
-        </div>
-
+            </nav>
+        </nav>
     </header>
 
-    @RenderBody()
+    <main class="main">
+        @RenderBody()
+    </main>
 
+    <!-- Footer Section Begin -->
     <footer class="footer">
-        <div class="footer-middle">
-            <div class="container">
-                <div class="bottom-inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-6 col-12">
-
-                            <div class="single-footer f-contact">
-                                <h3>Póngase en contacto con nosotros</h3>
-                                <p class="phone">Celular: +51 987654321</p>
-                                <ul>
-                                    <li><span>Lunes - Viernes: </span> 9.00 am - 8.00 pm</li>
-                                    <li><span>Sabados: </span> 10.00 am - 6.00 pm</li>
-                                </ul>
-                                <p class="mail">
-                                    <a href="mailto:support@shopgrids.com">support@empresa.com</a>
-                                </p>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12">
-
-                            <div class="single-footer our-app">
-                                <h3>Nuestra App Movil</h3>
-                                <ul class="app-btn">
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i class="lni lni-apple"></i>
-                                            <span class="small-title">Descarga en</span>
-                                            <span class="big-title">App Store</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:void(0)">
-                                            <i class="lni lni-play-store"></i>
-                                            <span class="small-title">Descarga en</span>
-                                            <span class="big-title">Google Play</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12">
-
-                            <div class="single-footer f-link">
-                                <h3>Información</h3>
-                                <ul>
-                                    <li><a href="javascript:void(0)">About Us</a></li>
-                                    <li><a href="javascript:void(0)">Contact Us</a></li>
-                                    <li><a href="javascript:void(0)">Downloads</a></li>
-                                    <li><a href="javascript:void(0)">Sitemap</a></li>
-                                    <li><a href="javascript:void(0)">FAQs Page</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-12">
-
-                            <div class="single-footer f-link">
-                                <h3>Depatmentos de tienda</h3>
-                                <ul>
-                                    <li><a href="javascript:void(0)">Computers & Accessories</a></li>
-                                    <li><a href="javascript:void(0)">Smartphones & Tablets</a></li>
-                                    <li><a href="javascript:void(0)">TV, Video & Audio</a></li>
-                                    <li><a href="javascript:void(0)">Cameras, Photo & Video</a></li>
-                                    <li><a href="javascript:void(0)">Headphones</a></li>
-                                </ul>
-                            </div>
-
-                        </div>
+        <div class="">
+            <div class="">
+            </div>
+            <div class="">
+                <div class="">
+                    <div class="">
+                        <p>
+                            Copyright ©
+                            <script>document.write(new Date().getFullYear());</script>
+                            All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://rfbs23.github.io/portafolio/" target="_blank">FabriDev</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="inner-content">
-                    <div class="row align-items-center">
-                        <div class="col-lg-4 col-12">
-                            <div class="payment-gateway">
-                                <span>Aceptamos:</span>
-                                <img src="~/assets/img/footer/credit-cards-footer.png" alt="#">
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <div class="copyright">
-                                <p>
-                                    Diseñada y Desarrollada by<a href="https://rfbs23.github.io/portafolio/" rel="nofollow" target="_blank">FabriDev</a>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-12">
-                            <ul class="socila">
-                                <li>
-                                    <span>Siganos en nuestras redes:</span>
-                                </li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </footer>
-
-    <div class="floating-button">
-        <a href="https://api.whatsapp.com/send?phone=933103242&text=Hola" target="_blank">
-            <i class="bi bi-whatsapp"></i>
-        </a>
-    </div>
-
-    <a href="#" class="scroll-top">
-        <i class="lni lni-chevron-up"></i>
-    </a>
+    <!-- Footer Section End -->
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/complementos")
     @RenderSection("scripts", required: false)
 
-    <script type="text/javascript">
-        $(window).on("load", function () {
-            // Ocultar el preloader
-            $(".preloader").fadeOut("slow");
-        });
-
-        tns({
-            container: '.hero-slider',
-            slideBy: 'page',
-            autoplay: true,
-            autoplayButtonOutput: false,
-            mouseDrag: true,
-            gutter: 0,
-            items: 1,
-            nav: false,
-            controls: true,
-            controlsText: ['<i class="lni lni-chevron-left"></i>', '<i class="lni lni-chevron-right"></i>'],
-        });
-
-        tns({
-            container: '.brands-logo-carousel',
-            autoplay: true,
-            autoplayButtonOutput: false,
-            mouseDrag: true,
-            gutter: 15,
-            nav: false,
-            controls: false,
-            responsive: {
-                0: {
-                    items: 1,
-                },
-                540: {
-                    items: 3,
-                },
-                768: {
-                    items: 5,
-                },
-                992: {
-                    items: 6,
-                }
-            }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            mostrarcantidadCarrito();
-            mostrarCarrito();
-        });
-
-        function mostrarcantidadCarrito() {
-            if ($("#cantidadCarrito").length > 0) {
-                jQuery.ajax({
-                    url: "@Url.Action("CantidadCarrito", "Tienda")",
-                    type: "GET",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        $("#cantidadCarrito").text(data.cantidad);
-                    }
-                });
-            }
-        }
-
-        function mostrarCarrito() {
-            if ($("#cantidadCarrito2").length > 0) {
-                jQuery.ajax({
-                    url: "@Url.Action("CantidadCarrito", "Tienda")",
-                    type: "GET",
-                    dataType: "json",
-                    contentType: "application/json; charset=utf-8",
-                    success: function (data) {
-                        $("#cantidadCarrito2").text(data.cantidad);
-                    }
-                });
-            }
-        }
-
-    </script>
 </body>
 </html>

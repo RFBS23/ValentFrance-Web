@@ -19,7 +19,7 @@ namespace Negocio
         public int Registrar(Usuarios obj, out string Mensaje)
         {
             Mensaje = string.Empty;
-            if(string.IsNullOrEmpty(obj.documento) || string.IsNullOrWhiteSpace(obj.documento))
+            if (string.IsNullOrEmpty(obj.documento) || string.IsNullOrWhiteSpace(obj.documento))
             {
                 Mensaje = "Debe ingresar el documento de identidad";
             }
@@ -79,11 +79,6 @@ namespace Negocio
             {
                 return false;
             }
-        }
-
-        public bool GuardarimagenUsuario(Usuarios obj, out string Mensaje)
-        {
-            return objdatos.GuardarimagenUsuario(obj, out Mensaje);
         }
 
         public bool Eliminar(int id, out string Mensaje)

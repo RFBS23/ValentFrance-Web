@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Datos
 {
-    public class D_Cliente
+    public class D_cliente
     {
         public List<Clientes> Listar()
         {
@@ -131,6 +131,5 @@ namespace Datos
             }
             return resultado;
         }
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,13 +14,11 @@ namespace Datos
         public List<Usuarios> Listar()
         {
             List<Usuarios> lista = new List<Usuarios>();
-            using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
+            try
             {
-                try
+                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    StringBuilder query = new StringBuilder();
-                    query.AppendLine("select idusuarioweb, rutaimagen, nombreimagen, documento, nombres, apellidos, nombreusuario, correo, clave, reestablecer, estado, CONVERT(VARCHAR(10), fecharegistro, 120)AS fecharegistro_producto from usuariosweb");
-                    query.AppendLine("go");
+                    string query = "select idusuarioweb, documento, nombres, apellidos, nombreusuario, correo, clave, reestablecer, estado from usuariosweb";
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
@@ -31,8 +29,6 @@ namespace Datos
                             lista.Add(new Usuarios()
                             {
                                 idusuarioweb = Convert.ToInt32(dr["idusuarioweb"]),
-                                rutaimagen = dr["rutaimagen"].ToString(),
-                                nombreimagen = dr["nombreimagen"].ToString(),
                                 documento = dr["documento"].ToString(),
                                 nombres = dr["nombres"].ToString(),
                                 apellidos = dr["apellidos"].ToString(),
@@ -45,10 +41,10 @@ namespace Datos
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    lista = new List<Usuarios>();
-                }
+            }
+            catch
+            {
+                lista = new List<Usuarios>();
             }
             return lista;
         }
@@ -138,38 +134,6 @@ namespace Datos
                     oconexion.Open();
                     resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
                 }
-            } catch (Exception ex)
-            {
-                resultado = false;
-                Mensaje = ex.Message;
-            }
-            return resultado;
-        }
-
-        public bool GuardarimagenUsuario(Usuarios obj, out string Mensaje)
-        {
-            bool resultado = false;
-            Mensaje = string.Empty;
-            try
-            {
-                using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
-                {
-                    string query = "update usuariosweb set rutaimagen = @rutaimagen, nombreimagen = @nombreimagen where idusuarioweb = @idusuarioweb";
-                    SqlCommand cmd = new SqlCommand(query, oconexion);
-                    cmd.Parameters.AddWithValue("@rutaimagen", obj.rutaimagen);
-                    cmd.Parameters.AddWithValue("@nombreimagen", obj.nombreimagen);
-                    cmd.Parameters.AddWithValue("@idusuarioweb", obj.idusuarioweb);
-                    cmd.CommandType = CommandType.Text;
-                    oconexion.Open();
-                    if (cmd.ExecuteNonQuery() > 0)
-                    {
-                        resultado = true;
-                    }
-                    else
-                    {
-                        Mensaje = "No se pudo actualiza la imagen 🖼️";
-                    }
-                }
             }
             catch (Exception ex)
             {
@@ -180,17 +144,18 @@ namespace Datos
         }
 
 
-        public bool Cambiarclave(int idusuarioweb, string nuevaclave, out string Mensaje)
+        public bool Cambiarclave(int idusuarioweb, string nuevaClave, out string Mensaje)
         {
             bool resultado = false;
             Mensaje = string.Empty;
+
             try
             {
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
-                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @nuevaclave, reestablecer = 0 where idusuarioweb = @id", oconexion);
+                    SqlCommand cmd = new SqlCommand("update usuariosweb set clave = @nuevaClave, reestablecer = 0 where idusuarioweb = @id", oconexion);
                     cmd.Parameters.AddWithValue("@id", idusuarioweb);
-                    cmd.Parameters.AddWithValue("@nuevaclave", nuevaclave);
+                    cmd.Parameters.AddWithValue("@nuevaclave", nuevaClave);
                     cmd.CommandType = CommandType.Text;
                     oconexion.Open();
                     resultado = cmd.ExecuteNonQuery() > 0 ? true : false;
@@ -227,5 +192,6 @@ namespace Datos
             }
             return resultado;
         }
+
     }
 }

@@ -1,0 +1,297 @@
+﻿
+@{
+    ViewBag.Title = "Tallas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="pagetitle">
+    <h1>Tallas</h1>
+    <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="@Url.Action("Index", "Home")">Inicio</a></li>
+            <li class="breadcrumb-item active">Tallas</li>
+        </ol>
+    </nav>
+</div><!-- End Page Title -->
+
+<section class="section">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+                    Opciones de Tallas
+                </div>
+                <div class="card-body">
+                    <div class="my-4"></div>
+                    <button type="button" class="btn btn-outline-success" onclick="abrirmodal(null)">Nueva Talla</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tabla de tallas registradas</h5>
+                    <!-- Table with stripped rows -->
+                    <table class="display table table-striped" id="tablatallas" width="100%">
+                        <thead>
+                            <tr>
+                                <th>Nombre Tallas</th>
+                                <th>Categoria</th>
+                                <th>Opciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <!-- End Table with stripped rows -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal categorias-->
+<div class="modal fade" id="TallasModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="TallasModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="badge border-primary border-1 text-primary"><h1 class="modal-title fs-5 fw-semibold" id="TallasModalLabel">Agregar Nueva Categoria</h1></span>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <input id="txtid" type="hidden" value="0" />
+                <form class="row g-3 justify-content-center" autocomplete="off">
+                    <div class="col-md-4">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nombretalla" placeholder="name@example.com" onkeypress="return SoloLetras(event);" required>
+                            <label for="nombretalla">Tallas</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-floating">
+                            <select class="form-select" id="categorias" aria-label="Floating label select example" required>
+                                <option selected disabled>Elige una categoria</option>
+                            </select>
+                            <label for="categorias">Categorias</label>
+                        </div>
+                    </div>
+
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert" id="mensajeError">
+                        <i class="bi bi-exclamation-octagon me-1"></i>
+                        A simple danger alert with icon—check it out!
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-primary bi bi-floppy-fill" onclick="guardar()">Registrar Talla</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        function SoloLetras(e) {
+            key = e.keyCode || e.which;
+            tecla = String.fromCharCode(key).toString();
+            letras = "ABCDEFGHIJKLMNOPQRSTUVWXYZÁÉÍÓÚabcdefghijklmnopqrstuvwxyzáéíóú ";
+
+            especiales = [8, 13];
+            tecla_especial = false
+            for (var i in especiales) {
+                if (key == especiales[i]) {
+                    tecla_especial = true;
+                    break;
+                }
+            }
+            if (letras.indexOf(tecla) == -1 && !tecla_especial) {
+                Swal.fire({
+                    backdrop: 'true',
+                    timerProgressBar: 'true',
+                    position: 'top-end',
+                    icon: 'error',
+                    title: 'Ingresar Solo Letras',
+                    showConfirmButton: false,
+                    timer: 1500,
+                    toast: true,
+                })
+                //alert("Ingresar solo letras");
+                return false;
+            }
+        }
+
+        $(document).ready(function () {
+            $('#TallasModal').on('hidden.bs.modal', function () {
+                $('#txtid').val(0);
+                $('#nombretalla').val('');
+                $('#categorias').val($('#categorias option:first').val());
+            });
+        });
+
+        $.ajax({
+            url: '@Url.Action("listarCategorias", "Componentes")',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                var select = $('#categorias');
+                select.empty();
+                select.append('<option selected disabled>Elige una categoria</option>');
+
+                $.each(data.data, function (index, item) {
+                    select.append('<option value="' + item.id + '">' + item.nombre + '</option>');
+                });
+            },
+            error: function (error) {
+                console.error('Error al cargar las categorias:', error);
+            }
+        });
+
+        var tabladata;
+        var filaseleccionada;
+
+        tabladata = $("#tablatallas").DataTable({
+            dom: 'Bfrtip',
+            responsive: true,
+            ordering: false,
+            "ajax": {
+                url: '@Url.Action("listarTallas", "Componentes")',
+                type: "GET",
+                dataType: "json"
+            },
+            "columns": [
+                { "data": "nombretalla" },
+                { "data": "oCategoria.nombrecategoria" },
+                {
+                    "defaultContent": '<button type="button" class="btn btn-outline-primary btn-editar"><i class="bi bi-pencil-square"></i></button>' + '<button type="button" class="btn btn-outline-danger ms-2 btn-eliminar"><i class="bi bi-trash-fill"></i></button>',
+                    "orderable": false,
+                    "searchable": false,
+                    "width": "100px"
+                }
+            ],
+            columnDefs: [
+                {
+                    responsivePriority: 1,
+                    targets: [2] // El índice de la columna "Opciones"
+                }
+            ],
+            language: {
+                url: 'https://cdn.datatables.net/plug-ins/1.13.6/i18n/es-ES.json'
+            }
+        });
+
+        function abrirmodal(json) {
+            $("#mensajeError").hide();
+            if (json != null) {
+                $("#txtid").val(json.idtallaropa);
+                $("#nombretalla").val(json.nombretalla);
+                $("#categorias").val(json.oCategoria.idcategoria);
+            }
+
+            var textoBoton = json ? " Guardar Cambios" : " Registrar Talla";
+            $('#TallasModal .btn-outline-primary').text(textoBoton);
+
+            var modalTitulo = json ? "Editar las tallas" : "Agregar nuevas tallas";
+            $("#TallasModalLabel").text(modalTitulo);
+
+            $("#TallasModal").modal("show");
+        }
+
+        $("#tablatallas tbody").on("click", '.btn-editar', function () {
+            filaseleccionada = $(this).closest("tr");
+            var data = tabladata.row(filaseleccionada).data();
+            //console.log(data)
+            abrirmodal(data)
+        })
+
+        $("#tablatallas tbody").on("click", '.btn-eliminar', function () {
+            Swal.fire("Boton eliminar en desarrollo!");
+        })
+
+        function guardar() {
+            var Talla = {
+                idtallaropa: $("#txtid").val(),
+                nombretalla: $("#nombretalla").val(),
+                oCategoria: {
+                    idcategoria: $('#categorias').val(),
+                    nombrecategoria: $('#categorias option:selected').text()
+                }
+            }
+            jQuery.ajax({
+                url: '@Url.Action("GuardarTallas", "Componentes")',
+                type: "POST",
+                data: JSON.stringify({ objeto: Talla }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    if (Talla.idtallaropa == 0) {
+                        if (data.resultado != 0) {
+                            Talla.idtallaropa = data.resultado;
+                            tabladata.row.add(Talla).draw(false);
+                            $("#TallasModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    } else {
+                        if (data.resultado) {
+                            tabladata.row(filaseleccionada).data(Talla).draw(false);
+                            filaseleccionada = null;
+                            $("#TallasModal").modal("hide");
+                        } else {
+                            $("#mensajeError").text(data.mensaje);
+                            $("#mensajeError").show();
+                        }
+                    }
+                },
+                error: function (error) {
+                    $(".modal-body").LoadingOverlay("hide");
+                    $("#mensajeError").text("Error al Guardar los datos");
+                    $("#mensajeError").show();
+                },
+                beforeSend: function () {
+                    $(".modal-body").LoadingOverlay("show", {
+                        imageResezeFactor: 2,
+                        image: "",
+                        fontawesome: "fas fa-spinner",
+                        text: "Cargando ...",
+                        size: 14
+                    })
+                }
+            });
+        }
+
+        $("#tablatallas tbody").on("click", '.btn-eliminar', function () {
+            var tallaseleccionada = $(this).closest("tr");
+            var data = tabladata.row(tallaseleccionada).data();
+            Swal.fire({
+                title: "¿Está seguro de eliminar esta Talla?",
+                text: "Esta acción no se puede deshacer.",
+                showDenyButton: true,
+                confirmButtonText: "Sí, Eliminar",
+                denyButtonText: `Cancelar`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    jQuery.ajax({
+                        url: '@Url.Action("EliminarTallas", "Componentes")',
+                        type: "POST",
+                        data: JSON.stringify({ id: data.idtallaropa }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        success: function (data) {
+                            if (data.resultado) {
+                                tabladata.row(tallaseleccionada).remove().draw();
+                                Swal.fire("Talla eliminada correctamente!", "", "success");
+                            } else {
+                                Swal.fire("Error", data.mensaje, "error");
+                            }
+                        }
+                    });
+                } else if (result.isDenied) {
+                    Swal.fire("Operación cancelada", "", "warning");
+                }
+            });
+        });
+
+    </script>
+}

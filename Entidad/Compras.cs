@@ -10,7 +10,7 @@ namespace Entidad
     {
         public int idcompra { get; set; }
         public Usuarios oUsuarios { get; set; }
-        public Proveedor oProveedor { get; set; }
+        public Proveedores oProveedor { get; set; }
         public string tipodocumento { get; set; }
         public string numerodocumento { get; set; }
         public decimal montototal { get; set; }

@@ -8,9 +8,10 @@ namespace Entidad
 {
     public class Carrito
     {
-        public int idcarrito {  get; set; }
+        public int idcarrito { get; set; }
         public Clientes oClientes { get; set; }
         public Productos oProductos { get; set; }
-	    public int cantidad { get; set; }
+        public int cantidad { get; set; }
+
     }
 }
