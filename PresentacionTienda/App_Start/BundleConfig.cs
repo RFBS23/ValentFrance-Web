@@ -14,6 +14,8 @@ namespace presentacionTienda
             bundles.Add(new Bundle("~/bundles/complementos").Include(
                 "~/Scripts/swiperbundler.min.js",
                 "~/Scripts/loadingoverlay/loadingoverlay.min.js",
+                "~/Scripts/select2.min.js",
+                "~/Scripts/select2es.js",
                 "~/Scripts/main.js"));
 
             //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include("~/Scripts/jquery.validate*"));
@@ -28,6 +30,7 @@ namespace presentacionTienda
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/swiper.css",
                 "~/Content/flaticon.css",
+                "~/Content/select2.min.css",
                 "~/Content/site.css"
              ));
         }

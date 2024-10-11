@@ -142,7 +142,7 @@ namespace Datos
                 using (SqlConnection oconexion = new SqlConnection(Conexion.conexion))
                 {
                     StringBuilder sb = new StringBuilder();
-                    sb.AppendLine("select distinct t.idtallaropa, t.nombretalla from productosropa p");
+                    sb.AppendLine("select distinct t.idtallaropa, t.nombretalla from productos p");
                     sb.AppendLine("inner join categorias c on c.idcategoria = p.idcategoria");
                     sb.AppendLine("inner join tallasropa t on t.idtallaropa = p.idtallaropa and t.estado = 1");
                     sb.AppendLine("where c.idcategoria = iif(@idcategoria = 0, c.idcategoria, @idcategoria)");

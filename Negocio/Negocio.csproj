@@ -45,6 +45,7 @@
     <Compile Include="N_cliente.cs" />
     <Compile Include="N_Marca.cs" />
     <Compile Include="N_Productos.cs" />
+    <Compile Include="N_ProductosCategoria.cs" />
     <Compile Include="N_Recursos.cs" />
     <Compile Include="N_Reportes.cs" />
     <Compile Include="N_Tallas.cs" />

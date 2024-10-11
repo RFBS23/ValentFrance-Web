@@ -51,6 +51,7 @@
     <Compile Include="Distrito.cs" />
     <Compile Include="Marca.cs" />
     <Compile Include="Productos.cs" />
+    <Compile Include="ProductosCategoria.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedores.cs" />
     <Compile Include="Provincia.cs" />

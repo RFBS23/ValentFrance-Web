@@ -7,12 +7,20 @@
       "RelativeMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\tienda\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentaciontienda\\views\\productoscategorias\\damasadultas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\productoscategorias\\damasadultas.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentaciontienda\\controllers\\productoscategoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|solutionrelative:presentaciontienda\\controllers\\productoscategoriascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentaciontienda\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|solutionrelative:presentaciontienda\\content\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentaciontienda\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|solutionrelative:presentaciontienda\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|c:\\users\\fabri\\documents\\programacion\\asp.net\\webvalentfrance\\presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|solutionrelative:presentaciontienda\\controllers\\tiendacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{541DB2A3-E85D-444A-BC16-BDBCF5809167}|presentacionTienda\\presentacionTienda.csproj|C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentaciontienda\\scripts\\main.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -26,24 +34,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 169,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "presentacionTienda\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "presentacionTienda\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAFoAAAAAAAAAAAAAAGgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-20T14:13:49.639Z",
-              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -53,36 +48,74 @@
               "RelativeDocumentMoniker": "presentacionTienda\\Views\\Tienda\\Index.cshtml",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\Tienda\\Index.cshtml",
               "RelativeToolTip": "presentacionTienda\\Views\\Tienda\\Index.cshtml",
-              "ViewState": "AgIAABICAAAAAAAAAAAAABwCAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAAAcwGUAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-20T15:02:20.375Z",
+              "WhenOpened": "2024-10-11T07:47:26.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TiendaController.cs",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Controllers\\TiendaController.cs",
+              "RelativeDocumentMoniker": "presentacionTienda\\Controllers\\TiendaController.cs",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Controllers\\TiendaController.cs",
+              "RelativeToolTip": "presentacionTienda\\Controllers\\TiendaController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAALAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-11T07:25:09.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "productoscategoriasController.cs",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Controllers\\productoscategoriasController.cs",
+              "RelativeDocumentMoniker": "presentacionTienda\\Controllers\\productoscategoriasController.cs",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Controllers\\productoscategoriasController.cs",
+              "RelativeToolTip": "presentacionTienda\\Controllers\\productoscategoriasController.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAA+wEgAAAB8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-10T08:38:39.236Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "DamasAdultas.cshtml",
+              "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\productoscategorias\\DamasAdultas.cshtml",
+              "RelativeDocumentMoniker": "presentacionTienda\\Views\\productoscategorias\\DamasAdultas.cshtml",
+              "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\productoscategorias\\DamasAdultas.cshtml",
+              "RelativeToolTip": "presentacionTienda\\Views\\productoscategorias\\DamasAdultas.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-09T02:13:47.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Site.css",
               "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Content\\Site.css",
               "RelativeDocumentMoniker": "presentacionTienda\\Content\\Site.css",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Content\\Site.css",
               "RelativeToolTip": "presentacionTienda\\Content\\Site.css",
-              "ViewState": "AgIAANoAAAAAAAAAAAAAAPcAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAADIDAAAAAAAAAAAAADkDAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-09-20T14:13:22.428Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "main.js",
               "DocumentMoniker": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Scripts\\main.js",
               "RelativeDocumentMoniker": "presentacionTienda\\Scripts\\main.js",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Scripts\\main.js",
               "RelativeToolTip": "presentacionTienda\\Scripts\\main.js",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAIwCcAAAALAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwBwAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-20T14:13:36.32Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-09-20T14:13:36.32Z"
             }
           ]
         }

@@ -4,166 +4,65 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-option">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb__text">
-                    <h4>Productos</h4>
-                    <div class="breadcrumb__links">
-                        <a href="@Url.Action("Index", "Tienda")">Inicio</a>
-                        <span>Productos</span>
-                    </div>
-                </div>
-            </div>
+<section class="filter container section">
+    <h3 class="section__title"><span>Filtros</span></h3>
+    <div class="filtros__container">
+        <div class="single-widget">
+            <select class="form-select custom-select" id="select_categoria">
+                <option value="0">Todos</option>
+            </select>
         </div>
+        <div class="single-widget">
+            <select class="form-select custom-select" id="select_marcas">
+                <option value="0">Todos</option>
+            </select>
+        </div>
+        <div class="single-widget">
+            <select class="form-select custom-select" id="select_tallas">
+                <option value="0">Todos</option>
+            </select>
+        </div>
+        <button type="button" class="btn" style="cursor: pointer;" id="btn_aplicarfiltro">Aplicar Filtros</button>
     </div>
 </section>
-<!-- Breadcrumb Section End -->
-<!-- Shop Section Begin -->
-<section class="shop spad">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="shop__sidebar">
-                    <div class="shop__sidebar__accordion">
-                        <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseOne">Categorías</a>
-                                </div>
-                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__categories">
-                                            <ul class="nice-scroll" id="con_categoria">
-                                                <!-- Aquí se llenarán las categorías dinámicamente con JavaScript -->
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- Marcas -->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseTwo">Marcas</a>
-                                </div>
-                                <div id="collapseTwo" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__brand">
-                                            <ul  id="con_marcas">
-                                                <!-- Aquí se llenarán las marcas dinámicamente con JavaScript -->
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+<section class="products section--lg container">
+    <h3 class="section__title"><span>Todos lo</span>s Productos</h3>
+    <p class="total__products">Se han encontrado <span>0</span> productos</p>
+    <div class="products__container grid" id="container_productos">
 
-                            <!-- Filtro de Precio -->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseThree">Filtro de Precio</a>
-                                </div>
-                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__price">
-                                            <ul>
-                                                <li><a href="#">$0.00 - $50.00</a></li>
-                                                <li><a href="#">$50.00 - $100.00</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Tallas -->
-                            <div class="card">
-                                <div class="card-heading">
-                                    <a data-toggle="collapse" data-target="#collapseFour">Tallas</a>
-                                </div>
-                                <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
-                                    <div class="card-body">
-                                        <div class="shop__sidebar__size"  id="con_tallas">
-                                            <!-- Aquí se llenarán las tallas dinámicamente con JavaScript -->
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Botón Aplicar Filtros -->
-                            <div class="card">
-                                <div class="card-body">
-                                    <a href="#" class="primary-btn" style="border-radius: 5px;">Aplicar Filtros <span class="fa fa-filter"></span></a>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-9">
-                <div class="shop__product__option">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 col-sm-6">
-                            <div class="shop__product__option__left">
-                                <p>Mostrando 1–12 de 126 resultados</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <!--
-                    <div class="col-lg-4 col-md-6 col-sm-6">
-                        <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="">
-                                <ul class="product__hover">
-                                    <li><a href="#"><img src="~/img/icon/ojo-abierto.png" alt=""></a></li>
-                                    <li>
-                                        <a href="#"><span><i class="fa fa-eye"></i>ver</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="product__item__text">
-                                <h6>Piqué Biker Jacket</h6>
-                                <a href="#" class="add-cart"><i class="fa fa-shopping-cart"></i> Agregar al carrito</a>
-                                <h5>$67.24</h5>
-                                <div class="product__color__select">
-                                    <label for="pc-4">
-                                        <input type="radio" id="pc-4">
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    -->
-
-                </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="product__pagination">
-                            <a class="active" href="#">1</a>
-                            <a href="#">2</a>
-                            <a href="#">3</a>
-                            <span>...</span>
-                            <a href="#">21</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+
+    <ul class="pagination">
+        <li><a href="#" class="pagination__link active">01</a></li>
+        <li><a href="#" class="pagination__link">02</a></li>
+        <li><a href="#" class="pagination__link">...</a></li>
+        <li><a href="#" class="pagination__link">06</a></li>
+        <li>
+            <a href="#" class="pagination__link icon">
+                <i class="fi-rs-angle-double-small-right"></i>
+            </a>
+        </li>
+    </ul>
 </section>
-<!-- Shop Section End -->
+
 
 @section scripts {
 
-    <!-- Js Plugins-->
-    <script src="~/Assets/js/bootstrap.min.js"></script>
     <script>
+        $("select").select2({
+            allowClear: true,
+            language: "es"
+        });
+
+        function changeImage(newSrc) {
+            document.getElementById("mainImage").src = newSrc;
+        }
 
         $(document).ready(function () {
             listarCategorias();
+            listarMarcas();
+            mostrarFiltros(0, 0, 0);
         })
 
         function listarCategorias() {
@@ -173,17 +72,16 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
-                    $("#con_categoria").LoadingOverlay("hide");
-                    $("#con_categoria").empty();
-                    let ul = $("<ul>").addClass("nice-scroll");
-                    ul.append($("<li>").append($("<a>").attr({ "href": "#", "value": "0" }).text("Todos")));
+                    $("#select_categoria").LoadingOverlay("hide");
+                    $("#select_categoria").empty();
+                    $("#select_categoria").append($("<option>").attr("value", "0").text("Todos"));
                     $.each(response.data, function (i, element) {
-                        ul.append($("<li>").append($("<a>").attr({ "href": "#", "value": element.idcategoria }).text(`${element.nombrecategoria} (${element.productCount})`)));
+                        $("#select_categoria").append($("<option>").attr("value", element.idcategoria).text(element.nombrecategoria));
                     });
-                    $("#con_categoria").append(ul);
+                    mostrarTallas();
                 },
                 beforeSend: function () {
-                    $("#con_categoria").LoadingOverlay("show");
+                    $("#select_categoria").LoadingOverlay("show");
                 }
             });
         }
@@ -195,23 +93,24 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
-                    $("#con_marcas").LoadingOverlay("hide");
-                    $("#con_marcas").empty();
-                    let ul = $("<ul>");
-                    ul.append($("<li>").append($("<a>").attr({"href": "#", "value": "0"}).text("Todos")));
+                    $("#select_marcas").LoadingOverlay("hide");
+                    $("#select_marcas").empty();
+                    $("#select_marcas").append($("<option>").attr("value", "0").text("Todos"));
                     $.each(response.data, function (i, element) {
-                        ul.append($("<li>").append($("<a>").attr({"href": "#", "value": element.idmarca}).text(element.nombremarca)));
+                        $("#select_marcas").append($("<option>").attr("value", element.idmarca).text(element.nombremarca));
                     });
-                    $("#con_marcas").append(ul);
                 },
                 beforeSend: function () {
-                    $("#con_marcas").LoadingOverlay("show");
+                    $("#select_marcas").LoadingOverlay("show");
+                },
+                error: function (xhr, status, error) {
+                    console.error("Error en la llamada AJAX: ", status, error);
                 }
             });
         }
 
         function mostrarTallas() {
-            var _idcategoria = $("input[name=categoria]:checked").val();
+            var _idcategoria = $("#select_categoria").val();
             jQuery.ajax({
                 url: "@Url.Action("FiltroTallas", "Tienda")",
                 type: "POST",
@@ -219,36 +118,162 @@
                 dataType: "json",
                 contentType: "application/json; charset=utf-8",
                 success: function (response) {
-                    $("#con_tallas").html("");
-                    $("#con_tallas").LoadingOverlay("hide");
-                    let div = $("<div>").addClass("shop__sidebar__size");
-                    div.append($("<label>").append("Todos").attr("for", "tx"));
+                    $("#select_tallas").empty();
+                    $("#select_tallas").append($("<option>").attr("value", "0").text("Todos"));
                     $.each(response.data, function (i, element) {
-                        div.append(
-                            $("<label>").attr("for", "t" + i).text(element.nombretalla).append(
-                                $("<input>").attr({
-                                    "type": "radio",
-                                    "name": "tallasropa",
-                                    "value": element.idtallaropa,
-                                    "id": "t" + i
-                                })
-                            )
-                        );
+                        $("#select_tallas").append($("<option>").attr("value", element.idtallaropa).text(element.nombretalla));
                     });
-                    $("#con_tallas").append(div);
                 },
                 beforeSend: function () {
-                    $("#con_tallas").LoadingOverlay("show");
+                    //$("#select_tallas").LoadingOverlay("show");
                 }
             });
         }
 
-        $("#btn_aplicarfiltro").click(function () {
-            var _idcategoria = $("input[name=categoria]:checked").val()
-            var _idmarca = $("input[name=marcas]:checked").val()
-            var _idtallaropa = $("input[name=tallasropa]:checked").val()
-            mostrarFiltros(_idcategoria, _idmarca, _idtallaropa);
+        $(document).on("change", "input[name=categoria]", function () {
+            mostrarTallas();
         })
+
+        function mostrarFiltros(_idcategoria, _idmarca, _idtallaropa, page = 1, pageSize = 12) {
+            jQuery.ajax({
+                url: "@Url.Action("listarProductos", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({
+                    idcategoria: _idcategoria,
+                    idmarca: _idmarca,
+                    idtallaropa: _idtallaropa,
+                    page: page,
+                    pageSize: pageSize
+                }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                beforeSend: function () {
+                    $("#container_productos").LoadingOverlay("show");
+                },
+                success: function (response) {
+                    $("#container_productos").LoadingOverlay("hide");
+                    $("#container_productos").empty();
+
+                    $(".total__products span").text(response.totalItems);
+
+                    if (response.data.length === 0) {
+                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
+                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
+                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
+                        ).appendTo("#container_productos");
+                    } else {
+                        $.each(response.data, function (i, element) {
+                            var imagenSrc = element.Extension && element.base64
+                                ? "data:image/" + element.Extension + ";base64," + element.base64
+                                : "../assets/img/logovalent.png";
+
+                            var imagenhover = element.Extension2 && element.base2
+                                ? "data:image/" + element.Extension2 + ";base64," + element.base2
+                                : "../assets/img/logovalent.png";
+
+                            var precioVenta = element.precioventa;
+                            var descuento = element.descuento;
+                            var precioDescontado = precioVenta - (precioVenta * (descuento / 100));
+
+                            $("<div>").addClass("product__item").append(
+                                $("<div>").addClass("product__banner").append(
+                                    $("<a>").attr("href", "" + element.idproducto).addClass("product__images").append(
+                                        $("<img>").addClass("product__img default").attr({ "src": imagenSrc }),
+                                        $("<img>").addClass("product__img hover").attr({ "src": imagenhover })
+                                    ),
+                                    $("<div>").addClass("product__actions").append(
+                                        $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).addClass("action__btn").attr("aria-label", "Vista Rápida").append(
+                                            $("<i>").addClass("fi fi-rs-eye")
+                                        ),
+                                        @if (Session["cliente"] != null)
+                                        {
+                                            @:$("<a>").attr("href", "").addClass("action__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append( $("<i>").addClass("fi fi-rs-shopping-cart") )
+                                        }
+                                    ),
+                                    (descuento > 0) ? $("<div>").addClass("product__badge ligt-green").text("-" + descuento + " %") : null
+                                ),
+                                $("<div>").addClass("product__content").append(
+                                    $("<span>").addClass("product__category").text(element.codigo),
+                                    $("<a>").attr("href", "").append(
+                                        $("<h3>").addClass("product__title").text(element.nombre)
+                                    ),
+                                    $("<div>").addClass("product__price flex").append(
+                                        (descuento > 0)
+                                            ? [
+                                                $("<span>").addClass("new__price").text("S/ " + precioDescontado.toFixed(2)),
+                                                $("<span>").addClass("old__price").text("S/ " + precioVenta.toFixed(2)).css("text-decoration", "line-through")
+                                            ]
+                                            : $("<span>").addClass("new__price").text("S/ " + precioVenta.toFixed(2))
+                                    ),
+                                    @if (Session["cliente"] != null)
+                                    {
+                                        @:$("<a>").attr("href", "").addClass("action__btn cart__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append($("<i>").addClass("fi fi-rs-shopping-bag-add"))
+                                    } else
+                                    {
+                                        @:$("<a>").attr("href", "@Url.Action("Index", "Login")").addClass("action__btn cart__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append($("<i>").addClass("fi fi-rs-shopping-bag-add"))
+                                    }
+                                )
+                            ).appendTo("#container_productos");
+                        });
+
+                        generarPaginacion(response.totalPages, page);
+                    }
+                },
+                complete: function () {
+                    $("#container_productos").LoadingOverlay("hide");
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $("#btn_aplicarfiltro").click(function (event) {
+                event.preventDefault();
+
+                var _idcategoria = $("#select_categoria").val();
+                var _idmarca = $("#select_marcas").val();
+                var _idtalla = $("#select_tallas").val();
+
+                mostrarFiltros(_idcategoria, _idmarca, _idtalla);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#btn_resetearfiltros").click(function () {
+                mostrarFiltros(null, null, null);
+                $("#select_categoria").val("");
+                $("#select_marcas").val("");
+                $("#select_tallas").val("");
+            });
+        });
+
+        function generarPaginacion(totalPages, currentPage) {
+            var pagination = $(".pagination");
+            pagination.empty();
+
+            if (totalPages > 1) {
+                for (var i = 1; i <= totalPages; i++) {
+                    var pageLink = $("<a>")
+                        .attr("href", "#")
+                        .addClass("pagination__link")
+                        .text(i)
+                        .on("click", function (e) {
+                            e.preventDefault();
+                            var page = $(this).text();
+                            var _idcategoria = $("#select_categoria").val();
+                            var _idmarca = $("#select_marcas").val();
+                            var _idtallaropa = $("#select_tallas").val();
+
+                            mostrarFiltros(_idcategoria, _idmarca, _idtallaropa, page);
+                        });
+
+                    if (i == currentPage) {
+                        pageLink.addClass("active");
+                    }
+
+                    $("<li>").append(pageLink).appendTo(pagination);
+                }
+            }
+        }
 
     </script>
 }

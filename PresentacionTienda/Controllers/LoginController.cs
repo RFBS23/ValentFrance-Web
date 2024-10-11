@@ -16,6 +16,7 @@ namespace presentacionTienda.Controllers
         {
             return View();
         }
+
         public ActionResult Registrar()
         {
             return View();

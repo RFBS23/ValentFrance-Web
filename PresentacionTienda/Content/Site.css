@@ -183,11 +183,12 @@ input {
     justify-content: space-between;
 }
 .nav__logo-img {
-    width: 150px;
+    width: 120px;
 }
 
 .nav__menu {
-    width: 100%;
+    --width: 100%;
+    flex-grow: 1;
     margin-left: 2.5rem;
 }
 
@@ -554,14 +555,17 @@ input {
 /**ofertas**/
 .deals__container {
     grid-template-columns: repeat(2, 1fr);
+
 }
 
 .deals__item:nth-child(1) {
     background-image: url(../Assets/img/ofertas/deals-1.jpg);
+    border-radius: 20px;
 }
 
 .deals__item:nth-child(2) {
     background-image: url(../Assets/img/ofertas/deals-2.png);
+    border-radius: 20px;
 }
 
 .deals__item {
@@ -644,15 +648,255 @@ input {
     background-color: transparent;
     color: var(--first-color);
 }
-
-
-
-
-
 /** fin ofertas**/
+
+/*new arrivals*/
+.new__arrivals {
+    overflow: hidden;
+}
+
+.newsletter {
+    background-color: hsl(166,23%, 74%);
+    border-radius: 10px;
+}
+
+.home__newsletter {
+    margin-top: 2rem;
+}
+
+.newsletter__container {
+    grid-template-columns: repeat(2, 3.5fr) 5fr;
+    align-items: center;
+    column-gap: 3rem;
+}
+
+.newsletter__title {
+    column-gap: 1rem;
+    font-size: var(--large-font-size);
+}
+
+.newsletter__icon {
+    width: 40px;
+}
+
+.newsletter__description {
+    color: var(--title-color);
+    font-family: var(--second-font);
+    font-size: var(--small-font-size);
+    font-weight: var(--weight-600);
+}
+
+.newsletter__form {
+    display: flex;
+}
+
+.newsletter__input, .newsletter__btn {
+    font-size: var(--small-font-size);
+}
+
+.newsletter__input {
+    background-color: var(--body-color);
+    padding-inline: 1.25rem;
+    width: 100%;
+    height: 48px;
+    border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.newsletter__btn {
+    background-color: var(--title-color);
+    color: var(--body-color);
+    padding-inline: 2rem;
+    border-radius: 0 0.25rem 0.25rem 0;
+    font-family: var(--second-font);
+    font-weight: var(--weight-500);
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all .3s var(--transition);
+}
+
+.newsletter__btn:hover {
+    background-color: var(--first-color);
+}
+
+/*footer*/
+.footer__container {
+    grid-template-columns: 4.5fr repeat(2, 2fr) 3.5fr;
+    padding-block: 2.5rem;
+}
+.footer__subtitle {
+    color: var(--text-color-light);
+    font-size: var(--small-font-size);
+    margin-block: 1.25rem 0.625rem;
+}
+.footter__description {
+    margin-bottom: 0.25rem;
+}
+.footer__logo-img {
+    width: 120px;
+}
+.footer__description span {
+    font-weight: var(--weight-600);
+}
+.footer__social .footer__subtitle {
+    margin-top: 1.875rem;
+}
+.footer__social-links {
+    column-gap: 0.25rem;
+}
+.footer__social-icon {
+    width: 20px;
+    opacity: 0.7;
+}
+.footer__title {
+    font-size: var(--large-font-size);
+    margin-block: 1rem 1.25rem;
+}
+.footer__link {
+    color: var(--title-color);
+    font-size: var(--small-font-size);
+    margin-bottom: 1rem;
+    display: block;
+    transition: all 0.3s var(--transition);
+}
+.footer__link:hover {
+    color: var(--first-color);
+    margin-left: 0.25rem;
+}
+.footer__bottom {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 1.25rem;
+    border-top: 1px solid var(--border-color-alt);
+}
+.copyright,
+.designer {
+    color: var(--text-color-light);
+    font-size: var(--small-font-size);
+}
+/*fin footer*/
+.breadcrumb {
+    background-color: var(--container-color);
+    padding-block: 1.5rem;
+    border-radius: 20px;
+}
+.breadcrumb__list {
+    column-gap: 0.75rem;
+}
+.breadcrumb__link {
+    color: var(--text-color);
+    font-size: var(--small-font-size);
+}
+
+.total__products {
+    margin-bottom: 2.5rem;
+}
+.total__products span {
+    color: var(--first-color);
+    font-weight: var(--weight-600);
+}
+
+.total_descuentos {
+    margin-bottom: 2.5rem;
+}
+
+.total_descuentos span {
+    color: var(--first-color);
+    font-weight: var(--weight-600);
+}
+
+.total_productosnuevos {
+    margin-bottom: 2.5rem;
+}
+
+.total_productosnuevos span {
+    color: var(--first-color);
+    font-weight: var(--weight-600);
+}
+
+.pagination {
+    display: flex;
+    column-gap: 0.625rem;
+    margin-top: 2.75rem;
+}
+.paginationdescuento {
+    display: flex;
+    column-gap: 0.625rem;
+    margin-top: 2.75rem;
+}
+.paginationreciente {
+    display: flex;
+    column-gap: 0.625rem;
+    margin-top: 2.75rem;
+}
+.pagination__link {
+    display: inline-block;
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    border-radius: 0.25rem;
+    color: var(--text-color);
+    font-size: var(--small-font-size);
+    font-weight: var(--weight-700);
+    transition: all 0.15s var(--transition);
+}
+.pagination__link.active,
+.pagination__link:hover {
+    background-color: var(--first-color);
+    color: var(--body-color);
+}
+.pagination__link.icon {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.filtros__container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio entre los select */
+}
+
+.single-widget {
+    flex: 1; /* Hace que cada select ocupe el mismo espacio */
+    min-width: 200px; /* Define un ancho mínimo para evitar que los selects se hagan muy pequeños */
+}
+
+.form-select {
+    width: 100%; /* Hace que los selects ocupen todo el ancho del contenedor */
+    padding: 10px; /* Añade algo de padding para mejorar la estética */
+    font-size: 14px; /* Ajusta el tamaño de fuente */
+    box-sizing: border-box; /* Asegura que el padding no rompa el layout */
+}
+
+/* Asegura que los selects no crezcan y causen scroll */
+.filtros__container {
+    max-width: 100%;
+}
+html, body {
+    overflow-x: hidden; /* Evita el scroll horizontal en todo el documento */
+}
+/*select 2 */
+.select2-container--default .select2-selection--single {
+    height: 38px;
+    padding: 6px 12px;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+}
+
+/* Asegura que el select2 ocupe el 100% del ancho disponible */
+.select2-container {
+    width: 100% !important;
+}
+
+/* Ajusta la altura del contenedor del select2 */
+.select2-selection__rendered {
+    line-height: 38px; /* Coincide con la altura del select */
+}
+/*fin select 2*/
+
 /* responsivo */
 @media screen and (max-width: 1200px) {
-    : root {
+    :root {
         /*
         --big-font-size: 3.5rem;
         --h1-font-size: 2.75rem;

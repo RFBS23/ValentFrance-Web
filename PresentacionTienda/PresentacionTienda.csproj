@@ -112,6 +112,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\productoscategoriasController.cs" />
     <Compile Include="Controllers\TiendaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -131,10 +132,15 @@
     <Content Include="Assets\img\header\carrito.png" />
     <Content Include="Assets\img\header\carritos.png" />
     <Content Include="Assets\img\home-img.png" />
+    <Content Include="Assets\img\icon-email.svg" />
+    <Content Include="Assets\img\icon-facebook.svg" />
+    <Content Include="Assets\img\icon-instagram.svg" />
+    <Content Include="Assets\img\icon-youtube.svg" />
     <Content Include="Assets\img\letrasvalent.png" />
     <Content Include="Assets\img\logovalent.png" />
     <Content Include="Assets\img\ofertas\deals-1.jpg" />
     <Content Include="Assets\img\ofertas\deals-2.png" />
+    <Content Include="Assets\img\payment-method.png" />
     <Content Include="Assets\img\productos\product-1-1.jpg" />
     <Content Include="Assets\img\productos\product-1-2.jpg" />
     <Content Include="Assets\img\productos\product-10-1.jpg" />
@@ -163,6 +169,7 @@
     <Content Include="Assets\img\productos\product-9-2.jpg" />
     <Content Include="Content\flaticon.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\select2.min.css" />
     <Content Include="Content\swiper.css" />
     <Content Include="Content\all.css" />
     <Content Include="Content\all.min.css" />
@@ -238,6 +245,8 @@
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\nugetexample.js" />
+    <Content Include="Scripts\select2.min.js" />
+    <Content Include="Scripts\select2es.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -272,6 +281,13 @@
     <Content Include="Views\Tienda\Masproductos.cshtml" />
     <Content Include="Views\Tienda\DetalleProducto.cshtml" />
     <Content Include="Scripts\swiperbundler.min.js" />
+    <Content Include="Views\productoscategorias\DamasAdultas.cshtml" />
+    <Content Include="Views\productoscategorias\DamasJuveniles.cshtml" />
+    <Content Include="Views\productoscategorias\CaballerosAdultos.cshtml" />
+    <Content Include="Views\productoscategorias\CaballerosJuveniles.cshtml" />
+    <Content Include="Views\productoscategorias\Niños.cshtml" />
+    <Content Include="Views\Tienda\Blog.cshtml" />
+    <Content Include="Views\Tienda\Contacto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

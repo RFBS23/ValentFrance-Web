@@ -5,11 +5,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Valent France</title>
-    <!--flaticon-->
-
-    <!--swiper css-->
-
-
     @Styles.Render("~/Content/css")
     @*Scripts.Render("~/bundles/modernizr")*@
 </head>
@@ -18,37 +13,38 @@
         <div class="header__top">
             <div class="header__container container">
                 <div class="header__contact">
+                    Tel:&nbsp;
                     <span>(+51) 987 654 321</span>
                 </div>
                 <p class="header__alert-news">
-                    Super values deals - save more wirth coupons
+                    &nbsp;
                 </p>
                 <div class="header__contact">
-                    <span> tu locacion </span>
+                    <span id="user-location">Cargando ubicacion...</span>
                 </div>
             </div>
         </div>
 
         <nav class="nav container">
-            <a href="" class="nav__logo">
+            <a href="@Url.Action("Index", "Tienda")" class="nav__logo">
                 <img src="~/Assets/img/letrasvalent.png" alt="" class="nav__logo-img" />
             </a>
             <nav class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item">
-                        <a href="" class="nav_link active-link">Inicio</a>
+                        <a href="@Url.Action("Index", "Tienda")" class="nav_link @(ViewContext.RouteData.Values["action"].ToString() == "Index" && ViewContext.RouteData.Values["controller"].ToString() == "Tienda" ? "active-link" : "")">Inicio</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="" class="nav_link">Productos</a>
+                        <a href="@Url.Action("Masproductos", "Tienda")" class="nav_link @(ViewContext.RouteData.Values["action"].ToString() == "Masproductos" && ViewContext.RouteData.Values["controller"].ToString() == "Tienda" ? "active-link" : "")">Productos</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="" class="nav_link">Blog</a>
+                        <a href="@Url.Action("Blog", "Tienda")" class="nav_link @(ViewContext.RouteData.Values["action"].ToString() == "Blog" && ViewContext.RouteData.Values["controller"].ToString() == "Tienda" ? "active-link" : "")">Blog</a>
                     </li>
 
                     <li class="nav__item">
-                        <a href="" class="nav_link">contacto</a>
+                        <a href="@Url.Action("Contacto", "Tienda")" class="nav_link @(ViewContext.RouteData.Values["action"].ToString() == "Contacto" && ViewContext.RouteData.Values["controller"].ToString() == "Tienda" ? "active-link" : "")">Contacto</a>
                     </li>
 
                 </ul>
@@ -71,7 +67,7 @@
                         </ul>
                         <a href="@Url.Action("Carrito", "Tienda")" class="header__action-btn">
                             <img src="~/Assets/img/header/carritos.png" alt="" />
-                            <span class="count">3</span>
+                            <span class="count">0</span>
                         </a>
                     }
                 </div>
@@ -84,21 +80,81 @@
     </main>
 
     <!-- Footer Section Begin -->
-    <footer class="footer">
-        <div class="">
-            <div class="">
-            </div>
-            <div class="">
-                <div class="">
-                    <div class="">
-                        <p>
-                            Copyright ©
-                            <script>document.write(new Date().getFullYear());</script>
-                            All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://rfbs23.github.io/portafolio/" target="_blank">FabriDev</a>
-                        </p>
+    <footer class="footer container">
+        <div class="footer__container grid">
+            <div class="footer__content">
+                <a href="@Url.Action("Index", "Tienda")" class="footer__logo">
+                    <img src="~/Assets/img/letrasvalent.png" alt="" class="footer__logo-img" />
+                </a>
+                <h4 class="footer__subtitle">Contacto</h4>
+                <p class="footer__description">
+                    <span>Direccion:</span> por las nuevas lomas.
+                </p>
+                <p class="footer__description">
+                    <span>Telefono:</span> (+51) 987654321.
+                </p>
+                <p class="footer__description">
+                    <span>Horario tienda:</span> 2 pm - 9 pm, Lun - Dom.
+                </p>
+                <div class="footer__social">
+                    <h4 class="footer__subtitle">Sigueme</h4>
+                    <div class="footer__social-links flex">
+                        <a href="">
+                            <img src="~/Assets/img/icon-facebook.svg" alt="facebook" class="footer__social-icon" />
+                        </a>
+                        <a href="">
+                            <img src="~/Assets/img/icon-instagram.svg" alt="instagram" class="footer__social-icon" />
+                        </a>
+                        <a href="">
+                            <img src="~/Assets/img/icon-youtube.svg" alt="tiktok" class="footer__social-icon" />
+                        </a>
                     </div>
                 </div>
             </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Direccion</h3>
+                <ul class="footer__links">
+                    <li><a href="" class="footer__link">Nosotros</a></li>
+                    <li><a href="" class="footer__link">Delivery</a></li>
+                    <li><a href="" class="footer__link">Politicas y Privacidad</a></li>
+                    <li><a href="" class="footer__link">Terminos y condiciones</a></li>
+                    <li><a href="" class="footer__link">Contactanos</a></li>
+                    <li><a href="" class="footer__link">Central de soporte</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Mi Cuenta</h3>
+                <ul class="footer__links">
+                    
+                    @if (Session["cliente"] == null)
+                    {
+                        <li><a href="@Url.Action("Index", "Login")" class="footer__link">Iniciar Sesion</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="" class="footer__link">Ver Carrito</a></li>
+                        <li><a href="" class="footer__link">Mis compras</a></li>
+                    }
+
+                </ul>
+            </div>
+
+            <div class="footer__content">
+                <h3 class="footer__title">Pasarelas de pago seguras </h3>
+                <img src="~/Assets/img/payment-method.png" alt="pasarela de pago seguras" class="payment__img" />
+            </div>
+
+        </div>
+    
+        <div class="footer__bottom">
+            <p class="copyright">
+                Copyright ©
+                <script>document.write(new Date().getFullYear());</script>
+                All rights reserved
+            </p>
+            <span class="designer">Diseñado por <a class="text-decoration-none" href="https://portafolio-fabridev.vercel.app/" target="_blank">FabriDev</a></span>
         </div>
     </footer>
     <!-- Footer Section End -->
@@ -108,5 +164,50 @@
     @Scripts.Render("~/bundles/complementos")
     @RenderSection("scripts", required: false)
 
+    <script>
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                document.getElementById("user-location").innerHTML = "Geolocation is not supported by this browser.";
+            }
+        }
+
+        function showPosition(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+
+            // You can display the coordinates or send them to the server for further processing
+            document.getElementById("user-location").innerHTML = "Lat: " + lat + " Lon: " + lon;
+
+            // Optionally, use a reverse geocoding API to convert the coordinates to a real location name
+            fetch(`https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=${lat}&lon=${lon}`)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("user-location").innerHTML = data.address.city + ", " + data.address.country;
+                })
+                .catch(error => console.error("Error fetching location:", error));
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    document.getElementById("user-location").innerHTML = "User denied the request for Geolocation.";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    document.getElementById("user-location").innerHTML = "Location information is unavailable.";
+                    break;
+                case error.TIMEOUT:
+                    document.getElementById("user-location").innerHTML = "The request to get user location timed out.";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    document.getElementById("user-location").innerHTML = "An unknown error occurred.";
+                    break;
+            }
+        }
+
+        // Call the function to get the location when the page loads
+        window.onload = getLocation;
+    </script>
 </body>
 </html>

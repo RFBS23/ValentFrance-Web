@@ -24,7 +24,6 @@ namespace Datos
                     query.AppendLine("inner join categorias c on c.idcategoria = p.idcategoria");
                     query.AppendLine("inner join tallasropa tr on tr.idtallaropa = p.idtallaropa");
                     query.AppendLine("inner join marca m on m.idmarca = p.idmarca");
-                    query.AppendLine("where ubicacion = 'Almacen'");
 
                     SqlCommand cmd = new SqlCommand(query.ToString(), oconexion);
                     cmd.CommandType = CommandType.Text;

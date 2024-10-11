@@ -47,6 +47,7 @@
     <Compile Include="D_cliente.cs" />
     <Compile Include="D_Marca.cs" />
     <Compile Include="D_Productos.cs" />
+    <Compile Include="D_ProductosCategoria.cs" />
     <Compile Include="D_Reporte.cs" />
     <Compile Include="D_Tallas.cs" />
     <Compile Include="D_Usuarios.cs" />
