@@ -4,5 +4,73 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>DetalleProducto</h2>
+<section class="details section--lg">
+    <div class="details__container container grid">
+        <div class="details__group">
+            <img src="~/Assets/img/productos/product-8-1.jpg" alt="" class="details__img" />
+            <div class="details__small-images grid">
+                <img src="~/Assets/img/productos/product-8-2.jpg" alt="" class="details__small-img" />
+                <img src="~/Assets/img/productos/product-8-1.jpg" alt="" class="details__small-img" />
+                <img src="~/Assets/img/productos/product-12-1.jpg" alt="" class="details__small-img" />
+                <img src="~/Assets/img/productos/product-12-1.jpg" alt="" class="details__small-img" />
+            </div>
+        </div>
+    
+        <div class="details__group">
+            <h3 class="details__title">Las amo a todas</h3>
+            <p class="details__brand">Brands: <span>Adidas</span></p>
+            <div class="details__price flex">
+                <span class="new__price">$20</span>
+                <span class="old__price">$50</span>
+                <span class="save__price">30% de descuento</span>
+            </div>
+            <p class="short__description">
+                lorem
+            </p>
+
+            <ul class="product__list">
+                <li class="list__item flex">
+                    <i class="fi-rs-refresh"></i> Política de devolución de 30 días
+                </li>
+            </ul>
+
+            <div class="details__color flex">
+                <span class="details__color-title">Color</span>
+                <ul class="color__list">
+                    <li>
+                        <a href="#" class="color__link"></a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="details__size flex">
+                <span class="details__size-title">Talla</span>
+                <ul class="size__list">
+                    <li>
+                        <a href="#" class="size__link size-active">M</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="details__action">
+                <input type="number" class="quantity" min="1" value="1" />
+                <a href="#" class="btn btn--sm">Agregar al carrito</a>
+                <a href="#" class="details__action-btn">
+                    <i class="fi-rs-0 fi-rs-heart"></i>
+                </a>
+            </div>
+            <ul class="details__meta">
+                <li class="meta__list flex">CODIGO: <span>ksdflsdf</span></li>
+            </ul>
+            <ul class="details__meta">
+                <li class="meta__list flex">DISPONIBLE: <span>8 en stock</span></li>
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+<section class="details__tab"></section>
+
+<section class="products"></section>
 

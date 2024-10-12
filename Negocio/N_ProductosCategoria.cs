@@ -26,5 +26,16 @@ namespace Negocio
             return objdatos.ProductosDamasNuevos();
         }
 
+        /*seccion inicio*/
+        public List<ProductosCategoria> ProductosInicioDescuento()
+        {
+            return objdatos.ProductosDamasDescuento();
+        }
+
+        public List<ProductosCategoria> ProductosInicioNuevos()
+        {
+            return objdatos.ProductosDamasNuevos();
+        }
+
     }
 }

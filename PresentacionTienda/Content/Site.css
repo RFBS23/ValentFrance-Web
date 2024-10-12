@@ -894,9 +894,23 @@ html, body {
 }
 /*fin select 2*/
 
+/*detalles prouctos*/
+.details__container {
+    grid-template-columns: 5.5fr 6.5fr;
+}
+.details__img {
+    margin-bottom: 0.5rem;
+}
+.details__small-images {
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 0.625rem;
+}
+.details__small-img {
+    cursor: pointer;
+}
 /* responsivo */
 @media screen and (max-width: 1200px) {
-    :root {
+    : root {
         /*
         --big-font-size: 3.5rem;
         --h1-font-size: 2.75rem;

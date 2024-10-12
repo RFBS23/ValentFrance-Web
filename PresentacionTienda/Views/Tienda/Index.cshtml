@@ -83,6 +83,7 @@
         </div>
 
         <div class="tab__item" content id="popular">
+            <p class="total_descuentos">Se han encontrado <span>0</span> productos</p>
             <div class="products__container grid" id="container_popular">
 
             </div>
@@ -100,6 +101,7 @@
         </div>
 
         <div class="tab__item" content id="reciente">
+            <p class="total_productosnuevos">Se han encontrado <span>0</span> productos</p>
             <div class="products__container grid" id="container_reciente">
 
             </div>
@@ -115,10 +117,7 @@
                 </li>
             </ul>
         </div>
-    
     </div>
-
-    
 </section>
 
 <section class="deals section">
@@ -397,6 +396,8 @@
 
         $(document).ready(function () {
             mostrarFiltros();
+            mostrarFiltrosDescuento();
+            mostrarFiltrosNuevos();
         });
 
         function mostrarFiltros(page = 1) {
@@ -486,10 +487,7 @@
         }
 
         function generarPaginacion(totalPages, currentPage) {
-            // Limpiar paginador
             $('#pagination').empty();
-
-            // Agregar enlaces de páginas
             for (let i = 1; i <= totalPages; i++) {
                 $('#pagination').append(`
                     <li>
@@ -499,12 +497,218 @@
                     </li>
                 `);
             }
-
-            // Agregar evento para los enlaces
             $('#pagination .pagination__link').on('click', function (e) {
                 e.preventDefault();
                 let selectedPage = $(this).data('page');
                 mostrarFiltros(selectedPage);
+            });
+        }
+
+        function mostrarFiltrosDescuento(page = 1) {
+            const idCategoria = 0;
+            const idMarca = 0;
+            const idTallaRopa = 0;
+
+            $.ajax({
+                url: '@Url.Action("listarProductosDescuento", "Tienda")',
+                type: 'POST',
+                data: {
+                    idcategoria: idCategoria,
+                    idmarca: idMarca,
+                    idtallaropa: idTallaRopa,
+                    page: page
+                },
+                success: function (response) {
+                    $("#container_popular").LoadingOverlay("hide");
+                    $("#container_popular").empty();
+
+                    $(".total_descuentos span").text(response.totalItems);
+
+                    if (response.data.length === 0) {
+                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
+                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
+                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
+                        ).appendTo("#container_popular");
+                    } else {
+                        $.each(response.data, function (i, element) {
+                            var imagenSrc = element.Extension && element.base64
+                                ? "data:image/" + element.Extension + ";base64," + element.base64
+                                : "../assets/img/logovalent.png";
+
+                            var imagenhover = element.Extension2 && element.base2
+                                ? "data:image/" + element.Extension2 + ";base64," + element.base2
+                                : "../assets/img/logovalent.png";
+
+                            var precioVenta = element.precioventa;
+                            var descuento = element.descuento;
+                            var precioDescontado = precioVenta - (precioVenta * (descuento / 100));
+
+                            $("<div>").addClass("product__item").append(
+                                $("<div>").addClass("product__banner").append(
+                                    $("<a>").attr("href", "" + element.idproducto).addClass("product__images").append(
+                                        $("<img>").addClass("product__img default").attr({ "src": imagenSrc }),
+                                        $("<img>").addClass("product__img hover").attr({ "src": imagenhover })
+                                    ),
+                                    $("<div>").addClass("product__actions").append(
+                                        $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).addClass("action__btn").attr("aria-label", "Vista Rápida").append(
+                                            $("<i>").addClass("fi fi-rs-eye")
+                                        ),
+                                        @if (Session["cliente"] != null)
+                                        {
+                                            @:$("<a>").attr("href", "").addClass("action__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append( $("<i>").addClass("fi fi-rs-shopping-cart") )
+                                        }
+                                    ),
+                                    (descuento > 0) ? $("<div>").addClass("product__badge ligt-green").text("-" + descuento + " %") : null
+                                ),
+                                $("<div>").addClass("product__content").append(
+                                    $("<span>").addClass("product__category").text(element.codigo),
+                                    $("<a>").attr("href", "").append(
+                                        $("<h3>").addClass("product__title").text(element.nombre)
+                                    ),
+                                    $("<div>").addClass("product__price flex").append(
+                                        (descuento > 0)
+                                            ? [
+                                                $("<span>").addClass("new__price").text("S/ " + precioDescontado.toFixed(2)),
+                                                $("<span>").addClass("old__price").text("S/ " + precioVenta.toFixed(2)).css("text-decoration", "line-through")
+                                            ]
+                                            : $("<span>").addClass("new__price").text("S/ " + precioVenta.toFixed(2))
+                                    ),
+                                    @if (Session["cliente"] != null)
+                                    {
+                                        @:$("<a>").attr("href", "").addClass("action__btn cart__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append($("<i>").addClass("fi fi-rs-shopping-bag-add"))
+                                    } else
+                                    {
+                                        @:$("<a>").attr("href", "@Url.Action("Index", "Login")").addClass("action__btn cart__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append($("<i>").addClass("fi fi-rs-shopping-bag-add"))
+                                    }
+                                )
+                            ).appendTo("#container_popular");
+                        });
+
+                        generarPaginacionDescuento(response.totalPages, page);
+                    }
+                }
+            });
+        }
+
+        function generarPaginacionDescuento(totalPages, currentPage) {
+            $('#paginationpopular').empty();
+            for (let i = 1; i <= totalPages; i++) {
+                $('#paginationpopular').append(`
+                    <li>
+                        <a href="#" class="pagination__link ${i === currentPage ? 'active' : ''}" data-page="${i}">
+                            ${i < 10 ? '0' + i : i}
+                        </a>
+                    </li>
+                `);
+            }
+            $('#paginationpopular .pagination__link').on('click', function (e) {
+                e.preventDefault();
+                let selectedPage = $(this).data('page');
+                mostrarFiltrosDescuento(selectedPage);
+            });
+        }
+
+        function mostrarFiltrosNuevos(page = 1) {
+            const idCategoria = 0;
+            const idMarca = 0;
+            const idTallaRopa = 0;
+
+            $.ajax({
+                url: '@Url.Action("listarProductosNuevos", "Tienda")',
+                type: 'POST',
+                data: {
+                    idcategoria: idCategoria,
+                    idmarca: idMarca,
+                    idtallaropa: idTallaRopa,
+                    page: page
+                },
+                success: function (response) {
+                    $("#container_reciente").LoadingOverlay("hide");
+                    $("#container_reciente").empty();
+
+                    $(".total_productosnuevos span").text(response.totalItems);
+
+                    if (response.data.length === 0) {
+                        $("<section>").addClass("section error-404 min-vh-100 d-flex flex-column align-items-center justify-content-center").append(
+                            $("<h2>").addClass("text-center").text("Error al encontrar los productos"),
+                            $("<h5>").addClass("text-center").text("El producto que estás buscando no existe")
+                        ).appendTo("#container_reciente");
+                    } else {
+                        $.each(response.data, function (i, element) {
+                            var imagenSrc = element.Extension && element.base64
+                                ? "data:image/" + element.Extension + ";base64," + element.base64
+                                : "../assets/img/logovalent.png";
+
+                            var imagenhover = element.Extension2 && element.base2
+                                ? "data:image/" + element.Extension2 + ";base64," + element.base2
+                                : "../assets/img/logovalent.png";
+
+                            var precioVenta = element.precioventa;
+                            var descuento = element.descuento;
+                            var precioDescontado = precioVenta - (precioVenta * (descuento / 100));
+
+                            $("<div>").addClass("product__item").append(
+                                $("<div>").addClass("product__banner").append(
+                                    $("<a>").attr("href", "" + element.idproducto).addClass("product__images").append(
+                                        $("<img>").addClass("product__img default").attr({ "src": imagenSrc }),
+                                        $("<img>").addClass("product__img hover").attr({ "src": imagenhover })
+                                    ),
+                                    $("<div>").addClass("product__actions").append(
+                                        $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).addClass("action__btn").attr("aria-label", "Vista Rápida").append(
+                                            $("<i>").addClass("fi fi-rs-eye")
+                                        ),
+                                        @if (Session["cliente"] != null)
+                                        {
+                                            @:$("<a>").attr("href", "").addClass("action__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append( $("<i>").addClass("fi fi-rs-shopping-cart") )
+                                        }
+                                    ),
+                                    (descuento > 0) ? $("<div>").addClass("product__badge ligt-orange").text("Nuevo -" + descuento + " %") : null
+                                ),
+                                $("<div>").addClass("product__content").append(
+                                    $("<span>").addClass("product__category").text(element.codigo),
+                                    $("<a>").attr("href", "").append(
+                                        $("<h3>").addClass("product__title").text(element.nombre)
+                                    ),
+                                    $("<div>").addClass("product__price flex").append(
+                                        (descuento > 0)
+                                            ? [
+                                                $("<span>").addClass("new__price").text("S/ " + precioDescontado.toFixed(2)),
+                                                $("<span>").addClass("old__price").text("S/ " + precioVenta.toFixed(2)).css("text-decoration", "line-through")
+                                            ]
+                                            : $("<span>").addClass("new__price").text("S/ " + precioVenta.toFixed(2))
+                                    ),
+                                    @if (Session["cliente"] != null)
+                                    {
+                                        @:$("<a>").attr("href", "").addClass("action__btn cart__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append($("<i>").addClass("fi fi-rs-shopping-bag-add"))
+                                    } else
+                                    {
+                                        @:$("<a>").attr("href", "@Url.Action("Index", "Login")").addClass("action__btn cart__btn agregarcarrito").attr("aria-label", "Agregar al carrito").append($("<i>").addClass("fi fi-rs-shopping-bag-add"))
+                                    }
+                                )
+                            ).appendTo("#container_reciente");
+                        });
+
+                        generarPaginacionReciente(response.totalPages, page);
+                    }
+                }
+            });
+        }
+
+        function generarPaginacionReciente(totalPages, currentPage) {
+            $('#paginationreciente').empty();
+            for (let i = 1; i <= totalPages; i++) {
+                $('#paginationreciente').append(`
+                    <li>
+                        <a href="#" class="pagination__link ${i === currentPage ? 'active' : ''}" data-page="${i}">
+                            ${i < 10 ? '0' + i : i}
+                        </a>
+                    </li>
+                `);
+            }
+            $('#paginationreciente .pagination__link').on('click', function (e) {
+                e.preventDefault();
+                let selectedPage = $(this).data('page');
+                mostrarFiltrosNuevos(selectedPage);
             });
         }
 

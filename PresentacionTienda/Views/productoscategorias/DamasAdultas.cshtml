@@ -39,8 +39,19 @@
         <div class="tab__item active-tab" content id="todosDA">
             <p class="total__products">Se han encontrado <span>0</span> productos</p>
             <div class="products__container grid" id="container_productosDama">
-                
+
             </div>
+            <ul class="pagination">
+                <li><a href="#" class="pagination__link active">01</a></li>
+                <li><a href="#" class="pagination__link">02</a></li>
+                <li><a href="#" class="pagination__link">...</a></li>
+                <li><a href="#" class="pagination__link">06</a></li>
+                <li>
+                    <a href="#" class="pagination__link icon">
+                        <i class="fi-rs-angle-double-small-right"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
 
         <div class="tab__item" content id="descuentoDA">
@@ -48,6 +59,17 @@
             <div class="products__container grid" id="container_productosDescuento">
 
             </div>
+            <ul class="paginationdescuento">
+                <li><a href="#" class="pagination__link active">01</a></li>
+                <li><a href="#" class="pagination__link">02</a></li>
+                <li><a href="#" class="pagination__link">...</a></li>
+                <li><a href="#" class="pagination__link">06</a></li>
+                <li>
+                    <a href="#" class="pagination__link icon">
+                        <i class="fi-rs-angle-double-small-right"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
 
         <div class="tab__item" content id="recienteDA">
@@ -55,6 +77,17 @@
             <div class="products__container grid" id="container_productosNuevos">
 
             </div>
+            <ul class="paginationreciente">
+                <li><a href="#" class="pagination__link active">01</a></li>
+                <li><a href="#" class="pagination__link">02</a></li>
+                <li><a href="#" class="pagination__link">...</a></li>
+                <li><a href="#" class="pagination__link">06</a></li>
+                <li>
+                    <a href="#" class="pagination__link icon">
+                        <i class="fi-rs-angle-double-small-right"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
 </section>
@@ -170,7 +203,7 @@
         $(document).on("change", "input[name=categoria]", function () {
             mostrarTallas();
         })
-
+        
         function mostrarFiltros(_idcategoria, _idmarca, _idtallaropa, page = 1, pageSize = 12) {
             jQuery.ajax({
                 url: "@Url.Action("listarProductosDama", "productoscategorias")",
@@ -262,6 +295,35 @@
             });
         }
 
+        function generarPaginacion(totalPages, currentPage) {
+            var pagination = $(".pagination");
+            pagination.empty();
+
+            if (totalPages > 1) {
+                for (var i = 1; i <= totalPages; i++) {
+                    var pageLink = $("<a>")
+                        .attr("href", "#")
+                        .addClass("pagination__link")
+                        .text(i)
+                        .on("click", function (e) {
+                            e.preventDefault();
+                            var page = $(this).text();
+                            var _idcategoria = $("#select_categoria").val();
+                            var _idmarca = $("#select_marcas").val();
+                            var _idtallaropa = $("#select_tallas").val();
+
+                            mostrarFiltros(_idcategoria, _idmarca, _idtallaropa, page);
+                        });
+
+                    if (i == currentPage) {
+                        pageLink.addClass("active");
+                    }
+
+                    $("<li>").append(pageLink).appendTo(pagination);
+                }
+            }
+        }
+
         /* productos con descuento */
         function mostrarFiltrosDescuento(_idcategoria, _idmarca, _idtallaropa, page = 1, pageSize = 12) {
             jQuery.ajax({
@@ -345,13 +407,41 @@
                             ).appendTo("#container_productosDescuento");
                         });
 
-                        generarPaginacion(response.totalPages, page);
+                        generarPaginacionDescuento(response.totalPages, page);
                     }
                 },
                 complete: function () {
                     $("#container_productosDescuento").LoadingOverlay("hide");
                 }
             });
+        }
+
+        function generarPaginacionDescuento(totalPages, currentPage) {
+            var pagination = $(".paginationdescuento");
+            pagination.empty();
+
+            if (totalPages > 1) {
+                for (var i = 1; i <= totalPages; i++) {
+                    var pageLink = $("<a>")
+                        .attr("href", "#")
+                        .addClass("pagination__link")
+                        .text(i)
+                        .on("click", function (e) {
+                            e.preventDefault();
+                            var page = $(this).text();
+                            var _idcategoria = $("#select_categoria").val();
+                            var _idmarca = $("#select_marcas").val();
+                            var _idtallaropa = $("#select_tallas").val();
+                            mostrarFiltrosDescuento(_idcategoria, _idmarca, _idtallaropa, page);
+                        });
+
+                    if (i == currentPage) {
+                        pageLink.addClass("active");
+                    }
+
+                    $("<li>").append(pageLink).appendTo(pagination);
+                }
+            }
         }
 
         /* productos nuevos*/
@@ -437,13 +527,42 @@
                             ).appendTo("#container_productosNuevos");
                         });
 
-                        generarPaginacion(response.totalPages, page);
+                        generarPaginacionReciente(response.totalPages, page);
                     }
                 },
                 complete: function () {
                     $("#container_productosNuevos").LoadingOverlay("hide");
                 }
             });
+        }
+
+        function generarPaginacionReciente(totalPages, currentPage) {
+            var pagination = $(".paginationreciente");
+            pagination.empty();
+
+            if (totalPages > 1) {
+                for (var i = 1; i <= totalPages; i++) {
+                    var pageLink = $("<a>")
+                        .attr("href", "#")
+                        .addClass("pagination__link")
+                        .text(i)
+                        .on("click", function (e) {
+                            e.preventDefault();
+                            var page = $(this).text();
+                            var _idcategoria = $("#select_categoria").val();
+                            var _idmarca = $("#select_marcas").val();
+                            var _idtallaropa = $("#select_tallas").val();
+
+                            mostrarFiltrosNuevos(_idcategoria, _idmarca, _idtallaropa, page);
+                        });
+
+                    if (i == currentPage) {
+                        pageLink.addClass("active");
+                    }
+
+                    $("<li>").append(pageLink).appendTo(pagination);
+                }
+            }
         }
 
         $(document).ready(function () {
@@ -460,35 +579,5 @@
             });
         });
 
-        function generarPaginacion(totalPages, currentPage) {
-            var pagination = $(".pagination");
-            pagination.empty();
-
-            if (totalPages > 1) {
-                for (var i = 1; i <= totalPages; i++) {
-                    var pageLink = $("<a>")
-                        .attr("href", "#")
-                        .addClass("pagination__link")
-                        .text(i)
-                        .on("click", function (e) {
-                            e.preventDefault();
-                            var page = $(this).text();
-                            var _idcategoria = $("#select_categoria").val();
-                            var _idmarca = $("#select_marcas").val();
-                            var _idtallaropa = $("#select_tallas").val();
-
-                            mostrarFiltros(_idcategoria, _idmarca, _idtallaropa, page);
-                            mostrarFiltrosDescuento(_idcategoria, _idmarca, _idtallaropa, page);
-                            mostrarFiltrosNuevos(_idcategoria, _idmarca, _idtallaropa, page);
-                        });
-
-                    if (i == currentPage) {
-                        pageLink.addClass("active");
-                    }
-
-                    $("<li>").append(pageLink).appendTo(pagination);
-                }
-            }
-        }
     </script>
 }
