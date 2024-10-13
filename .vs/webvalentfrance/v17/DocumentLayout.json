@@ -38,7 +38,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 169,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -51,6 +51,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
@@ -112,7 +116,7 @@
               "RelativeDocumentMoniker": "presentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "RelativeToolTip": "presentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAAAFUAAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAAAG4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-12T04:07:48.093Z",
               "EditorCaption": ""

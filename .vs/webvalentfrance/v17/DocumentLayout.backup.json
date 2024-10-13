@@ -38,11 +38,23 @@
       "DocumentGroups": [
         {
           "DockedWidth": 169,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Document",
@@ -104,7 +116,7 @@
               "RelativeDocumentMoniker": "presentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "ToolTip": "C:\\Users\\fabri\\Documents\\Programacion\\ASP.Net\\webvalentfrance\\presentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
               "RelativeToolTip": "presentacionTienda\\Views\\Tienda\\DetalleProducto.cshtml",
-              "ViewState": "AgIAAFMAAAAAAAAAAAAAAGsAAABBAAAAAAAAAA==",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAAAG4AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-10-12T04:07:48.093Z",
               "EditorCaption": ""
