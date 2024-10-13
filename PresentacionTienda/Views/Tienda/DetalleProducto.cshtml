@@ -1,4 +1,5 @@
-﻿
+﻿@model Entidad.Productos
+
 @{
     ViewBag.Title = "DetalleProducto";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,25 +8,25 @@
 <section class="details section--lg">
     <div class="details__container container grid">
         <div class="details__group">
-            <img src="~/Assets/img/productos/product-8-1.jpg" alt="" class="details__img" />
+            <img src="@(!string.IsNullOrEmpty(Model.base64) ? $"data:image/{Model.Extension};base64,{Model.base64}" : Url.Content("~/Assets/img/logovalent.png"))" alt="" class="details__img" />
             <div class="details__small-images grid">
-                <img src="~/Assets/img/productos/product-8-2.jpg" alt="" class="details__small-img" />
-                <img src="~/Assets/img/productos/product-8-1.jpg" alt="" class="details__small-img" />
-                <img src="~/Assets/img/productos/product-12-1.jpg" alt="" class="details__small-img" />
-                <img src="~/Assets/img/productos/product-12-1.jpg" alt="" class="details__small-img" />
+                <img src="@(!string.IsNullOrEmpty(Model.base64) ? $"data:image/{Model.Extension};base64,{Model.base64}" : Url.Content("~/Assets/img/logovalent.png"))" alt="" class="details__small-img" />
+                <img src="@(!string.IsNullOrEmpty(Model.base2) ? $"data:image/{Model.Extension2};base64,{Model.base2}" : Url.Content("~/Assets/img/logovalent.png"))" alt="" class="details__small-img" />
+                <img src="@(!string.IsNullOrEmpty(Model.base3) ? $"data:image/{Model.Extension3};base64,{Model.base3}" : Url.Content("~/Assets/img/logovalent.png"))" alt="" class="details__small-img" />
+                <img src="@(!string.IsNullOrEmpty(Model.base4) ? $"data:image/{Model.Extension4};base64,{Model.base4}" : Url.Content("~/Assets/img/logovalent.png"))" alt="" class="details__small-img" />
             </div>
         </div>
-    
+
         <div class="details__group">
-            <h3 class="details__title">Las amo a todas</h3>
-            <p class="details__brand">Brands: <span>Adidas</span></p>
+            <h3 class="details__title">@Html.DisplayTextFor(m => m.nombre)</h3>
+            <p class="details__brand">Marca: <span>@Html.DisplayTextFor(m => m.oCategorias.nombrecategoria)</span></p>
             <div class="details__price flex">
                 <span class="new__price">$20</span>
                 <span class="old__price">$50</span>
-                <span class="save__price">30% de descuento</span>
+                <span class="save__price">@Html.DisplayTextFor(m => m.descuento)% de descuento</span>
             </div>
             <p class="short__description">
-                lorem
+                @Html.DisplayTextFor(m => m.descripcion)
             </p>
 
             <ul class="product__list">
@@ -38,7 +39,8 @@
                 <span class="details__color-title">Color</span>
                 <ul class="color__list">
                     <li>
-                        <a href="#" class="color__link"></a>
+                        <a class="size__link size-active">@Html.DisplayTextFor(m => m.colores)</a>
+                        <!--<a href="#" class="color__link">Verde</a>-->
                     </li>
                 </ul>
             </div>
@@ -47,23 +49,26 @@
                 <span class="details__size-title">Talla</span>
                 <ul class="size__list">
                     <li>
-                        <a href="#" class="size__link size-active">M</a>
+                        <a class="size__link size-active">@Html.DisplayTextFor(m => m.oTallasropa.nombretalla)</a>
                     </li>
                 </ul>
             </div>
 
             <div class="details__action">
                 <input type="number" class="quantity" min="1" value="1" />
-                <a href="#" class="btn btn--sm">Agregar al carrito</a>
-                <a href="#" class="details__action-btn">
-                    <i class="fi-rs-0 fi-rs-heart"></i>
+                @if (Session["cliente"] != null)
+                {
+                    <a href="#" class="btn btn--sm agregarcarrito" data-idproducto="@Html.DisplayTextFor(m => m.idproducto)">Agregar al carrito</a>
+                }
+                <a href="@Url.Action("Masproductos", "Tienda")" class="details__action-btn">
+                    <i class="fi-rs-0 fi-rs-reply-all"></i> Regresar
                 </a>
             </div>
             <ul class="details__meta">
-                <li class="meta__list flex">CODIGO: <span>ksdflsdf</span></li>
+                <li class="meta__list flex">CODIGO: <span>@Html.DisplayTextFor(m => m.codigo)</span></li>
             </ul>
             <ul class="details__meta">
-                <li class="meta__list flex">DISPONIBLE: <span>8 en stock</span></li>
+                <li class="meta__list flex">DISPONIBLE: <span>@Model.stock</span></li>
             </ul>
 
         </div>
@@ -74,3 +79,55 @@
 
 <section class="products"></section>
 
+@section scripts {
+
+    <script>
+        $(document).ready(function() {
+            var stock = @Model.stock; // Obtiene el stock desde el modelo
+
+            if (stock === 0) {
+                $("#form-container").hide();
+                $("#notify-button").show();
+            } else {
+                $("#form-container").show();
+                $("#notify-button").hide();
+            }
+        });
+
+        $(document).ready(function () {
+            var precio = parseFloat("@Model.precioventa");
+            var descuento = parseFloat("@Model.descuento");
+            var precioConDescuento = precio * (1 - descuento / 100);
+            if (descuento > 0) {
+                $(".new__price").text("S/ " + precioConDescuento.toFixed(2));
+                $(".old__price").text("S/ " + precio.toFixed(2));
+                $(".save__price").text(descuento + "% de descuento");
+            } else {
+                $(".new__price").text("S/ " + precio.toFixed(2));
+                $(".old__price").hide();
+                $(".save__price").hide();
+            }
+        });
+
+        // boton carrito
+        $(document).on("click", "button.agregarcarrito", function () {
+            console.log($(this).data("idproducto"))
+            jQuery.ajax({
+                url: "@Url.Action("AgregarCarrito", "Tienda")",
+                type: "POST",
+                data: JSON.stringify({ idproducto: $(this).data("idproducto") }),
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    if (data.respuesta) {
+                        mostrarcantidadCarrito();
+                        mostrarCarrito();
+                        Swal.fire("", "Agregado correctamente", "success");
+                    } else {
+                        Swal.fire("", data.mensaje, "warning");
+                    }
+                }
+            });
+        });
+    </script>
+}

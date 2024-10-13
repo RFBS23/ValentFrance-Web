@@ -177,7 +177,7 @@
 
                             $("<div>").addClass("product__item").append(
                                 $("<div>").addClass("product__banner").append(
-                                    $("<a>").attr("href", "" + element.idproducto).addClass("product__images").append(
+                                    $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).addClass("product__images").append(
                                         $("<img>").addClass("product__img default").attr({ "src": imagenSrc }),
                                         $("<img>").addClass("product__img hover").attr({ "src": imagenhover })
                                     ),
@@ -194,7 +194,7 @@
                                 ),
                                 $("<div>").addClass("product__content").append(
                                     $("<span>").addClass("product__category").text(element.codigo),
-                                    $("<a>").attr("href", "").append(
+                                    $("<a>").attr("href", "@Url.Action("DetalleProducto", "Tienda")" + "?idproducto=" + element.idproducto).append(
                                         $("<h3>").addClass("product__title").text(element.nombre)
                                     ),
                                     $("<div>").addClass("product__price flex").append(

@@ -36,6 +36,12 @@ namespace presentacionTienda.Controllers
             {
                 oProducto.base64 = N_Recursos.ConvertirBase64(Path.Combine(oProducto.rutaimagen, oProducto.nombreimagen), out conversion);
                 oProducto.Extension = Path.GetExtension(oProducto.nombreimagen);
+                oProducto.base2 = N_Recursos.ConvertirBase2(Path.Combine(oProducto.rutaimagendos, oProducto.nombreimagendos), out conversion);
+                oProducto.Extension2 = Path.GetExtension(oProducto.nombreimagendos);
+                oProducto.base3 = N_Recursos.ConvertirBase3(Path.Combine(oProducto.rutaimagen3, oProducto.nombreimagen3), out conversion);
+                oProducto.Extension3 = Path.GetExtension(oProducto.nombreimagen3);
+                oProducto.base4 = N_Recursos.ConvertirBase4(Path.Combine(oProducto.rutaimagen4, oProducto.nombreimagen4), out conversion);
+                oProducto.Extension4 = Path.GetExtension(oProducto.nombreimagen4);
             }
             return View(oProducto);
         }

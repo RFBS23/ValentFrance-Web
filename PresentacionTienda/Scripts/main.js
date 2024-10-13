@@ -66,3 +66,16 @@ tabs.forEach((tab) => {
     });
 });
 
+/*galeria de imagenes*/
+function imgGallery() {
+    const mainImg = document.querySelector('.details__img'),
+        smallImg = document.querySelectorAll('.details__small-img');
+
+    smallImg.forEach((img) => {
+        img.addEventListener('click', function () {
+            mainImg.src = this.src;
+        });
+    });
+}
+
+imgGallery();
