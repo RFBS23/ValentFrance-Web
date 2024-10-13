@@ -83,8 +83,7 @@
 
     <script>
         $(document).ready(function() {
-            var stock = @Model.stock; // Obtiene el stock desde el modelo
-
+            var stock = @Model.stock;
             if (stock === 0) {
                 $("#form-container").hide();
                 $("#notify-button").show();
